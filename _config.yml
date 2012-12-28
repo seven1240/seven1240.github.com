@@ -1,0 +1,5 @@
+safe: true
+pygments: true
+auto: true
+markdown: rdiscount
+com: "Seven's Blog"
