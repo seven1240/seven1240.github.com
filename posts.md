@@ -3,7 +3,7 @@ layout: default
 title: {{ site.com }}
 ---
 
-# 全部页面
+# 所有文章
 
 <ul class="posts">
   {% for post in site.posts %}
