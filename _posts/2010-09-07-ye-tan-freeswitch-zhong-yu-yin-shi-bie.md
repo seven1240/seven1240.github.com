@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "也谈 FreeSWITCH 中语音识别"
 ---
 

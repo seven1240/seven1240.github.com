@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "Build a complex hence powerful FreeSWITCH IVR in Erlang"
 ---
 

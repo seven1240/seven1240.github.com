@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "Cluecon 2011 小记"
 ---
 

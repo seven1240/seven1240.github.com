@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "用 Erlang 实现彩票算法"
 ---
 

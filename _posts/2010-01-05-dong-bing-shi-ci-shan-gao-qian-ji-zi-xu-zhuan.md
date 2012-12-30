@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "《冬冰诗词删稿·前集》自叙(转)"
 ---
 

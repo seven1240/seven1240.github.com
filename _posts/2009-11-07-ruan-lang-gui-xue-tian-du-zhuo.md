@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "阮郎归·雪天独酌"
 ---
 

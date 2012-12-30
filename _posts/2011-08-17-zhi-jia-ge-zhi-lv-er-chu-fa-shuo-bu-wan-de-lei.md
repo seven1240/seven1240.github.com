@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "芝加哥之旅(二)出发，说不完的累"
 ---
 

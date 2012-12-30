@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "浣溪沙·庆书画摄影协会成立"
 ---
 

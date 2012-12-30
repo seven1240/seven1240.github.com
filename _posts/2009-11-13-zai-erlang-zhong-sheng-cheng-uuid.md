@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "在 Erlang 中生成 UUID"
 ---
 

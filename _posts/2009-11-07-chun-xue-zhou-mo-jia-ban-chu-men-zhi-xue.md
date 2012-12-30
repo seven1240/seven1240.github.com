@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "春雪 — 周末加班出门值雪"
 ---
 

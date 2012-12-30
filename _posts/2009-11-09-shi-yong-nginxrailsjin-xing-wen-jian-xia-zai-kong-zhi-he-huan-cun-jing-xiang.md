@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "使用Nginx+rails进行文件下载控制和缓存镜象"
 ---
 

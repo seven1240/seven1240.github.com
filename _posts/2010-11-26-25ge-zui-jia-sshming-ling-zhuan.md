@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "25个最佳SSH命令(转)"
 ---
 

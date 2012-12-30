@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "测试 FreeSWITCH 视频会议"
 ---
 

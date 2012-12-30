@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "偶尔想起的人"
 ---
 

@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "在 Ubuntu Hardy 上安装rubygems 1.3.7"
 ---
 

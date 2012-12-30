@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "在 Windows 上安装 UnxUtils"
 ---
 

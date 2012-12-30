@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "在FreeSWITCH中执行长期运行的嵌入式脚本--Lua语言例子"
 ---
 

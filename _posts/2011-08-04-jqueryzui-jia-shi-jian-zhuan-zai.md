@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "JQuery最佳实践(转载)"
 ---
 

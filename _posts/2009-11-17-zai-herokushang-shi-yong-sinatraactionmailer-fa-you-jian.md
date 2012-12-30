@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "在heroku上使用 Sinatra+ActionMailer 发邮件"
 ---
 

@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "买了个新域名 7ge.cn"
 ---
 

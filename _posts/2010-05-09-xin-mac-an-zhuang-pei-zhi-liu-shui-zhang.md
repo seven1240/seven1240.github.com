@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "新 Mac 安装配置流水账"
 ---
 

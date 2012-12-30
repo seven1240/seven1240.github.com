@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "他山之石 可以攻玉"
 ---
 

@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "我翻译的 Sqlite 中文文档"
 ---
 

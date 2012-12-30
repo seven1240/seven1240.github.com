@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "高速上谋才害命(转)"
 ---
 

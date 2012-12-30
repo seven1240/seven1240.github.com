@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "EQ 英语博客故事"
 ---
 

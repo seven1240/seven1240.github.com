@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "Come on, Let's GO"
 ---
 

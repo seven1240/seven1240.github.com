@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "使用ulimit限制mongrel占用内存"
 ---
 

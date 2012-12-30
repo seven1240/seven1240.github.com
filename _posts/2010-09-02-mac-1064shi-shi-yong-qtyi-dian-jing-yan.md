@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "Mac 10.6.4上使用QT一点经验"
 ---
 

@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "《 中国互联网状况》白皮书全文（转载）"
 ---
 

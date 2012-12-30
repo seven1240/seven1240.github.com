@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "FreeSWITCH 中的感人故事 - FreeSWITCH 帮我找到了工作"
 ---
 

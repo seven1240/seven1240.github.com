@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "元旦大雪"
 ---
 

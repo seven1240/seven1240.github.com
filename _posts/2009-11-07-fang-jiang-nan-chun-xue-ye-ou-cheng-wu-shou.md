@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "仿江南春·雪夜偶成 五首"
 ---
 

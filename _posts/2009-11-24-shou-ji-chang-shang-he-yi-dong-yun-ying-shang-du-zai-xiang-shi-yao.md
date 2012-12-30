@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "手机厂商和移动运营商都在想什么？"
 ---
 

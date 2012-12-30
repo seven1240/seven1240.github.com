@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "Ubuntu 安装Latex+UTF8字体问题"
 ---
 

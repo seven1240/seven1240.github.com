@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "辩证法 -- 年底随笔"
 ---
 

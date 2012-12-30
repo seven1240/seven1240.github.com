@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "FreeSWITCH 与 Asterisk(译)"
 ---
 

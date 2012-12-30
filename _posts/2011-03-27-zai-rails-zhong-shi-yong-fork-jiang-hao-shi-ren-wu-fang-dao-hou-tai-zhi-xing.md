@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "在 Rails 中使用 fork 将耗时任务放到后台执行"
 ---
 

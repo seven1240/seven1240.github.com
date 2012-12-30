@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "初学 iPhone 开发"
 ---
 

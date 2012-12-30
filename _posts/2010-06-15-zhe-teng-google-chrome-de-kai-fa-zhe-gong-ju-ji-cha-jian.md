@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "折腾 Google Chrome 的开发者工具及插件"
 ---
 

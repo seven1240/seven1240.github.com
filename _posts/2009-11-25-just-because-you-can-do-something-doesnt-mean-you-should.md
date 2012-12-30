@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "Just because you can do something doesn’t mean you should"
 ---
 

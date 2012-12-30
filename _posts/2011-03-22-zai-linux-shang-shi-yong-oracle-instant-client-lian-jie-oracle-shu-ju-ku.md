@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "在 Linux 上使用 oracle instant client 连接 oracle 数据库"
 ---
 

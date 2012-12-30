@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "使用vim comments插件"
 ---
 

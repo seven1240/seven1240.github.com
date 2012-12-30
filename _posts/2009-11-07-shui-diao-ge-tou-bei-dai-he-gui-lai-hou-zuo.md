@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "水调歌头·北戴河归来后作"
 ---
 

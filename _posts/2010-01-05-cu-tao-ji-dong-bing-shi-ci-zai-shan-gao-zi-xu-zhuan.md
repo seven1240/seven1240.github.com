@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "《粗陶集·冬冰诗词再删稿》自序(转)"
 ---
 

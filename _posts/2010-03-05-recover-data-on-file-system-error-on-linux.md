@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "Recover data on file system error on linux"
 ---
 

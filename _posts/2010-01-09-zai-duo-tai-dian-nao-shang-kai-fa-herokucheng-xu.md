@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "在多台电脑上开发heroku程序"
 ---
 

@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "我是如何学习计算机的"
 ---
 

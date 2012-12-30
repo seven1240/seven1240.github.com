@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "转播一条新闻"
 ---
 

@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "我的EQ故事"
 ---
 

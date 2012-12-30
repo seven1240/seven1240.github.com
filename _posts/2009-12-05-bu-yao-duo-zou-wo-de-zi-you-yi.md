@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "不要夺走我的自由(译)"
 ---
 

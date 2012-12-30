@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "电脑在Windows和Mac上通过三星S3930C手机上网"
 ---
 

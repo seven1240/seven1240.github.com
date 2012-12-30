@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "芝加哥之旅(五) ClueCon"
 ---
 

@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "在 Mac 上使用 ODBC 连接 MS SQL SERVER"
 ---
 

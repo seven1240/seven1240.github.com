@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "创业家封面文章：还我创业权(转)"
 ---
 

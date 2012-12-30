@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "曾经在LinuxFocus上翻译的一些文章"
 ---
 

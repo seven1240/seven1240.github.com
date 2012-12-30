@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "FreeSWITCH-CN第一届沙龙随笔"
 ---
 

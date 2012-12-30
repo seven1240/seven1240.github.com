@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "在 FreeSWITCH 中使用 google translate 进行文本语音转换"
 ---
 

@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "在网上安个家，写写博客"
 ---
 

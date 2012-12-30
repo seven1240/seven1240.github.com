@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "用ImageMagic将照片处理成20k以下"
 ---
 

@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "最高楼——剪短发戏作削发断情词"
 ---
 

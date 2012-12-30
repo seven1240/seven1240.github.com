@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "汉宫春·攀岩"
 ---
 

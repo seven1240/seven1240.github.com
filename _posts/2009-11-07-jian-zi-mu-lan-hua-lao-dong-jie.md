@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "减字木兰花·劳动节"
 ---
 

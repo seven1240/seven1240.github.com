@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "企业变革与文化"
 ---
 

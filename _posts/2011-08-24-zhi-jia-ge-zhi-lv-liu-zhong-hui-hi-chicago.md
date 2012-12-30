@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "芝加哥之旅(六)重回 HI Chicago"
 ---
 

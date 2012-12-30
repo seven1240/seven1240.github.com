@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "一个在FreeSWITCH中外呼的Lua脚本"
 ---
 

@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "在 Ubuntu 上安装 Asterisk"
 ---
 

@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "芝加哥之旅(四)第二天，初游芝加哥"
 ---
 

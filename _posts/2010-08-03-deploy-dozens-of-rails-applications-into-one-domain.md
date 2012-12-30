@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "Deploy dozens of rails applications into one domain"
 ---
 

@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "我最喜欢的关于冯·诺伊曼的故事"
 ---
 

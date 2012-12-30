@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "处理好心情，才能做好事情"
 ---
 

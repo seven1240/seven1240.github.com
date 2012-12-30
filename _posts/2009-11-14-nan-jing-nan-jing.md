@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "南京，南京"
 ---
 

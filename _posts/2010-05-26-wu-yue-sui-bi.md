@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "五月随笔"
 ---
 

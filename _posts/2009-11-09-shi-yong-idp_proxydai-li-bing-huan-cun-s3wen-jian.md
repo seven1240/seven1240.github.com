@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "使用Idp_proxy代理并缓存S3文件"
 ---
 

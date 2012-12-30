@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "使用 Python SimpleHTTPServer 快速共享文件"
 ---
 

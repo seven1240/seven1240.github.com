@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "迟到的《迟到的间隔年》"
 ---
 

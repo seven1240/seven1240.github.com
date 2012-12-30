@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "罗森塔尔效应"
 ---
 

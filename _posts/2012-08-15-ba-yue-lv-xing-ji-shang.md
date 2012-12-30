@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "八月旅行记（上）"
 ---
 

@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "Sinatra 中 ERB 模板的 HTML 转义"
 ---
 

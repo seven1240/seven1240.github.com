@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "FreeSWITCH背后的故事(译)"
 ---
 

@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "Google Groups 死了吗?"
 ---
 

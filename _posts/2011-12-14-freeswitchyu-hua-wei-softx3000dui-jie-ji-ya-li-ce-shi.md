@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "FreeSWITCH与华为SoftX3000对接及压力测试"
 ---
 

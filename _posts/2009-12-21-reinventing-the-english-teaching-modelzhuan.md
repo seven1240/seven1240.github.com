@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "Reinventing the English teaching model(转)"
 ---
 

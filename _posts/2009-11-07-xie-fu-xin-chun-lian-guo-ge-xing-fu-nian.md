@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "写幅新春联 过个幸福年"
 ---
 

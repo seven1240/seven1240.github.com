@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "Rails 服务器迁移点滴"
 ---
 

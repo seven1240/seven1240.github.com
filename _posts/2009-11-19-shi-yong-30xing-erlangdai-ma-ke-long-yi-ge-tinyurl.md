@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "使用30行Erlang代码克隆一个TinyURL"
 ---
 

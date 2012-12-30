@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "在MacOSX上使用ipfw模拟丢包"
 ---
 

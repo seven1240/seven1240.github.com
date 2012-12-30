@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "SIP客户端呼叫FreeSWITCH立即中断问题"
 ---
 

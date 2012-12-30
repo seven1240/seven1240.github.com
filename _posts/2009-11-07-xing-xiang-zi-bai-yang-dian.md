@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "行香子·白洋淀"
 ---
 

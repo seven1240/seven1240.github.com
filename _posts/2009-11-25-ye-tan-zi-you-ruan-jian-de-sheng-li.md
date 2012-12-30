@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "也谈自由软件的胜利"
 ---
 

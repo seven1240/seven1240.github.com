@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "在Sinatra中支持手机WAP访问"
 ---
 

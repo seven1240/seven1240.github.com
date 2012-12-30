@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "又一件小事看服务 - 投诉农行"
 ---
 

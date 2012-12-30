@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "一剪梅·秋夜"
 ---
 

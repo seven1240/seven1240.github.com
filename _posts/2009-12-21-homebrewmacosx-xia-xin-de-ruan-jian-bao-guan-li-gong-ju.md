@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "homebrew--MacOSX 下新的软件包管理工具"
 ---
 

@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "走近3G--兼谈服务"
 ---
 

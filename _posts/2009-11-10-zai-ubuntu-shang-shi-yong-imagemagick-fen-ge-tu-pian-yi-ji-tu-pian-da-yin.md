@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "在 Ubuntu 上使用 imagemagick 分割图片以及图片打印"
 ---
 
