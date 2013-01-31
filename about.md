@@ -28,8 +28,6 @@ There is an [About Me](http://about.me/dujinfang) page in English. Read on if yo
 
 打过的游戏有俄罗斯方块、三国志。
 
-至少（或曾经至少）会说一句话的语言有英语、法语、德语、俄语、韩语、日语、马来语、意大利语以及广东话。
-
 [我的公司](http://x-y-t.com)在首都北京，有时工作和生活在美丽的海滨城市--烟台。
 
 我的签名是：-7-
