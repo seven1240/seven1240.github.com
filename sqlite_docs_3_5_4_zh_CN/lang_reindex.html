@@ -1,0 +1,26 @@
+  
+<a href="lang.html"><h2>SQL As Understood By SQLite</h2></a>
+<h3>REINDEX</h3>
+<table cellpadding="10" class=pdf_syntax>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">sql-statement</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0">REINDEX </font></b><i><font color="#ff3434">collation name</font></i><b><font color="#2c2cf0"></font></b></td></tr>
+</table>
+<table cellpadding="10" class=pdf_syntax>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">sql-statement</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0">REINDEX </font></b>[<b><font color="#2c2cf0"></font></b><i><font color="#ff3434">database-name</font></i><b><font color="#2c2cf0"> <big>.</big></font></b>]<b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">table/index-name</font></i><b><font color="#2c2cf0"></font></b></td></tr>
+</table>
+
+
+<p>REINDEX 命令用于删除或重建索引。当对照序列的定义改变时，将会有用。
+</p>
+
+<p>第一种形式，所有连接的数据库上所有使用 collation_name 作为对照序列的所有索引
+都将会被重新索引。第二种形式，
+如果<i>[database-name.]table/index-name</i> 是一个表，那么该表上的所有索引将会被重建。如果是一个索引，那么只有指定的索引会被重建。
+</p>
+
+<p>如果不指定 <i>database-name</i>，并且指定的名字即是一个表名或索引名，同时又时一个对照序列，那么只会重建相应的对照序列相关的索引。
+这种二义性总是可以通过在重建索引时指点一个<i>database-name</i>解决。
+

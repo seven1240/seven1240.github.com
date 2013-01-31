@@ -1,0 +1,47 @@
+  
+<a href="lang.html"><h2>SQL As Understood By SQLite</h2></a>
+<h3>ALTER TABLE</h3>
+<table cellpadding="10" class=pdf_syntax>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">sql-statement</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0">ALTER TABLE </font></b>[<b><font color="#2c2cf0"></font></b><i><font color="#ff3434">database-name</font></i><b><font color="#2c2cf0"> <big>.</big></font></b>]<b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">table-name</font></i><b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">alteration</font></i><b><font color="#2c2cf0"></font></b></td></tr>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">alteration</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0">RENAME TO </font></b><i><font color="#ff3434">new-table-name</font></i><b><font color="#2c2cf0"></font></b></td></tr>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">alteration</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0">ADD </font></b>[<b><font color="#2c2cf0">COLUMN</font></b>]<b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">column-def</font></i><b><font color="#2c2cf0"></font></b></td></tr>
+</table>
+
+
+<p>SQLite版本的 ALTER TABLE 命令允许用户对一个已存在的表重命名或增加一个新列。
+但不能从表上删除一列。
+</p>
+
+<p>RENAME TO 子句将指定表（<i>[database-name.]table-name</i>）
+改为新表名（<i>new-table-name</i>）。该命令不能在所连的多个数据库间移动表，
+只能在同一数据库中更改表名。</p>
+
+<p>如果被更名的表上有触发器或索引，更名后，它们将仍然表该数据表相关。
+但是，如果在表上定义有视图，或者在被触发器执行的语句中有该表的名称，
+那么，它们将不能被自动同步更新。如果需要，这些触发器或视图定义必须删除后重建，
+并在重建时使用新表名。
+</p>
+
+<p>ADD [COLUMN] 子句用于往已有的表上增加一个新列，
+新列将永远追加到已存在列的后面。
+<i>Column-def</i> 即列定义，可以使用与 CREATE TABLE 中有关列定义相同的语法，
+但有如下限制：
+<ul>
+<li>列上不能有 PRIMARY KEY 或 UNIQUE 约束。 </li>
+<li>列上不能有如下缺省值：CURRENT_TIME, CURRENT_DATE 或 CURRENT_TIMESTAMP。</li>
+<li>如果列上指明了非空约束，那么，列上必须有一个非空的缺省值。</li>
+</ul>
+
+<p>ALTER TABLE 命令的执行时间与表的大小无关。
+对于一个有1000万行的表和一个只有一行的表，执行速度没什么区别。
+</p>
+
+<p>ADD COLUMN 命令执行后，数据库将无法被3.1.3及以前的SQLite读取，除非先执行一个
+<a href="lang_vacuum.html">VACUUM</a>。</p>
+

@@ -1,0 +1,570 @@
+  
+<a href="lang.html"><h2>SQL As Understood By SQLite</h2></a>
+<h3>expression</h3>
+<table cellpadding="10" class=pdf_syntax>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">expr</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0"></font></b><i><font color="#ff3434">expr</font></i><b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">binary-op</font></i><b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">expr</font></i><b><font color="#2c2cf0"> </font></b><big>|</big><b><font color="#2c2cf0"><br>
+</font></b><i><font color="#ff3434">expr</font></i><b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0">NOT</font></b>]<b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">like-op</font></i><b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">expr</font></i><b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0">ESCAPE </font></b><i><font color="#ff3434">expr</font></i><b><font color="#2c2cf0"></font></b>]<b><font color="#2c2cf0"> </font></b><big>|</big><b><font color="#2c2cf0"><br>
+</font></b><i><font color="#ff3434">unary-op</font></i><b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">expr</font></i><b><font color="#2c2cf0"> </font></b><big>|</big><b><font color="#2c2cf0"><br>
+<big>(</big> </font></b><i><font color="#ff3434">expr</font></i><b><font color="#2c2cf0"> <big>)</big> </font></b><big>|</big><b><font color="#2c2cf0"><br>
+</font></b><i><font color="#ff3434">column-name</font></i><b><font color="#2c2cf0"> </font></b><big>|</big><b><font color="#2c2cf0"><br>
+</font></b><i><font color="#ff3434">table-name</font></i><b><font color="#2c2cf0"> <big>.</big> </font></b><i><font color="#ff3434">column-name</font></i><b><font color="#2c2cf0"> </font></b><big>|</big><b><font color="#2c2cf0"><br>
+</font></b><i><font color="#ff3434">database-name</font></i><b><font color="#2c2cf0"> <big>.</big> </font></b><i><font color="#ff3434">table-name</font></i><b><font color="#2c2cf0"> <big>.</big> </font></b><i><font color="#ff3434">column-name</font></i><b><font color="#2c2cf0"> </font></b><big>|</big><b><font color="#2c2cf0"><br>
+</font></b><i><font color="#ff3434">literal-value</font></i><b><font color="#2c2cf0"> </font></b><big>|</big><b><font color="#2c2cf0"><br>
+</font></b><i><font color="#ff3434">parameter</font></i><b><font color="#2c2cf0"> </font></b><big>|</big><b><font color="#2c2cf0"><br>
+</font></b><i><font color="#ff3434">function-name</font></i><b><font color="#2c2cf0"> <big>(</big> </font></b><i><font color="#ff3434">expr-list</font></i><b><font color="#2c2cf0"> </font></b><big>|</big><b><font color="#2c2cf0"> <big>*</big> <big>)</big> </font></b><big>|</big><b><font color="#2c2cf0"><br>
+</font></b><i><font color="#ff3434">expr</font></i><b><font color="#2c2cf0"> ISNULL </font></b><big>|</big><b><font color="#2c2cf0"><br>
+</font></b><i><font color="#ff3434">expr</font></i><b><font color="#2c2cf0"> NOTNULL </font></b><big>|</big><b><font color="#2c2cf0"><br>
+</font></b><i><font color="#ff3434">expr</font></i><b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0">NOT</font></b>]<b><font color="#2c2cf0"> BETWEEN </font></b><i><font color="#ff3434">expr</font></i><b><font color="#2c2cf0"> AND </font></b><i><font color="#ff3434">expr</font></i><b><font color="#2c2cf0"> </font></b><big>|</big><b><font color="#2c2cf0"><br>
+</font></b><i><font color="#ff3434">expr</font></i><b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0">NOT</font></b>]<b><font color="#2c2cf0"> IN <big>(</big> </font></b><i><font color="#ff3434">value-list</font></i><b><font color="#2c2cf0"> <big>)</big> </font></b><big>|</big><b><font color="#2c2cf0"><br>
+</font></b><i><font color="#ff3434">expr</font></i><b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0">NOT</font></b>]<b><font color="#2c2cf0"> IN <big>(</big> </font></b><i><font color="#ff3434">select-statement</font></i><b><font color="#2c2cf0"> <big>)</big> </font></b><big>|</big><b><font color="#2c2cf0"><br>
+</font></b><i><font color="#ff3434">expr</font></i><b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0">NOT</font></b>]<b><font color="#2c2cf0"> IN </font></b>[<b><font color="#2c2cf0"></font></b><i><font color="#ff3434">database-name</font></i><b><font color="#2c2cf0"> <big>.</big></font></b>]<b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">table-name</font></i><b><font color="#2c2cf0"> </font></b><big>|</big><b><font color="#2c2cf0"><br>
+</font></b>[<b><font color="#2c2cf0">EXISTS</font></b>]<b><font color="#2c2cf0"> <big>(</big> </font></b><i><font color="#ff3434">select-statement</font></i><b><font color="#2c2cf0"> <big>)</big> </font></b><big>|</big><b><font color="#2c2cf0"><br>
+CASE </font></b>[<b><font color="#2c2cf0"></font></b><i><font color="#ff3434">expr</font></i><b><font color="#2c2cf0"></font></b>]<b><font color="#2c2cf0"> </font></b>(<b><font color="#2c2cf0"> WHEN </font></b><i><font color="#ff3434">expr</font></i><b><font color="#2c2cf0"> THEN </font></b><i><font color="#ff3434">expr</font></i><b><font color="#2c2cf0"> </font></b>)+<b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0">ELSE </font></b><i><font color="#ff3434">expr</font></i><b><font color="#2c2cf0"></font></b>]<b><font color="#2c2cf0"> END </font></b><big>|</big><b><font color="#2c2cf0"><br>
+CAST <big>(</big> </font></b><i><font color="#ff3434">expr</font></i><b><font color="#2c2cf0"> AS </font></b><i><font color="#ff3434">type</font></i><b><font color="#2c2cf0"> <big>)</big> </font></b><big>|</big><b><font color="#2c2cf0"><br>
+</font></b><i><font color="#ff3434">expr</font></i><b><font color="#2c2cf0"> COLLATE </font></b><i><font color="#ff3434">collation-name</font></i><b><font color="#2c2cf0"></font></b></td></tr>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">like-op</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0">LIKE </font></b><big>|</big><b><font color="#2c2cf0"> GLOB </font></b><big>|</big><b><font color="#2c2cf0"> REGEXP </font></b><big>|</big><b><font color="#2c2cf0"> MATCH</font></b></td></tr>
+</table>
+
+
+<p>这部分有别于其它部分。
+本文档的其它大多数部分都在讲特定的 SQL 命令。
+本部分所讲的不是一个单一的命令，而是“表达式”，
+它经常用作其它命令的一部分来使用。
+</p>
+
+<p>SQLite 有如下二元运算符，根据其优先级从高到低有：
+</p>
+
+<blockquote><pre>
+<font color="#2c2cf0"><big>||
+*    /    %
++    -
+&lt;&lt;   &gt;&gt;   &amp;    |
+&lt;    &lt;=   &gt;    &gt;=
+=    ==   !=   &lt;&gt;   </big>IN
+AND   
+OR</font>
+</pre></blockquote>
+
+<p>以下是支持的一元运算符：</p>
+
+<blockquote><pre>
+<font color="#2c2cf0"><big>-    +    !    ~    NOT</big></font>
+</pre></blockquote>
+
+<p>COLLATE 运算符可以被看作是一个后置的一元运算符
+它具有最高的优先级。通常，与其前面的一元、及二元运算符相比，
+它与参数结合更为紧密。
+</p>
+
+<p>一元 [Operator +] 什么也不做。
+它可以被应用于字符串，数字，或BLOB，并永远返回跟它作用的数值相同的结果。
+</p>
+
+<p>注意，两种变体的等号运算符是不一样的。等可以是
+
+<font color="#2c2cf0"><big>=</big></font> 或 <font color="#2c2cf0"><big>==</big></font>。
+不等操作符有
+<font color="#2c2cf0"><big>!=</big></font> 或 <font color="#2c2cf0"><big>&lt;&gt;</big></font>。
+<font color="#2c2cf0"><big>||</big></font> 运算符为“连接符”，它将两个字符串连接到一起。
+<font color="#2c2cf0"><big>%</big></font> 输出其左边的数除以右面数后的余数。</p>
+
+<p>除 <font color="#2c2cf0"><big>||</big></font> 之外，
+任何二元操作符的结果都是一个数值型的值。
+<font color="#2c2cf0"><big>||</big></font> 返回两个操作数连接后的大字符串。</p>
+
+
+<a name="literal_value"></a>
+<p>
+字面值是一个整数或浮点数的值。也支持科学记数法。
+小数点永远使用“.” 字符来表示，即使本地设置指定用“,” 来表示也不例外。
+在这种规则下，使用“,” 作小数点会引起语义上的二义性。
+字符串值应该用单引号（'） 引起来。像在 Pascl 语言中那样，
+字符串中的单引号应该使用两个单引号表示。由于像 C 
+语言那样使用反斜线进行转义的方式不是 SQL 语言的标准，
+所以不支持那种类型的转义。
+BLOB字面值是以一个“x” 或“X” 打头的包含十六进制数据的字符串值。
+例如：
+</p>
+
+<blockquote><pre>
+X'53514C697465'
+</pre></blockquote>
+
+<p>
+字面值也可以是 "NULL" 记号。
+</p>
+
+<p>
+参数用于指定一个字面值在表达式中的存放位置。它将在运行时被使用
+<a href="c3ref/bind_blob.html">sqlite3_bind</a> API 替换。
+参数有如下几种格式：
+
+</p>
+
+<blockquote>
+<table class="pdf_functions">
+<tr>
+<td align="right" valign="top"><b>?</b><i>NNN</i></td><td width="20"></td>
+<td>问号后跟一个数字 <i>NNN</i> 用于存放第 NNN 个参数。
+NNN 必须在 1 到 999 之间。</td>
+</tr>
+<tr>
+<td align="right" valign="top"><b>?</b></td><td width="20"></td>
+<td>只有一个问号，它将用于存放紧跟其后的一个未用到的参数。</td>
+</tr>
+<tr>
+<td align="right" valign="top"><b>:</b><i>AAAA</i></td><td width="20"></td>
+<td>冒号后面跟一个标志符，用于存放名字为 AAAA 的变量。
+命名的变量也会被编号，编号将使用第一个未被使用的编号。
+为避免混淆，最好不要混用名字和编号作为参数。
+</td>
+</tr>
+<tr>
+<td align="right" valign="top"><b>@</b><i>AAAA</i></td><td width="20"></td>
+<td>一个 @ 符号等价于一个冒号。</td>
+</tr>
+<tr>
+<td align="right" valign="top"><b>$</b><i>AAAA</i></td><td width="20"></td>
+<td>美元符号后跟一个标志符也会存放名字为 AAAA 的参数。
+在这种情况下，参数名字中可以出现很多“::”，并且，在“(...)”后缀中可以包含任何文本。
+该语法是由 TCL 语言中相同的法而来的。
+</td>
+</tr>
+</table>
+</blockquote>
+
+<p>未使用
+<a href="c3ref/bind_blob.html">sqlite3_bind</a> 来赋值的参数则认为是 NULL。
+</p>
+
+<a name="like"></a>
+<p>LIKE 操作符会作一个模式匹配比较。
+它右边是一个匹配模式，左边包含被匹配的字符串。
+
+在匹配模式中，百分号 <font color="#2c2cf0"><big>%</big></font> 
+会匹配字符串中任意 0 个或多个字符。
+一个下划线 <font color="#2c2cf0"><big>_</big></font>
+符号仅匹配一个任意的字符。
+除此之外，其它的任何字符均只匹配它们自己
+（在不区分大小写的环境下可能会匹配与之对应的大、小写字母）。
+（一个BUG：SQLite中不区分大小写仅对 7 比特的拉丁字符有效，
+对于 8 位的 iso8859 字符集UTF8字符则是区分大小写的）。
+例如：表达式 <b>'a'&nbsp;LIKE&nbsp;'A'</b>
+是 TRUE 但 <b>'&aelig;'&nbsp;LIKE&nbsp;'&AElig;'</b> 则是 FALSE)。</p>
+
+
+<p>若有可选的 ESCAPE 子句，那么 ESCAPE 关键字后的表达式必须是一个单个的字符（叫做转义字符）。
+该字符可以用于 LIKE 模式字符串中来体现百分号或下划线。
+转义字符后面的百分号或下划线均分别保持它们原来的意思。
+中缀的 LIKE 操作符是使用
+<a href="#likeFunc"> like(<i>X</i>,<i>Y</i>)</a> 函数实现的。</p>
+
+LIKE 操作符不区分大小写，它将匹配一边是小写而另一边是大写的字符串。
+（一个BUG：SQLite中不区分大小写仅对 7 比特的拉丁字符有效，
+对于 8 位的 iso8859 字符集UTF8字符则是区分大小写的）。
+例如：表达式 <b>'a'&nbsp;LIKE&nbsp;'A'</b>
+是 TRUE 但 <b>'&aelig;'&nbsp;LIKE&nbsp;'&AElig;'</b> 则是 FALSE)。</p>
+
+<p>中缀操作符 LIKE 是通过调用用户函数
+<a href="#likeFunc">like(<i>X</i>,<i>Y</i>)</a> 实现的。
+但若后面还有 ESCAPE 子句，它会在以上函数中增加第三个参数。
+如果该函数被其它的 like() SQL 函数重载，则需要注意。
+</p>
+
+<a name="glob"></a>
+<p>GLOB 操作符与 LIKE 类似，但它使用 Unix 通配符的的文件匹配语法。
+并且，与 LIKE 不同， GLOB 是大小写敏感的。GLOB 和 LIKE
+都可以用 NOT 关键字对匹配结果取反。 中缀的 GLOB 操作符是通过调用
+用户函数 <a href="#globFunc">
+glob(<i>X</i>,<i>Y</i>)</a> 实现的，可以通过该函数对其进行重载。</p>
+
+<a name="regexp"></a>
+<p>REGEXP 操作符是使用 regexp() 用户函数的一个特殊语法。
+默认情况下， regexp() 用户函数没有定义，所以使用 REGEXP 将会出错。
+如果在运行时增加一个名为 regexp 的用户定义函数，
+则使用该操作符时将使用此函数来实现 REGEXP 功能。
+</p>
+
+<a name="match"></a>
+<p>MATCH 操作符是使用 match() 用户函数的一个特殊语法。
+默认的 match() 函数实现只会引发一个异常，从而没多大用处。
+但可以通过扩展该函数来实现更有用的逻辑。
+</p>
+
+<p>列名colum name 可以是任何在 CREATE TABLE 语句中指定的列名，
+也可以是如下一个特殊标志符： "<b>ROWID</b>"、"<b>OID</b>" 或
+"<b>_ROWID_</b>"。这些特殊标志符均描述与每个表每一行所关连的唯一的整数键。
+特殊标志符只会在 CREATE TABLE 语句没有指定相同的列名时才会真正指代每一行。
+行键值就像只读的列。一个行键值可以用在任何一个正常列所能使用的地方。
+只是，不能使用 UPDATE 或 INSERT 来改变行的键值。
+“SELECT * ...”也不会返回行键值。
+</p>
+
+<p>SELECT 语句可以出现在 IN 操作符的后面，
+或作为一个单独的数量值出现，或者跟在 EXISTS 操作符后面。
+当作为一个单独数量值或在 IN 操作符中时，SELECT
+必须只能返回单列。复合 SELECT 查询 （使用 UNION 或 EXCEPT
+关键字的查询）也是允许的。
+当使用 EXISTS 关键字时，SELECT 结果中的列被忽略。
+如果 SELECT 返回了一行或多行，则表达式就为 TRUE，否同就为 FALSE。
+如果内层 SELECT 表达式中的项目与外层的值无关，则内层 SELECT
+会最先求值，并在以后需要时重用该值。
+如果内层 SELECT 中含有外层查询相关的变量，
+那么内层 SELECT 会在每次需要的时候被重新求值。
+</p>
+
+<p>当一个 SELECT 作为 IN 操作符的右操作数时，
+如果 IN 左边的操作数存在于右边 SELECT 的查询结果中，
+IN 就返回 TRUE。 IN 操作符也可以搭配 NOT 来对表达式结果取反。
+</p>
+
+<p>当一个 SELECT 出现在除 IN 之外的其它表达式中时，
+SELECT 结果的第一行将作为一个单一的值用于该表达式中。
+如果 该SELECT 返回多行，那么其它的行将会被忽略。
+若 SELECT 返回 0 行，则其结果将是 NULL。
+</p>
+
+<p>一个 CAST 表达式会将 <expr> 的数据类型转换为指定的类型 &lt;type&gt;。
+其中&lt;type&gt; 可以是任何在 CREATE TABLE 语句中有效的非空的类型名。
+</p>
+
+<p>系统支持简单和聚集函数。
+一个简单函数可以用于任何表达式。简单函数会在其输入的基础上立即返回结果。
+聚集函数只能用于 SELECT 语句中。 聚集函数会在返回的结果集上进行跨行计算，
+并返回相应的结果。
+</p>
+
+<a name="corefunctions"></a>
+<b>核心函数 Core Functions</b>
+
+<p>下列是默认可以的核心函数。
+额外的函数可以使用 C 语言编写并使用
+<a href="c3ref/create_function.html">sqlite3_create_function()</a>
+API 加入数据库引擎中。</p>
+
+<table border=0 cellpadding=10 class="pdf_functions">
+<tr>
+<td valign="top" align="right" width=120>abs(<i>X</i>)</td>
+<td valign="top">返回参数 <i>X</i>的绝对值。</td>
+</tr>
+
+<tr>
+<td valign="top" align="right">coalesce(<i>X</i>,<i>Y</i>,...)</td>
+<td valign="top">返回参数中第一个非 NULL 的值。
+若所有参数均为 NULL，则返回 NULL。该函数至少需要两个参数。
+</td>
+</tr>
+
+<tr>
+<td valign="top" align="right">
+<a name="globFunc"></a>
+glob(<i>X</i>,<i>Y</i>)</td>
+<td valign="top">该函数用户实现 SQLite 的
+"<b>X GLOB Y</b>" 语法。可以使用
+<a href="c3ref/create_function.html">sqlite3_create_function()</a> 
+接口来重载该函数，从而改变
+<a href="#globFunc">GLOB</a> 操作符的行为方式。</td>
+</tr>
+
+<tr>
+<td valign="top" align="right">ifnull(<i>X</i>,<i>Y</i>)</td>
+<td valign="top">返回第一个非 NULL 的参数值，
+如果所有参数都是 NULL， 则返回 NULL。与上面的
+<b>coalesce()</b> 一样。</td>
+</tr>
+
+<tr>
+<td valign="top" align="right">
+<a name="hexFunc"></a>
+hex(<i>X</i>)</td>
+<td valign="top">参数以 BLOB 对待。结果是 BLOB 内容的 16 进制表示。</td>
+</tr>
+
+<tr>
+<td valign="top" align="right">last_insert_rowid()</td>
+<td valign="top"> 返回当前数据库连接中最后插入的一行的
+<a href="lang_createtable.html#rowid">ROWID</a>。该值与使用
+<b>sqlite_last_insert_rowid()</b> API 函数返回的值相同。</td>
+</tr>
+
+<tr>
+<td valign="top" align="right">length(<i>X</i>)</td>
+<td valign="top">返回 <i>X</i> 字符串的长度。
+如果 SQLite 配置为支持 UTF-8，则返回的是 UTF-8 字符的长度，而不是字节数。
+</td>
+</tr>
+
+<tr>
+<td valign="top" align="right">
+<a name="likeFunc"></a>
+like(<i>X</i>,<i>Y</i>)<br>
+like(<i>X</i>,<i>Y</i>,<i>Z</i>)</td>
+<td valign="top">
+该函数用于实现 SQL 的 "<b>X LIKE Y [ESCAPE Z]</b>" 语法。
+如果有可选的 ESCAPE 语句，将使用具有三个参数的函数，
+否则，将使用只有两个参数的数据。可以使用
+<a href="c3ref/create_function.html">
+sqlite_create_function()</a> 接口来重载该函数，以改变
+<a href= "#like">LIKE</a> 操作符的行为。如果那样做，
+一定要注意同时重载两个（两个参数的和三个参数的）版本的函数。
+否则，依据是否使用了 ESCAPE 子句，可以会调用不同的代码。
+</td>
+</tr>
+
+<tr>
+<td valign="top" align="right">load_extension(<i>X</i>)<br>
+load_extension(<i>X</i>,<i>Y</i>)</td>
+<td valign="top">装入 SQLite 共享库之外文件名为 <i>X</i> 而入口点为
+ <i>Y</i> 的扩展库。结果将是 NULL。
+ 如果省略了 <i>Y</i>，那么，将使用默认的入口点
+<b>sqlite3_extension_init</b>。该函数在装入或初始化失败时会引发一个异常。
+
+<p>如果扩展试图修改或删除一个 SQL 函数或对照序列，则该函数会失败。
+可以使用扩展增加新函数或对照序列，但不能修改或删除已存在的。
+这是因为那些函数和/或对照序列可能正在被其它的SQL语句使用。
+要想装入可以修改或删除函数或对照序列的扩展，使用
+<a href="c3ref/load_extension.html">sqlite3_load_extension()</a>
+C 语言API。</p>
+</tr>
+
+<tr>
+<td valign="top" align="right">lower(<i>X</i>)</td>
+<td valign="top">返回将字符串 <i>X</i> 转换为小写后的字符串。
+该函数使用 C 语言库函数 <b>tolower()</b> 进行转换，所以，
+可能不能正确转换 UTF-8 字符。</td>
+</tr>
+
+<tr>
+<td valign="top" align="right">
+<a name="ltrimFunc"></a>
+ltrim(<i>X</i>)<br>ltrim(<i>X</i>,<i>Y</i>)</td>
+<td valign="top">返回一个字符串，它是从字符串 <i>X</i>
+的左边删除了任何存在于字符串 <i>Y</i> 中的字符后剩余的字符串。
+如果省略参数 <i>Y</i> ，则会删除左边的空格。</td>
+</tr>
+
+
+<tr>
+<td valign="top" align="right">max(<i>X</i>,<i>Y</i>,...)</td>
+<td valign="top">返回参数的最大值。
+除数字外，参数可能是字符串。它使用通常的排序顺序来决定最大值。
+注意若 <b>max()</b> 有两个或多个参数，则它是一个简单函数。
+但如果只提供一个参数，它将变成一个聚集函数。
+</td>
+</tr>
+
+<tr>
+<td valign="top" align="right">min(<i>X</i>,<i>Y</i>,...)</td>
+<td valign="top">返回参数的最小值。
+除数字外，参数可能是字符串。它使用通常的排序顺序来决定最小值。
+注意若 <b>min()</b> 有两个或多个参数，则它是一个简单函数。
+但如果只提供一个参数，它将变成一个聚集函数。
+</td>
+</tr>
+
+<tr>
+<td valign="top" align="right">nullif(<i>X</i>,<i>Y</i>)</td>
+<td valign="top">如果参数不同，则返回第一个参数，否则返回NULL。
+</td>
+</tr>
+
+<tr>
+<td valign="top" align="right">quote(<i>X</i>)</td>
+<td valign="top">
+该函数返回一个对其参数值进行处理后适合包含在其它 SQL 语句中的字符串。
+单引号包括的字符串将会按需要转换成内部引用的格式。
+BLOB 将会编码为十六进制字面值。
+当前实现的 VACUUM 使用该函数。
+在写触发器来实现 “撤消/重做” 功能时，该函数也是很有用的。
+</td>
+</tr>
+
+<tr>
+<td valign="top" align="right">random(*)</td>
+<td valign="top">返回一个伪随机数。结果在
+ -9223372036854775808 与 +9223372036854775807之间。</td>
+</tr>
+
+<tr>
+<td valign="top" align="right">
+<a name="replaceFunc"></a>
+replace(<i>X</i>,<i>Y</i>,<i>Z</i>)</td>
+<td valign="top">返回一个将 <i>X</i> 字符串中每一个出现 <i>Y</i> 
+的位置替换为 <i>Z</i> 后的字符串。它使用二进制对照序列进行比较。</td>
+</tr>
+
+<tr>
+<td valign="top" align="right">
+<a name="randomblobFunc"></a>
+randomblob(<i>N</i>)</td>
+<td valign="top">返回一个 <i>N</i> 字节长的包含伪随机字节的 BLOG。
+<i>N</i> 应该是正整数。</td>
+</tr>
+
+<tr>
+<td valign="top" align="right">round(<i>X</i>)<br>round(<i>X</i>,<i>Y</i>)</td>
+<td valign="top">对 <i>X</i> 圆整成小数点后 <i>Y</i> 位。
+或省略 <i>Y</i> ，则默认<i>Y</i> 为 0。
+</td>
+</tr>
+
+<tr>
+<td valign="top" align="right">
+<a name="rtrimFunc"></a>
+rtrim(<i>X</i>)<br>rtrim(<i>X</i>,<i>Y</i>)</td>
+<td valign="top">返回从 <i>X</i> 的右边去除所有出现在 <i>Y</i>
+中字符以后的字符串。如果省略 <i>Y</i>，则去除空格。</td>
+</tr>
+
+<tr>
+<td valign="top" align="right">soundex(<i>X</i>)</td>
+<td valign="top">计算字符串 <i>X</i>的读音编码。
+如果参数为 NULL，则返回 "?000"。
+默认情况下 SQLite 忽略该函数。
+仅当在编译时指定 -DSQLITE_SOUNDEX=1 时才有效。
+</td>
+</tr>
+
+<tr>
+<td valign="top" align="right">sqlite_version(*)</td>
+<td valign="top">返回当前运行的 SQLite 库的版本号。如："2.8.0"</td>
+</tr>
+
+<tr>
+<td valign="top" align="right">
+  substr(<i>X</i>,<i>Y</i>,<i>Z</i>)<br>
+  substr(<i>X</i>,<i>Y</i>)</td>
+<td valign="top">返回字符串 <i>X</i> 从第 <i>Y</i> 个字符开始，
+长度为 <i>Z</i> 的字符串。
+如果省略 <i>Z</i>， 将返回直到字符串结尾的字符串。
+<i>X</i> 的第一个字符从 1 开始。如果 <i>Y</i> 是负数，
+则从右边开始数。如果 <i>X</i> 是 UTF-8 字符串，那么，
+下标值将指实际的 UTF-8 characters 字符，而不是字节。如果
+<i>X</i> 是一个 BLOB，那么下标就是指字节。</td>
+</tr>
+
+<tr>
+<td valign="top" align="right">
+<a name="trimFunc"></a>
+trim(<i>X</i>)<br>trim(<i>X</i>,<i>Y</i>)</td>
+<td valign="top">返回从字符串 <i>X</i> 的两头去掉所有存在于 <i>Y</i> 
+中字符后的字符串。如果省略 <i>Y</i>，则去空格。</td>
+</tr>
+
+
+<tr>
+<td valign="top" align="right">typeof(<i>X</i>)</td>
+<td valign="top">返回表达式 <i>X</i> 的类型。只可能是
+"null", "integer", "real", "text", 以及 "blob"。
+SQLite 的类型处理在
+<a href="datatype3.html">Datatypes in SQLite Version 3</a>
+中有说明。</td>
+</tr>
+
+<tr>
+<td valign="top" align="right">upper(<i>X</i>)</td>
+<td valign="top">返回字符串 <i>X</i> 被转换为大写后的字符串。
+它使用 C 库函数 <b>toupper()</b> 实现，对于 UTF-8，
+某些字符串可能不能正确转换。</td>
+</tr>
+
+<tr>
+<td valign="top" align="right">zeroblob(<i>N</i>)</td>
+<td valign="top"><a name="zeroblob"></a>
+返回一个 N 字节长、全部由 0x00 组成的 BLOB。
+SQLite 或以很有效的组织这些 zeroblob。它可以被用于为以后的使用预留空间。
+以后可以使用 
+<a href="c3ref/blob_open.html">incremental BLOB I/O</a>
+来写入 BLOB 数据。</td>
+</tr>
+
+</table>
+
+<b>日期和时间函数</b>
+
+<p>日期和时间函数在 
+<a href="http://www.sqlite.org/cvstrac/wiki?p=DateAndTimeFunctions">
+SQLite Wiki</a>上。</p>
+
+<a name="aggregatefunctions"></a>
+<b>聚集函数</b>
+
+<p>
+有下列默认可和的聚集函数：
+可以使用 
+<a href="c3ref/create_function.html">sqlite3_create_function()</a>
+API 来增加其它的聚集函数。</p>
+
+<p>
+任何聚集函数都只有一个参数。其参数前可以有一个 DISTINCT。
+如果有，重复的元素将会在传递给聚集函数前过滤掉。
+如，函数
+"count(distinct X)" 将只返回在 X 列上不重复的行的总数，
+而不是在该列上所有非空的行的总数
+</p>
+
+<table border=0 cellpadding=10 class="pdf_functions">
+<tr>
+<td valign="top" align="right" width=120>avg(<i>X</i>)</td>
+<td valign="top">返回 <i>X</i> 列的一组中所有非空值的平均值。
+字符串或 BLOB 等非数字值将被认为是 0。
+即使所有输入都是整数， avg() 的结果也永远是浮点数。
+</p></td>
+</tr>
+
+<tr>
+<td valign="top" align="right">count(<i>X</i>)<br>count(*)</td>
+<td valign="top">第一种形式返回在 <i>X</i>列上的一组中非空的行的总数。
+第二种（无任何参数）返回一组中所有的行数。</td>
+</tr>
+
+<tr>
+<td valign="top" align="right">group_concat(<i>X</i>)<br>
+group_concat(<i>X</i>,<i>Y</i>)</td>
+<td valign="top">结果是一个所有非空的 <i>X</i> 连接起来的一个字符串。
+如果有参数 <i>Y</i>，则它会做为连接 <i>X</i> 时的分隔符。若省略<i>Y</i>
+，则默认是逗号（,）。</td>
+</tr>
+
+<tr>
+<td valign="top" align="right">max(<i>X</i>)</td>
+<td valign="top">返回一组中的最大值。使用通常的排序顺序来确定最大值。
+</td>
+</tr>
+
+<tr>
+<td valign="top" align="right">min(<i>X</i>)</td>
+<td valign="top">返回一组中除非空值以外的最小值。
+使用通常的排序顺序来确实最小值。只有当整个组中所有值均为 NULL
+时才会返回 NULL。
+</td>
+</tr>
+
+<tr>
+<td valign="top" align="right">sum(<i>X</i>)<br>total(<i>X</i>)</td>
+<td valign="top">返回一组中所有非空值的数值总和。
+如果在输入中没有非空值，则 sum() 会返回 NULL 而 total() 会返回 0.0。
+不仅能在 sum() 没有对任何行求和时， NULL能给出有帮助的结果，
+而且 SQL 标准也需要它。而且其它的 SQL 数据库引擎也是这么实现的。
+SQLite 这么做也是为了保持兼容性。我们也提供了一个非标准的 total()
+函数，以提供一个方便的途径来绕过 SQL 语言的这一设计问题。
+   </p>
+
+   <p>total() 的结果永远是浮点数。
+	 如果所有非空的输入都是整数， sum() 的结果将是整数值。
+	 若任何输入给 sum() 的值是除整数及 NULL 以外的值，
+	 sum() 都将返回浮点数。这可能是最接近标准 sum() 的实现方式吧。
+   </p>
+
+   <p>如果输入全部是整数或 NULL，在结果溢出时 sum() 将会产生一个
+	 "integer overflow" 异常。
+	 而 total() 永远不会。
+   </p>
+</tr>
+</table>
+

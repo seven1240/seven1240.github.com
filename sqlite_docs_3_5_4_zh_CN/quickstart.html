@@ -1,0 +1,93 @@
+  
+<p>在此，你无许进行很多阅读和配置，就可以开始体验SQLite。</p>
+
+<h2>下载代码</h2>
+
+<ul>
+<li><p>你可以获取一个已编译好的二进制版本，或者直接取得源代码自己编译。访问<a href="http://www.sqlite.org/download.html">download（下载）</a>页面以取得更多信息。</p></li>
+</ul>
+
+	    
+		
+		
+		  <h2>创建一个新数据库</h2>
+
+<ul>
+<li><p>在Shell环境或Dos命令提示符下，输入： "<b>sqlite3 test.db</b>"。将创建一个名字为“test.db”的新数据库（你当然可以选择一个其它名字，只要你喜欢）。</p></li>
+
+<li><p>在SQL命令提示符下输入SQL命令创建一个数据库。</p></li>
+<li><p><a href="http://www.sqlite.org/sqlite.html">这里</a>还有其它供参考文档</li>
+</ul>
+
+<h2>编写程序，使用SQLite作为数据库</h2>
+
+<ul>
+<li><p>
+下面简单的TCL程序演示了如何使用SQLite的TCL接口。程序在以第一个参数指定的数据库上执行SQL语句，SQL语句由第二个参数给出。在第7行的命令打开一个SQLite数据库，并且创建一个新的TCL<b>“db”</b>命令来访问该数据库。第8行使用<b>“db”</b>命令在数据库上执行SQL语句。脚本的最后一行关闭数据库连接。</p>
+
+<blockquote><pre>
+#!/usr/bin/tclsh
+if {$argc!=2} {
+  puts stderr "Usage: %s DATABASE SQL-STATEMENT"
+  exit 1
+}
+load /usr/lib/tclsqlite3.so Sqlite3
+<b>sqlite3</b> db [lindex $argv 0]
+
+<b>db</b> eval [lindex $argv 1] x {
+  foreach v $x(*) {
+    puts "$v = $x($v)"
+  }
+  puts ""
+}
+<b>db</b> close
+</pre></blockquote>
+</li>
+
+<li><p>
+下面是一个简单的C程序。演示了SQLite的C/C++接口。第一个参数是数据库名字，第二个参数是一条或多条SQL语句。在此，需要注意的是第22行的<b>sqlite3_open()</b>函数调用，该语句打开一个数据库。第27行的<b>sqlite3_exec()</b>在打开的数据库上执行SQL语句。第31行，使用<b>sqlite3_close()</b>关闭数据库连接。
+
+
+<blockquote><pre>
+#include &lt;stdio.h&gt;
+#include &lt;sqlite3.h&gt;
+
+static int callback(void *NotUsed, int argc, char **argv, char **azColName){
+  int i;
+  for(i=0; i&lt;argc; i++){
+    printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+  }
+  printf("\n");
+  return 0;
+}
+
+int main(int argc, char **argv){
+  sqlite3 *db;
+  char *zErrMsg = 0;
+  int rc;
+
+  if( argc!=3 ){
+    fprintf(stderr, "Usage: %s DATABASE SQL-STATEMENT\n", argv[0]);
+    exit(1);
+  }
+  rc = <b>sqlite3_open</b>(argv[1], &db);
+  if( rc ){
+    fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+    sqlite3_close(db);
+    exit(1);
+  }
+  rc = <b>sqlite3_exec</b>(db, argv[2], callback, 0, &zErrMsg);
+  if( rc!=SQLITE_OK ){
+    fprintf(stderr, "SQL error: %s\n", zErrMsg);
+    sqlite3_free(zErrMsg);
+  }
+  <b>sqlite3_close</b>(db);
+  return 0;
+}
+
+
+</pre></blockquote>
+</li>
+</ul>
+		
+

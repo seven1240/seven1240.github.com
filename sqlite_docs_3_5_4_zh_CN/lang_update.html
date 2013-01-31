@@ -1,0 +1,25 @@
+  
+<a href="lang.html"><h2>SQL As Understood By SQLite</h2></a>
+<h3>UPDATE</h3>
+<table cellpadding="10" class=pdf_syntax>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">sql-statement</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0">UPDATE </font></b>[<b><font color="#2c2cf0"> OR </font></b><i><font color="#ff3434">conflict-algorithm</font></i><b><font color="#2c2cf0"> </font></b>]<b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0"></font></b><i><font color="#ff3434">database-name</font></i><b><font color="#2c2cf0"> <big>.</big></font></b>]<b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">table-name</font></i><b><font color="#2c2cf0"><br>
+SET </font></b><i><font color="#ff3434">assignment</font></i><b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0"><big>,</big> </font></b><i><font color="#ff3434">assignment</font></i><b><font color="#2c2cf0"></font></b>]<b><font color="#2c2cf0"></font></b><big>*</big><b><font color="#2c2cf0"><br>
+</font></b>[<b><font color="#2c2cf0">WHERE </font></b><i><font color="#ff3434">expr</font></i><b><font color="#2c2cf0"></font></b>]<b><font color="#2c2cf0"></font></b></td></tr>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">assignment</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0"></font></b><i><font color="#ff3434">column-name</font></i><b><font color="#2c2cf0"> <big>=</big> </font></b><i><font color="#ff3434">expr</font></i><b><font color="#2c2cf0"></font></b></td></tr>
+</table>
+
+
+<p>UPDATE 语句用于修改数据表中所选行上列的值。
+在UPDATE中，每一个赋值操作为左边是一个列名，中间是等号，
+右边是一个表达式。表达式中可以使用其它列的值。
+所有的表达式都会在赋值之前进行计算。
+WHERE 子句用于限制更新哪些行。
+</p>
+
+<p>可选的 conflict-clause 允许为UPDATE指定一个其它的冲突解决算法。详见
+<a href="lang_conflict.html">ON CONFLICT</a>。</p>
+

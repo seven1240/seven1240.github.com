@@ -1,0 +1,19 @@
+  
+<a href="lang.html"><h2>SQL As Understood By SQLite</h2></a>
+<h3>DELETE</h3>
+<table cellpadding="10" class=pdf_syntax>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">sql-statement</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0">DELETE FROM </font></b>[<b><font color="#2c2cf0"></font></b><i><font color="#ff3434">database-name</font></i><b><font color="#2c2cf0"> <big>.</big></font></b>]<b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">table-name</font></i><b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0">WHERE </font></b><i><font color="#ff3434">expr</font></i><b><font color="#2c2cf0"></font></b>]<b><font color="#2c2cf0"></font></b></td></tr>
+</table>
+
+
+<p>DELETE 命令用于从表中删除记录。
+该命令由 DELETE FROM 后跟需要从中删除记录的表名组成。
+</p>
+
+<p>如果没有 WHERE 子句，表中的所有行都会被删除。
+如果有 WHERE 子句，那么，只有与其表达式相匹配的行会被删除。
+</p>
+
+

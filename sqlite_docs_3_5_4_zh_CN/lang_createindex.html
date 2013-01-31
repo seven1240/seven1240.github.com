@@ -1,0 +1,50 @@
+  
+<a href="lang.html"><h2>SQL As Understood By SQLite</h2></a>
+<h3>CREATE INDEX</h3>
+<table cellpadding="10" class=pdf_syntax>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">sql-statement</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0">CREATE </font></b>[<b><font color="#2c2cf0">UNIQUE</font></b>]<b><font color="#2c2cf0"> INDEX </font></b>[<b><font color="#2c2cf0">IF NOT EXISTS</font></b>]<b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0"></font></b><i><font color="#ff3434">database-name</font></i><b><font color="#2c2cf0"> <big>.</big></font></b>]<b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">index-name</font></i><b><font color="#2c2cf0"> <br>
+ON </font></b><i><font color="#ff3434">table-name</font></i><b><font color="#2c2cf0"> <big>(</big> </font></b><i><font color="#ff3434">column-name</font></i><b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0"><big>,</big> </font></b><i><font color="#ff3434">column-name</font></i><b><font color="#2c2cf0"></font></b>]<b><font color="#2c2cf0"></font></b><big>*</big><b><font color="#2c2cf0"> <big>)</big></font></b></td></tr>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">column-name</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0"></font></b><i><font color="#ff3434">name</font></i><b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0"> COLLATE </font></b><i><font color="#ff3434">collation-name</font></i><b><font color="#2c2cf0"></font></b>]<b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0"> ASC </font></b><big>|</big><b><font color="#2c2cf0"> DESC </font></b>]<b><font color="#2c2cf0"></font></b></td></tr>
+</table>
+
+
+<p>CREATE INDEX 命令包括关键字 "CREATE INDEX" 后跟新索引的名字，
+关键字“ON”，以及要被索引的表的名字，和一个括号，
+括号中是将要作为索引键的表中字段名字的列表。
+每一个列名后都可跟一个“ASC”或“DESC”关键字，以表明排序顺序，
+但在当前的实现中，该关键字是被忽略的，所有的排序永远是升序。
+</p>
+
+<p>
+每一列名后的 COLLATE 子句定义该列文本条目的对照序列。
+缺省的对照序列是使用CREATE TABLE语句在该列上定义的。
+或者，如果在该列上没有定义对照序列，则使用内建的二进制对照序列。
+</p>
+
+<p>对于一个表上可以建多少索引没有固定的限制。
+一个索引中可以索引多少列也没有限制。
+</p>
+
+<p>如果 UNIQUE 关键字在 CREATE 和 INDEX 之前出现，
+那么在索引条目中就不允许有重复的值。
+在表中插入重复值将会出错。
+</p>
+
+<p>根据被索引的表是否是临时表，
+每一个 CREATE INDEX 语句精确的文本定义将存在 <b>sqlite_master</b>
+表或 <b>sqlite_temp_master</b> 表中。
+每当打开数据库时，所有 CREATE INDEX 语句会从
+<b>sqlite_master</b> 表中读出，用于重新生成SQLite索引布局的内部表示。
+</p>
+
+<p>
+如果提供选的 IF NOT EXISTS 子句，那么当有同一名字的另一索引存在是，
+它将什么也不做。
+</p>
+
+<p>索引可以使用 <a href="lang_dropindex.html">DROP INDEX</a> 命令删除。
+</p>

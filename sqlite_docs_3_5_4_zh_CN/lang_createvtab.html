@@ -1,0 +1,33 @@
+
+<a href="lang.html"><h2>SQL As Understood By SQLite</h2></a>
+<h3>CREATE VIRTUAL TABLE</h3>
+<table cellpadding="10" class=pdf_syntax>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">sql-command</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0">CREATE VIRTUAL TABLE </font></b>[<b><font color="#2c2cf0"></font></b><i><font color="#ff3434">database-name</font></i><b><font color="#2c2cf0"> <big>.</big></font></b>]<b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">table-name</font></i><b><font color="#2c2cf0"> USING </font></b><i><font color="#ff3434">module-name</font></i><b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0"><big>(</big> </font></b><i><font color="#ff3434">arguments</font></i><b><font color="#2c2cf0"> <big>)</big></font></b>]<b><font color="#2c2cf0"></font></b></td></tr>
+</table>
+
+
+<p>虚表是对外部存储或计算引擎的一个接口，它看起来像一个表，
+但并不在数据库文件中实际存储数据。
+</p>
+
+<p>一般来说，除了在虚表上创建触发器外，可以在一个普通表上做的任何事，
+在虚表也可以做。某些虚表的实现可能会有额外的限制，如，好多虚表是只读的。
+
+</p>
+
+<p> &lt;module-name&gt; 是实现虚表的对象的名字。
+&lt;module-name&gt; 必须通过使用 sqlite3_create_module()
+预先注册到SQLite 数据库连接中，然后才能使用 CREATE VIRTUAL TABLE 语句。
+模块接受 0 个或多个以逗号分隔的参数。只要有相匹配的括号，
+参数可以是任意的文本。参数的语法足够通用，甚至可以用作
+<a href="lang_createtable.html">CREATE TABLE</a> 语句的列定义。
+SQLite 不对参数做任何翻译，而直接将参数传递到模块中。
+分析处理自己的参数是模块的责任。
+</p>
+
+<p>虚表使用普通的
+<a href="lang_droptable.html">DROP TABLE</a> 语句删除。没有
+DROP VIRTUAL TABLE 语句。</p>
+

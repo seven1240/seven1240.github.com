@@ -1,0 +1,17 @@
+  
+<a href="lang.html"><h2>SQL As Understood By SQLite</h2></a>
+<h3>DETACH DATABASE</h3>
+<table cellpadding="10" class=pdf_syntax>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">sql-command</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0">DETACH </font></b>[<b><font color="#2c2cf0">DATABASE</font></b>]<b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">database-name</font></i><b><font color="#2c2cf0"></font></b></td></tr>
+</table>
+
+
+<p>该语句用于将先前使用 <a href="lang_attach.html">ATTACH DATABASE</a>
+语句连接上的数据库离线。将同一个数据库文件使用不同的名字连接多次是可能的。
+使用其中一个离线不会影响其它的连接。
+</p>
+
+<p>如果SQLite正在运行一个事务，该语句将失败。</p>
+

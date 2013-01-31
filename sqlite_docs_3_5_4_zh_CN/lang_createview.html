@@ -1,0 +1,32 @@
+  
+<a href="lang.html"><h2>SQL As Understood By SQLite</h2></a>
+<h3>CREATE VIEW</h3>
+<table cellpadding="10" class=pdf_syntax>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">sql-command</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0">CREATE </font></b>[<b><font color="#2c2cf0">TEMP </font></b><big>|</big><b><font color="#2c2cf0"> TEMPORARY</font></b>]<b><font color="#2c2cf0"> VIEW </font></b>[<b><font color="#2c2cf0">IF NOT EXISTS</font></b>]<b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0"></font></b><i><font color="#ff3434">database-name</font></i><b><font color="#2c2cf0"><big>.</big></font></b>]<b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">view-name</font></i><b><font color="#2c2cf0"> AS </font></b><i><font color="#ff3434">select-statement</font></i><b><font color="#2c2cf0"></font></b></td></tr>
+</table>
+
+
+<p>CREATE VIEW 对一个已经打包的
+<a href="lang_select.html">SELECT</a>语句指定一个名字。
+一旦创建一个视图，就可以在另外的SELECT语句的FROM子句中原先使用表名的地方使用它。
+</p>
+
+<p>如果 "TEMP" 或 "TEMPORARY" 关键字出现在 "CREATE" 和 "VIEW" 之间，
+那么，创建的视图只是打开数据库的进程中可见，并将在关闭数据库时自动删除。
+</p>
+
+<p> 如果指定一个 &lt;database-name&gt; ，那么视图将会创建到该数据库上中。
+同时指定 &lt;database-name&gt; 和 TEMP 关键字是错误的，除非数据库
+ &lt;database-name&gt; 本身就是临时的。如果不指定数据库名，且未指定TEMP关键字，
+视图将建立在主数据库上。
+</p>
+
+<p>不能 COPY, DELETE, INSERT 或 UPDATE 一个视图。在SQLite中，
+视图是只读的。但在很多情况下可以以视图上使用
+<a href="lang_createtrigger.html">触发器</a> 来做同样的操作。使用
+<a href="lang_dropview.html">DROP VIEW</a> 命令来删除视图。 
+</p>
+
+

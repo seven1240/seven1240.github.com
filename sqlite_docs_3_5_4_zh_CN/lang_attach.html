@@ -1,0 +1,44 @@
+  
+<a href="lang.html"><h2>SQL As Understood By SQLite</h2></a>
+<h3>ATTACH DATABASE</h3>
+<table cellpadding="10" class=pdf_syntax>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">sql-statement</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0">ATTACH </font></b>[<b><font color="#2c2cf0">DATABASE</font></b>]<b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">database-filename</font></i><b><font color="#2c2cf0"> AS </font></b><i><font color="#ff3434">database-name</font></i><b><font color="#2c2cf0"></font></b></td></tr>
+</table>
+
+
+<p>ATTACH DATABASE 可以在当前的数据库连接中增加其它的数据库文件。
+如果文件名中有标点符号等，则需要用引号引起来。
+“main”和“temp”两个名字分别指主数据库和临时表，用户不能连接。
+可以使用 <a href="lang_detach.html">DETACH DATABASE</a> 
+语句解除与数据库的连接。</p>
+
+<p>你可以读取和写入一个相连的数据库，也可以更改其模式( schema )
+这是3.0版的新特性。在SQLite2.8中，对已经连接的数据库进行模式修改是不允许的。
+</p>
+
+<p>
+建表时，如果已连接的数据库上有同名的表，则不能创建。
+但如果一个数据库文件中的表与主数据库中的表重名，仍然允许连接。
+而且，对于同一个数据库文件，也可以连接多次。
+</p>
+
+<p>相连数据库中的表可以使用 <i>database-name.table-name</i> 方式引用。
+如果多个数据库中的表没有重名，则无需指定数据库名作为前缀。
+当连接一个数据库时，所有没有重名的表将使用其表名作为缺省表名。
+所有后续有重名表则需要前缀。如果与一个缺省的表名所在的数据库解除连接，
+</p>
+
+<p>
+只要主数据库不是内存数据库，事务在多个数据库中是可以保持原子性的的。
+如果主数据库是内存数据库，那么，对于每一个数据库文件来说，
+事务仍然是原子性的。但若一个事务提交过程中机器崩溃，
+某些数据库文件可能会被改变而其它的可能不会改变。
+在连接的多个数据库上保持原子性是 SQLite 3.0 的新特性。
+在 2.8 中，所有对连接的数据库的事务提交行为就像主数据库为内存数据库那样。
+</p>
+
+<p>有一个编译时的限制，只允许同时连接10个数据库文件。</p>
+
+

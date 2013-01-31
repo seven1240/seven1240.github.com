@@ -1,0 +1,170 @@
+  
+<a href="lang.html"><h2>SQL As Understood By SQLite</h2></a>
+<h3>CREATE TRIGGER</h3>
+<table cellpadding="10" class=pdf_syntax>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">sql-statement</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0">CREATE </font></b>[<b><font color="#2c2cf0">TEMP </font></b><big>|</big><b><font color="#2c2cf0"> TEMPORARY</font></b>]<b><font color="#2c2cf0"> TRIGGER </font></b>[<b><font color="#2c2cf0">IF NOT EXISTS</font></b>]<b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">trigger-name</font></i><b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0"> BEFORE </font></b><big>|</big><b><font color="#2c2cf0"> AFTER </font></b>]<b><font color="#2c2cf0"><br>
+</font></b><i><font color="#ff3434">database-event</font></i><b><font color="#2c2cf0"> ON </font></b>[<b><font color="#2c2cf0"></font></b><i><font color="#ff3434">database-name</font></i><b><font color="#2c2cf0"> <big>.</big></font></b>]<b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">table-name</font></i><b><font color="#2c2cf0"><br>
+</font></b><i><font color="#ff3434">trigger-action</font></i><b><font color="#2c2cf0"></font></b></td></tr>
+</table>
+<table cellpadding="10" class=pdf_syntax>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">sql-statement</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0">CREATE </font></b>[<b><font color="#2c2cf0">TEMP </font></b><big>|</big><b><font color="#2c2cf0"> TEMPORARY</font></b>]<b><font color="#2c2cf0"> TRIGGER </font></b>[<b><font color="#2c2cf0">IF NOT EXISTS</font></b>]<b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">trigger-name</font></i><b><font color="#2c2cf0"> INSTEAD OF<br>
+</font></b><i><font color="#ff3434">database-event</font></i><b><font color="#2c2cf0"> ON </font></b>[<b><font color="#2c2cf0"></font></b><i><font color="#ff3434">database-name</font></i><b><font color="#2c2cf0"> <big>.</big></font></b>]<b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">view-name</font></i><b><font color="#2c2cf0"><br>
+</font></b><i><font color="#ff3434">trigger-action</font></i><b><font color="#2c2cf0"></font></b></td></tr>
+</table>
+<table cellpadding="10" class=pdf_syntax>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">database-event</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0">DELETE </font></b><big>|</big><b><font color="#2c2cf0"> <br>
+INSERT </font></b><big>|</big><b><font color="#2c2cf0"> <br>
+UPDATE </font></b><big>|</big><b><font color="#2c2cf0"> <br>
+UPDATE OF </font></b><i><font color="#ff3434">column-list</font></i><b><font color="#2c2cf0"></font></b></td></tr>
+</table>
+<table cellpadding="10" class=pdf_syntax>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">trigger-action</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0"></font></b>[<b><font color="#2c2cf0"> FOR EACH ROW </font></b>]<b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0"> WHEN </font></b><i><font color="#ff3434">expression</font></i><b><font color="#2c2cf0"> </font></b>]<b><font color="#2c2cf0"> <br>
+BEGIN <br>
+&nbsp;&nbsp;&nbsp;&nbsp;</font></b><i><font color="#ff3434">trigger-step</font></i><b><font color="#2c2cf0"> ; </font></b>[<b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">trigger-step</font></i><b><font color="#2c2cf0"> ; </font></b>]<b><font color="#2c2cf0"></font></b><big>*</big><b><font color="#2c2cf0"><br>
+END</font></b></td></tr>
+</table>
+<table cellpadding="10" class=pdf_syntax>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">trigger-step</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0"></font></b><i><font color="#ff3434">update-statement</font></i><b><font color="#2c2cf0"> </font></b><big>|</big><b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">insert-statement</font></i><b><font color="#2c2cf0"> </font></b><big>|</big><b><font color="#2c2cf0"> <br>
+</font></b><i><font color="#ff3434">delete-statement</font></i><b><font color="#2c2cf0"> </font></b><big>|</big><b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">select-statement</font></i><b><font color="#2c2cf0"></font></b></td></tr>
+</table>
+
+
+<p>CREATE TRIGGER 语句用于向数据库模式中添加触发器。
+触发器是当一个数据库事件(<i>databae-event</i>)
+发生时由数据库自动完成的一个操作。
+</p>
+
+<p>一个触发器可以在一个特定表上执行DELETE、INSERT 或 UPDATE 时触发，
+或者任何时候更新一个表的特定一列或几列时触发。
+</p>
+
+<p>
+当前，SQLite仅支持 FOR EACH ROW 触发器triggers，而不支持FOR EACH STATEMENT
+触发器。所以，明确的指定 FOR EACH ROW 是可选的。FOR EACH ROW暗指
+<i>trigger-steps</i> 所指定的的SQL语句会在数据库的每一行被插入、更新或删除时触发
+（依赖于WHEN子句）。
+</p>
+
+<p>WHEN 子句和 <i>trigger-steps</i> 都可以通过引用 “NEW.<i>column-name</i>”和“OLD.<i>column-name</i>”来访问被插入、删除或者新的行元素。
+其中，<i>column-name</i> 是触发器相关的表中的列名。
+OLD 和 NEW 引用只能用于由
+<i>trigger-event</i>s 所触发的相关的触发器中，如下：</p>
+
+<table border=0 cellpadding=10>
+<tr>
+<td valign="top" align="right" width=120><i>INSERT</i></td>
+<td valign="top">NEW 引用是合法的</td>
+</tr>
+<tr>
+<td valign="top" align="right" width=120><i>UPDATE</i></td>
+<td valign="top">NEW 和 OLD 引用者是合法的</td>
+</tr>
+<tr>
+<td valign="top" align="right" width=120><i>DELETE</i></td>
+<td valign="top">OLD 引用是合法的</td>
+</tr>
+</table>
+</p>
+
+<p>如果提供 WHEN 子句，那么由 <i>trigger-steps</i> 所指定的语句只有在那些使 
+WHEN 子句为真的行上才会执行。
+若没有WHEN子句，在所有行上都会执行。
+</p>
+
+<p>指定 <i>trigger-time</i> 决定相对于插入、修改或删除相关的行来说，
+<i>trigger-steps</i>何时被执行。
+</p>
+
+<p>在一个UPDATE或INSERT的<i>trigger-step</i>中可以包含 ON CONFLICT 子句，
+但是，如果一个 ON CONFLICT 子句被指定为引起触发器行动的语句的一部分，
+将会以该种冲突处理策略来代替。
+</p>
+
+<p>当触发器相关的表被删除时，触发器也会自动删除。
+</p>
+
+<p>
+通过在 CREATE  TRIGGER 时指定 INSTEAD OF，也可以在视图上创建触发器，
+就象在表上建一样。如果视图上定义了一个或几个 ON INSERT、 ON DELETE
+或 ON UPDATE 触发器，那么当在视图上分别执行一个INSERT、DELETE 或 UPDATE 
+语句时就不会出错。 其后，在视图上执行INSERT、DELETE 或 UPDATE 
+将会触发相关的触发器。正常情况下，与视图相关的真实表是不会被修改的
+（除非明确使用触发器）。
+  </p>
+
+<p><b>例子:</b></p>
+
+<p>假设客户记录存储在 "customers" 表中，其定单记录存储在 "orders" 表中，
+下面的触发器将保证在一个客户更改地址时，所有相关的定单都会跟着修改：
+</p>
+
+
+<blockquote><pre>
+CREATE TRIGGER update_customer_address UPDATE OF address ON customers 
+  BEGIN
+    UPDATE orders SET address = new.address WHERE customer_name = old.name;
+  END;
+</pre></blockquote>
+
+
+<p>安装上触发器后，执行如下语句：</p>
+
+
+<blockquote><pre>
+UPDATE customers SET address = '1 Main St.' WHERE name = 'Jack Jones';
+</pre></blockquote>
+
+
+<p>将会导致下列语句自动执行：</p>
+
+
+<blockquote><pre>
+UPDATE orders SET address = '1 Main St.' WHERE customer_name = 'Jack Jones';
+</pre></blockquote>
+
+
+<p>需要注意的是，当前，定义在有INTEGER PRIMARY KEY字段的表上的触发器可能会产生怪异的行为。
+如果一个定义在 INTEGER PRIMARY KEY 字段上的 BEFORE 触发器修改一行的
+INTEGER PRIMARY KEY 字段，而该字段又将被引发触发器的语句所更新，
+那么更新操作将不会发生。绕过这一问题的办法是声明一列为 PRIMARY KEY 
+而非 INTEGER PRIMARY KEY。
+  </p>
+
+<p>在一个触发器程序中，可以使用一个特殊的SQL函数 RAISE() ，语法如下：</p> 
+
+
+<table cellpadding="10" class=pdf_syntax>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">raise-function</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0">RAISE <big>(</big> ABORT<big>,</big> </font></b><i><font color="#ff3434">error-message</font></i><b><font color="#2c2cf0"> <big>)</big> </font></b><big>|</big><b><font color="#2c2cf0"> <br>
+RAISE <big>(</big> FAIL<big>,</big> </font></b><i><font color="#ff3434">error-message</font></i><b><font color="#2c2cf0"> <big>)</big> </font></b><big>|</big><b><font color="#2c2cf0"> <br>
+RAISE <big>(</big> ROLLBACK<big>,</big> </font></b><i><font color="#ff3434">error-message</font></i><b><font color="#2c2cf0"> <big>)</big> </font></b><big>|</big><b><font color="#2c2cf0"> <br>
+RAISE <big>(</big> IGNORE <big>)</big></font></b></td></tr>
+</table>
+
+
+<p>当在触发器程序执行期间，按前面三种方式调用时，当前的查询会终止，
+指定的 ON CONFLICT 过程将会执行(或者是 ABORT, FAIL 或 ROLLBACK)。
+用户会得到一个 SQLITE_CONSTRAINT 错误代码，并伴有指定的出错信息。
+ </p>
+
+<p>当调用 RAISE(IGNORE) 时，当前触发器中后面的程序，引发触发器动作的语句，
+以及任何后续本应该执行的触发器程序都会被丢弃。
+数据库回滚且无任何改变。如果引发触发器程序的语句本身是触发器程序的一部分，
+那么，该触发器程序将在下一步的开始继续执行。
+</p>
+
+<p>触发器可以使用
+<a href="lang_droptrigger.html">DROP TRIGGER</a> 删除。</p>
+
+

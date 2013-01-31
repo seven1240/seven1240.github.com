@@ -1,0 +1,128 @@
+ 
+<a href="lang.html"><h2>SQL As Understood By SQLite</h2></a>
+<h3>SELECT</h3>
+<table cellpadding="10" class=pdf_syntax>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">sql-statement</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0">SELECT </font></b>[<b><font color="#2c2cf0">ALL </font></b><big>|</big><b><font color="#2c2cf0"> DISTINCT</font></b>]<b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">result</font></i><b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0">FROM </font></b><i><font color="#ff3434">table-list</font></i><b><font color="#2c2cf0"></font></b>]<b><font color="#2c2cf0"><br>
+</font></b>[<b><font color="#2c2cf0">WHERE </font></b><i><font color="#ff3434">expr</font></i><b><font color="#2c2cf0"></font></b>]<b><font color="#2c2cf0"><br>
+</font></b>[<b><font color="#2c2cf0">GROUP BY </font></b><i><font color="#ff3434">expr-list</font></i><b><font color="#2c2cf0"></font></b>]<b><font color="#2c2cf0"><br>
+</font></b>[<b><font color="#2c2cf0">HAVING </font></b><i><font color="#ff3434">expr</font></i><b><font color="#2c2cf0"></font></b>]<b><font color="#2c2cf0"><br>
+</font></b>[<b><font color="#2c2cf0"></font></b><i><font color="#ff3434">compound-op</font></i><b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">select</font></i><b><font color="#2c2cf0"></font></b>]<b><font color="#2c2cf0"></font></b><big>*</big><b><font color="#2c2cf0"><br>
+</font></b>[<b><font color="#2c2cf0">ORDER BY </font></b><i><font color="#ff3434">sort-expr-list</font></i><b><font color="#2c2cf0"></font></b>]<b><font color="#2c2cf0"><br>
+</font></b>[<b><font color="#2c2cf0">LIMIT </font></b><i><font color="#ff3434">integer</font></i><b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0"></font></b>(<b><font color="#2c2cf0"> OFFSET </font></b><big>|</big><b><font color="#2c2cf0"> <big>,</big> </font></b>)<b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">integer</font></i><b><font color="#2c2cf0"></font></b>]<b><font color="#2c2cf0"></font></b>]<b><font color="#2c2cf0"></font></b></td></tr>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">result</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0"></font></b><i><font color="#ff3434">result-column</font></i><b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0"><big>,</big> </font></b><i><font color="#ff3434">result-column</font></i><b><font color="#2c2cf0"></font></b>]<b><font color="#2c2cf0"></font></b><big>*</big><b><font color="#2c2cf0"></font></b></td></tr>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">result-column</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0"><big>*</big> </font></b><big>|</big><b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">table-name</font></i><b><font color="#2c2cf0"> <big>.</big> <big>*</big> </font></b><big>|</big><b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">expr</font></i><b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0">AS</font></b>]<b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">string</font></i><b><font color="#2c2cf0"> </font></b>]<b><font color="#2c2cf0"></font></b></td></tr>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">table-list</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0"></font></b><i><font color="#ff3434">table</font></i><b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0"></font></b><i><font color="#ff3434">join-op</font></i><b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">table</font></i><b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">join-args</font></i><b><font color="#2c2cf0"></font></b>]<b><font color="#2c2cf0"></font></b><big>*</big><b><font color="#2c2cf0"></font></b></td></tr>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">table</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0"></font></b><i><font color="#ff3434">table-name</font></i><b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0">AS </font></b><i><font color="#ff3434">alias</font></i><b><font color="#2c2cf0"></font></b>]<b><font color="#2c2cf0"> </font></b><big>|</big><b><font color="#2c2cf0"><br>
+<big>(</big> </font></b><i><font color="#ff3434">select</font></i><b><font color="#2c2cf0"> <big>)</big> </font></b>[<b><font color="#2c2cf0">AS </font></b><i><font color="#ff3434">alias</font></i><b><font color="#2c2cf0"></font></b>]<b><font color="#2c2cf0"></font></b></td></tr>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">join-op</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0"><big>,</big> </font></b><big>|</big><b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0">NATURAL</font></b>]<b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0">LEFT </font></b><big>|</big><b><font color="#2c2cf0"> RIGHT </font></b><big>|</big><b><font color="#2c2cf0"> FULL</font></b>]<b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0">OUTER </font></b><big>|</big><b><font color="#2c2cf0"> INNER </font></b><big>|</big><b><font color="#2c2cf0"> CROSS</font></b>]<b><font color="#2c2cf0"> JOIN</font></b></td></tr>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">join-args</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0"></font></b>[<b><font color="#2c2cf0">ON </font></b><i><font color="#ff3434">expr</font></i><b><font color="#2c2cf0"></font></b>]<b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0">USING <big>(</big> </font></b><i><font color="#ff3434">id-list</font></i><b><font color="#2c2cf0"> <big>)</big></font></b>]<b><font color="#2c2cf0"></font></b></td></tr>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">sort-expr-list</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0"></font></b><i><font color="#ff3434">expr</font></i><b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0"></font></b><i><font color="#ff3434">sort-order</font></i><b><font color="#2c2cf0"></font></b>]<b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0"><big>,</big> </font></b><i><font color="#ff3434">expr</font></i><b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0"></font></b><i><font color="#ff3434">sort-order</font></i><b><font color="#2c2cf0"></font></b>]<b><font color="#2c2cf0"></font></b>]<b><font color="#2c2cf0"></font></b><big>*</big><b><font color="#2c2cf0"></font></b></td></tr>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">sort-order</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0"></font></b>[<b><font color="#2c2cf0"> COLLATE </font></b><i><font color="#ff3434">collation-name</font></i><b><font color="#2c2cf0"> </font></b>]<b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0"> ASC </font></b><big>|</big><b><font color="#2c2cf0"> DESC </font></b>]<b><font color="#2c2cf0"></font></b></td></tr>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">compound_op</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0">UNION </font></b><big>|</big><b><font color="#2c2cf0"> UNION ALL </font></b><big>|</big><b><font color="#2c2cf0"> INTERSECT </font></b><big>|</big><b><font color="#2c2cf0"> EXCEPT</font></b></td></tr>
+</table>
+
+
+<p>
+SELECT 语句用于查询数据库。
+SELECT 的查询结果是 0 行或多行数据，其中每一行是由固定数目的列组成的。
+结果中列的数目是由 SELECT 和 FROM 关键字之间的表达式列表决定的。
+任何的表达式都可以用作一个结果表达式。如果结果表达式是
+<font color="#2c2cf0"><big>*</big></font> ，那么它将会被用所有的列名替代。
+如果表达式是一个表名后跟
+<font color="#2c2cf0"><big>.*</big></font> ，那么结果将会用该表中所有的列替代。
+</p>
+
+<p>DISTINCT 关键字将返回结果的一个子集。
+该子集中的每一行都是不同的。在这里，NULL值被看作是不同的值。
+SELECT 的缺省行为是返回全部行，当然也可能使用 ALL 关键字明确的表明要返回所有的行。
+</p>
+
+<p>查询会作用于一个或多个使用 FROM 关键字指定的表上。
+多个表名用逗号分隔。也可以使用全部的SQL-92的JOIN语法来指定连接关系。
+FROM 子句中的任何表名也可以用一个带括号的子查询代替。
+如果整个省略整个 FROM 子句，结果将是由表达式列表确定的值所组成的一行。
+</p>
+
+<p>WHERE 子句可以用来限制查询输出的行。</p>
+
+<p>GROUP BY 子句会将一行或多行的结果组合成一行输出。
+这在结果中包含聚集函数是非常有用。GROUP BY 子句中的表达式
+<em>完全不必</em> 出现在结果表达式列表中。
+HAVING 子句与 WHERE 子句类似，只是 HAVING 作用于分组（GROUP BY）之后的行上）。
+HAVING 中的表达式可以引用值，甚至聚集函数，而它们都不必在结果中出现。
+</p>
+
+<p>
+ORDER BY 子句会将输出行排序。ORDER BY 用一系列表达式的列表作为参数来对结果排序。
+对于简单的 SELECT 查询来说，用于排序的表达式不必是结果列表的一部分，
+但对于复合查询来说，每个排序表达式必须对应结果中的一列。
+每一个排序表达式后面最可跟一个可选的 COLLATE 关键字和一个对照函数名，
+以用于文本排序。后面还可以有一个 ASC 或 DESC 关键字以指定升序还是降序。
+</p>
+
+<p>ORDER BY 表达式的每一项都经过如下处理：</p>
+
+<ol>
+<li><p>如果 ORDER BY 的表达式是一个整数常量 <i>K</i>，那么，结果集会以第 
+<i>K</i>列进行排序。
+</p></li>
+<li><p>如果 ORDER BY 的表达式是一个标识符，
+并且该标志符与输出列中某一列的别名相同，那么结果集将以该标志符指定的列排序。
+</p></li>
+<li><p>否则， ORDER BY 的表达式将被求值，结果集将根据表达式的值排序。
+</p></li>
+</ol>
+
+<p>在一个复合的（compound) SELCET 语句中，以上第三个 ORDER BY 
+匹配规则需要如下条件：对于结果集中的某一列，该表达式必须是完全相同的。
+以上三条规则会首先依次应用于复合语句中的第一个 SELECT 查询，
+如果找到一个匹配的规则，则停止匹配而使用该规则。否则，
+继续尝试将三条规则依次应用于第二个 SELECT 查询，如此继续，直到找到一个匹配的规则。
+对于 ORDER BY 子句中的每一项，都单独进行处理。所以，
+不同的项可能会在不同的 SELECT 语句上使用不同的规则。
+</p>
+
+<p>
+LIMIT 子句限制结果集返回行数的上限。负数的 LIMIT 表明没有上限。
+LIMIT 后可选的 OFFSET 是一个偏移量，它指定从结果集的开始跳过多少行。
+在一个复合查询中，LIMIT 子句只能出现在最后一个 SELECT 语句中。
+在这种情况下， LIMIT 会应用于整个复合查询而不是其中它所属的单个 SELECT
+语句上。需要注意，如果在 LIMIT 子句上使用 OFFSET ，那么，
+LIMIT 会使用第一个数而 OFFSET 会使用第二个数。
+如果不使用 OFFSET 关键字而用逗号分隔，则第一个数代表偏移量而第二个数代表限制值。
+看起来是在故意制造矛盾，实际上，这主要是为了跟遗留的数据库系统保持最大的兼容性。
+</p>
+
+<p>
+一个复合 SELECT 查询是由 UNION、 UNION ALL、INTERSECT 或 EXCEPT 连接起来的
+两个或多个简单 SELECT 查询。其中，所有 SELECT 必须指定相同数目的结果字段。
+ORDER BY 只能在最后一个 SELECT 后出现一次。 UNION 和 UNION ALL 
+运算符将多个 SELECT 的结果合成一个大表。不同的是，UNION 
+返回的结果中没有重复的行（distinct），而 UNION ALL 会返回结果集中所有行，
+所以可能会有重复的行。INTERSECT 操作符取两个 SELECT 返回结果集的交集。
+而 EXCEPT 会从左边（前面）的 SELECT 结果集中去除存在于右边（后面） SELECT 结果集中存在的行。
+当有三个或多个 SELECT 使用复合操作符连接时，他们会从左到右结合。
+
+</p>
+
+

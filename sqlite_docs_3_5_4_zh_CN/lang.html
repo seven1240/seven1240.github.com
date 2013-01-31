@@ -1,0 +1,59 @@
+<a href="docs.html"><h2>Go Back to Sqlite Docs</a>
+
+<h2 class="pdf_section">SQLite中有效的SQL语句</h2>
+
+<p>SQLite认识大多数标准的SQL语言。
+但它确实在增加了某些其自己的特性的同时也
+<a href="http://www.sqlite.org/omitted.html">忽略了一些特性</a>。
+本文将精确地描述在SQL语言的诸多特性中，SQLite支持哪些部分，而又不支持哪些。
+同时我们也提供了一个<a href="lang_keywords.html">关键字列表</a>。</p>
+
+<p>
+在下面的语法图解中，字面文本用蓝色粗体表示，非终端符号用红色斜体，
+SQL语法操作符用黑色Roman字体表示。
+</p>
+
+<p>
+本文档只是SQLite实现的SQL语法的一个简单概括，忽略了许多底层的产品特性。
+对于SQLite所认识的详细的SQL语法信息，请参考系统源代码和parse.y文件。
+</p>
+
+<p>SQLite实现了如下语法：</p>
+
+<table width="100%" cellpadding="5" border="0">
+<tr><td valign="top"><ul>
+
+
+<li><a href="lang_altertable.html">ALTER TABLE</a></li>
+<li><a href="lang_analyze.html">ANALYZE</a></li>
+<li><a href="lang_attach.html">ATTACH DATABASE</a></li>
+<li><a href="lang_transaction.html">BEGIN TRANSACTION</a></li>
+<li><a href="lang_comment.html">comment</a></li>
+<li><a href="lang_transaction.html">COMMIT TRANSACTION</a></li>
+<li><a href="lang_createindex.html">CREATE INDEX</a></li>
+<li><a href="lang_createtable.html">CREATE TABLE</a></li>
+<li><a href="lang_createtrigger.html">CREATE TRIGGER</a></li>
+<li><a href="lang_createview.html">CREATE VIEW</a></li>
+<li><a href="lang_createvtab.html">CREATE VIRTUAL TABLE</a></li>
+<li><a href="lang_delete.html">DELETE</a></li>
+<li><a href="lang_detach.html">DETACH DATABASE</a></li>
+<li><a href="lang_dropindex.html">DROP INDEX</a></li>
+<li><a href="lang_droptable.html">DROP TABLE</a></li>
+</ul></td><td valign="top"><ul>
+<li><a href="lang_droptrigger.html">DROP TRIGGER</a></li>
+<li><a href="lang_dropview.html">DROP VIEW</a></li>
+<li><a href="lang_transaction.html">END TRANSACTION</a></li>
+<li><a href="lang_explain.html">EXPLAIN</a></li>
+<li><a href="lang_expr.html">expression</a></li>
+<li><a href="lang_insert.html">INSERT</a></li>
+<li><a href="lang_conflict.html">ON CONFLICT clause</a></li>
+<li><a href="pragma.html">PRAGMA</a></li>
+<li><a href="lang_reindex.html">REINDEX</a></li>
+<li><a href="lang_replace.html">REPLACE</a></li>
+<li><a href="lang_transaction.html">ROLLBACK TRANSACTION</a></li>
+<li><a href="lang_select.html">SELECT</a></li>
+<li><a href="lang_update.html">UPDATE</a></li>
+<li><a href="lang_vacuum.html">VACUUM</a></li>
+
+</ul></td></tr></table>
+

@@ -1,0 +1,134 @@
+  
+<a href="lang.html"><h2>SQL As Understood By SQLite</h2></a>
+<h3>CREATE TABLE</h3>
+<table cellpadding="10" class=pdf_syntax>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">sql-command</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0">CREATE </font></b>[<b><font color="#2c2cf0">TEMP </font></b><big>|</big><b><font color="#2c2cf0"> TEMPORARY</font></b>]<b><font color="#2c2cf0"> TABLE </font></b>[<b><font color="#2c2cf0">IF NOT EXISTS</font></b>]<b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0"></font></b><i><font color="#ff3434">database-name</font></i><b><font color="#2c2cf0"> <big>.</big></font></b>]<b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">table-name</font></i><b><font color="#2c2cf0"> <big>(</big><br>
+&nbsp;&nbsp;&nbsp;&nbsp;</font></b><i><font color="#ff3434">column-def</font></i><b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0"><big>,</big> </font></b><i><font color="#ff3434">column-def</font></i><b><font color="#2c2cf0"></font></b>]<b><font color="#2c2cf0"></font></b><big>*</big><b><font color="#2c2cf0"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;</font></b>[<b><font color="#2c2cf0"><big>,</big> </font></b><i><font color="#ff3434">constraint</font></i><b><font color="#2c2cf0"></font></b>]<b><font color="#2c2cf0"></font></b><big>*</big><b><font color="#2c2cf0"><br>
+<big>)</big></font></b></td></tr>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">sql-command</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0">CREATE </font></b>[<b><font color="#2c2cf0">TEMP </font></b><big>|</big><b><font color="#2c2cf0"> TEMPORARY</font></b>]<b><font color="#2c2cf0"> TABLE </font></b>[<b><font color="#2c2cf0"></font></b><i><font color="#ff3434">database-name</font></i><b><font color="#2c2cf0"><big>.</big></font></b>]<b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">table-name</font></i><b><font color="#2c2cf0"> AS </font></b><i><font color="#ff3434">select-statement</font></i><b><font color="#2c2cf0"></font></b></td></tr>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">column-def</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0"></font></b><i><font color="#ff3434">name</font></i><b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0"></font></b><i><font color="#ff3434">type</font></i><b><font color="#2c2cf0"></font></b>]<b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0"></font></b>[<b><font color="#2c2cf0">CONSTRAINT </font></b><i><font color="#ff3434">name</font></i><b><font color="#2c2cf0"></font></b>]<b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">column-constraint</font></i><b><font color="#2c2cf0"></font></b>]<b><font color="#2c2cf0"></font></b><big>*</big><b><font color="#2c2cf0"></font></b></td></tr>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">type</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0"></font></b><i><font color="#ff3434">typename</font></i><b><font color="#2c2cf0"> </font></b><big>|</big><b><font color="#2c2cf0"><br>
+</font></b><i><font color="#ff3434">typename</font></i><b><font color="#2c2cf0"> <big>(</big> </font></b><i><font color="#ff3434">number</font></i><b><font color="#2c2cf0"> <big>)</big> </font></b><big>|</big><b><font color="#2c2cf0"><br>
+</font></b><i><font color="#ff3434">typename</font></i><b><font color="#2c2cf0"> <big>(</big> </font></b><i><font color="#ff3434">number</font></i><b><font color="#2c2cf0"> <big>,</big> </font></b><i><font color="#ff3434">number</font></i><b><font color="#2c2cf0"> <big>)</big></font></b></td></tr>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">column-constraint</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0">NOT NULL </font></b>[<b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">conflict-clause</font></i><b><font color="#2c2cf0"> </font></b>]<b><font color="#2c2cf0"> </font></b><big>|</big><b><font color="#2c2cf0"><br>
+PRIMARY KEY </font></b>[<b><font color="#2c2cf0"></font></b><i><font color="#ff3434">sort-order</font></i><b><font color="#2c2cf0"></font></b>]<b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">conflict-clause</font></i><b><font color="#2c2cf0"> </font></b>]<b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0">AUTOINCREMENT</font></b>]<b><font color="#2c2cf0"> </font></b><big>|</big><b><font color="#2c2cf0"><br>
+UNIQUE </font></b>[<b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">conflict-clause</font></i><b><font color="#2c2cf0"> </font></b>]<b><font color="#2c2cf0"> </font></b><big>|</big><b><font color="#2c2cf0"><br>
+CHECK <big>(</big> </font></b><i><font color="#ff3434">expr</font></i><b><font color="#2c2cf0"> <big>)</big> </font></b><big>|</big><b><font color="#2c2cf0"><br>
+DEFAULT </font></b><i><font color="#ff3434">value</font></i><b><font color="#2c2cf0"> </font></b><big>|</big><b><font color="#2c2cf0"><br>
+COLLATE </font></b><i><font color="#ff3434">collation-name</font></i><b><font color="#2c2cf0"></font></b></td></tr>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">constraint</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0">PRIMARY KEY <big>(</big> </font></b><i><font color="#ff3434">column-list</font></i><b><font color="#2c2cf0"> <big>)</big> </font></b>[<b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">conflict-clause</font></i><b><font color="#2c2cf0"> </font></b>]<b><font color="#2c2cf0"> </font></b><big>|</big><b><font color="#2c2cf0"><br>
+UNIQUE <big>(</big> </font></b><i><font color="#ff3434">column-list</font></i><b><font color="#2c2cf0"> <big>)</big> </font></b>[<b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">conflict-clause</font></i><b><font color="#2c2cf0"> </font></b>]<b><font color="#2c2cf0"> </font></b><big>|</big><b><font color="#2c2cf0"><br>
+CHECK <big>(</big> </font></b><i><font color="#ff3434">expr</font></i><b><font color="#2c2cf0"> <big>)</big></font></b></td></tr>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">conflict-clause</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0">ON CONFLICT </font></b><i><font color="#ff3434">conflict-algorithm</font></i><b><font color="#2c2cf0"></font></b></td></tr>
+</table>
+
+
+<p>CREATE TABLE 语句基本上就是 "CREATE TABLE" 关键字后跟表名作为新的表名，
+和一对括号，括号中是列的定义和约束。表名可以是一个标志符或字符串。
+以 "<b>sqlite_</b>" 打头的表名是数据库引擎预留的。
+</p>
+
+<p>每一个列定义是列名，后面是列的数据类型，然后是一个或多个可先的列约束。
+列的数据类型并不强制限制放入列中的数据，详见：
+<a href="datatype3.html">Datatypes In SQLite Version 3</a>。
+唯一(UNIQUE)约束会导致在指定列上自动建立一个索引。索引必须有唯一的键值。
+COLLATE 子句指定在比较字符串时使用何种文本对照关系 <a href="datatype3.html#collation">
+collating function</a> 。缺省使用内置的二进制对照关系。
+<p>
+缺省（DEFAULT）约束指定 INSERT 时的缺省值。缺省值可以是 NULL，字符串或数字。
+从3.1.0版开始，缺省值也可以是一个特殊的大小写无关的关键字：
+CURRENT_TIME, CURRENT_DATE 或 CURRENT_TIMESTAMP。
+如果该缺省值是 NULL，字符串或数字，当INSERT操作没有在该列是指定一个值时，
+它将直接按字面意思插入。如果缺省值是
+CURRENT_TIME, CURRENT_DATE 或 CURRENT_TIMESTAMP，那么，
+将向该列插入当前的UTC日期或时间。对于 CURRENT_TIME，格式是
+HH:MM:SS。对于 CURRENT_DATE，格式为 YYYY-MM-DD。
+CURRENT_TIMESTAMP 的格式是 "YYYY-MM-DD HH:MM:SS".
+</p>
+
+<p>指定一个 PRIMARY KEY 通常只是在相关的列上建立一个唯一索引。
+但是 ，如果主键是单一的且数据类型是 INTEGER， 那么，
+该列将在内部用作该表B树的真实键值。这意味着该列只能存放唯一的整数值。
+（除这一种情况外，SQLite 会忽略列的数据类型定义并允许任意类型的数据存入该列。）
+如果一个表没有 INTEGER PRIMARY KEY 列，那么B树键值将会是自动生成的整数
+<a name="rowid"></a> 。对于一行的B树键值永远可以用特殊的名字如
+"<b>ROWID</b>", "<b>OID</b>", 或 "<b>_ROWID_</b>"来访问。
+无论表上是否有 INTEGER PRIMARY KEY都可以这样做。
+一个 INTEGER PRIMARY KEY 列也会包含关键字AUTOINCREMENT。
+AUTOINCREMENT 关键字会修改B树键值产生的方式。
+有关自动增长B权势键值更详细的信息
+<a href="autoinc.html">单独见这里</a>。</p>
+
+<p>根据 SQL 标准，PRIMARY KEY 应该隐含 NOT NULL 。
+但不幸的是，由长期存在的编码失误，在SQLite中不是这样的。
+SQLite允许在PRIMARY KEY列中包含NULL值。我们可以改变SQLite以适应标准
+（我们以后可能会改变），但当我们发现该失误时，SQLite已经广泛使用。
+我们害怕修复该问题后会破坏那些已经使用它的代码。所以，
+我们暂时允许在PRIMARY KEY列中存放NULL值。
+但开发者应该清楚，我们在未来的版本中可能会改变SQLite以适应标准，
+届时，应根据标准来设计程序。
+</p>
+
+<p>如果 "TEMP" 或 "TEMPORARY" 关键字出现在 "CREATE" 和 "TABLE"
+中间，那么创建后的表将仅在同一个数据连接中可见，并在连接关闭后自动删除。
+在临时表是创建的任何索引也是临时的。临时表的索引将存储在与主数据库文件不同的另外的独立文件中。
+</p>
+
+<p>如果指定一个 &lt;database-name&gt; ，那么表将建在该名字指定的数据库中。
+同时指定 &lt;database-name&gt;和 TEMP 关键字是错误的，除非 &lt;database-name&gt;也是临时的。如果不指定数据库名，并且TEMP关键字也未出现，那么表将创建在主数据库中。
+</p>
+
+<p>
+每个约束后面可选的 conflict-clause 允许为该约束指定一个替代的缺省冲突解决算法。
+缺省的算法是 ABORT 。 同一表上不同的约束可以有不同的冲突解决算法。
+如果一个COPY、INSERT 或 UPDATE 命令指定了一个不同的冲突解决算法，
+那么，该算法将会替代使用 CREATE TABLE 语句指定的冲突解决算法。
+详情请见 
+<a href="lang_conflict.html">ON CONFLICT</a>。</p>
+
+<p>
+CHIEK 约束在3.3.0以后支持。在以前的版本中，CHECK 约束会被分析但不会实施。
+</p>
+
+<p>
+对表中的列数以及列上的约束数目没有任何限制。
+在2.8版本中，一行最大的数据量大约限制为 1M。
+在3.0以后的版本中对行的大小就没有限制了。
+</p>
+
+
+<p>CREATE TABLE AS 格式使用一个查询的结果集来定义表。
+表的列名为查询结果中的列名。
+</p>
+
+<p>每一个 CREATE TABLE 语句确切的文本定义存放于 <b>sqlite_master</b> 表中。
+每当数据库打开时，所有 CREATE TABLE 语句将会从
+<b>sqlite_master</b> 表中读出，用于重新生成SQLite表布局的内部表示。
+如果当初建表时使用的是 CREATE TABLE AS， 那么将会产生一个等价的
+CREATE TABLE 语句并存储在 <b>sqlite_master</b> 表中原先存放命令地的方。
+而 CREATE TEMPORARY TABLE 语句的命令文本并储存在
+<b>sqlite_temp_master</b> 表中。
+</p>
+
+<p>如果有可选的 IF NOT EXISTS 语句，并且数据库中有重名的表，
+那么该命令将什么都不做。
+</p>
+
+<p>表可以使用 <a href="lang_droptable.html">DROP TABLE</a> 
+语句删除。  </p>
+

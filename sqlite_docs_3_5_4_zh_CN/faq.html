@@ -1,0 +1,388 @@
+<a href="docs.html"><h2>Go Back to Sqlite Docs</a>
+
+<h2>Frequently Asked Questions</h2>
+<OL>
+<li><a href="#q1">如何建立自动增长字段？</a></li>
+<li><a href="#q2">SQLite支持何种数据类型？</a></li>
+<li><a href="#q3">SQLite允许向一个integer型字段中插入字符串！</a></li>
+<li><a href="#q4">为什么SQLite不允许在同一个表不同的两行上使用0和0.0作主键？</a></li>
+<li><a href="#q5">多个应用程序或一个应用程序的多个实例可以同时访问同一个数据库文件吗？
+</a></li>
+<li><a href="#q6">SQLite线程安全吗？</a></li>
+<li><a href="#q7">在SQLite数据库中如何列出所有的表和索引？</a></li>
+<li><a href="#q8">SQLite数据库有已知的大小限制吗？</a></li>
+<li><a href="#q9">在SQLite中，VARCHAR字段最长是多少？</a></li>
+<li><a href="#q10">SQLite支持二进制大对象吗？</a></li>
+<li><a href="#q11">在SQLite中，如何在一个表上添加或删除一列？</a></li>
+<li><a href="#q12">我在数据库中删除了很多数据，但数据库文件没有变小，是Bug吗？
+</a></li>
+<li><a href="#q13">我可以在商业产品中使用SQLite而不需支付许可费用吗？</a></li>
+<li><a href="#q14">如何在字符串中使用单引号(')？</a></li>
+<li><a href="#q15">SQLITE_SCHEMA error是什么错误？为什么会出现该错误？</a></li>
+<li><a href="#q16">为什么 ROUND(9.95,1) 返回 9.9 而不是 10.0？ 9.95不应该圆整(四舍五入）吗？
+</a></li>
+</OL>
+<A NAME="q1"></A><HR />
+<P><B>(1) 如何建立自动增长字段?</B></P>
+
+<BLOCKQUOTE><p>简短回答：声明为 INTEGER PRIMARY KEY 的列将会自动增长。</p>
+
+    <p>长一点的答案：
+    如果你声明表的一列为 INTEGER PRIMARY KEY，那么，
+    每当你在该列上插入一NULL值时，
+    NULL自动被转换为一个比该列中最大值大1的一个整数，如果表是空的，
+    将会是1。
+    (如果是最大可能的主键 9223372036854775807，那个，将键值将是随机未使用的数。）
+    如，有下列表：
+<blockquote><pre>
+CREATE TABLE t1(
+  a INTEGER PRIMARY KEY,
+  b INTEGER
+);
+</pre></blockquote>
+  <p>在该表上，下列语句</p>
+<blockquote><pre>
+INSERT INTO t1 VALUES(NULL,123);
+</pre></blockquote>
+  <p>在逻辑上等价于：</p>
+<blockquote><pre>
+INSERT INTO t1 VALUES((SELECT max(a) FROM t1)+1,123);
+</pre></blockquote>
+
+  <p>有一个新的API叫做
+  <a href="c3ref/last_insert_rowid.html">
+  sqlite3_last_insert_rowid()</a>， 它将返回最近插入的整数值。
+ </p>
+
+ <p>注意该整数会比表中该列上的插入之前的最大值大1。
+ 该键值在当前的表中是唯一的。但有可能与已从表中删除的值重叠。
+ 要想建立在整个表的生命周期中唯一的键值，需要在 INTEGER PRIMARY KEY
+ 上增加AUTOINCREMENT声明。那么，新的键值将会比该表中曾能存在过的最大值大1。
+ 如果最大可能的整数值在数据表中曾经存在过，INSERT将会失败，
+ 并返回SQLITE_FULL错误代码。
+  </p></BLOCKQUOTE></LI>
+
+<A NAME="q2"></A><HR />
+<P><B>(2)SQLite支持何种数据类型？</B></P>
+
+<BLOCKQUOTE><p>参见 <a href="datatype3.html">http://www.sqlite.org/datatype3.html</a>.</p></BLOCKQUOTE></LI>
+
+<A NAME="q3"></A><HR />
+<P><B>(3)SQLite允许向一个integer型字段中插入字符串！ </B></P>
+
+<BLOCKQUOTE><p>这是一个特性，而不是一个bug。SQLite不强制数据类型约束。
+    任何数据都可以插入任何列。你可以向一个整型列中插入任意长度的字符串，
+    向布尔型列中插入浮点数，或者向字符型列中插入日期型值。
+    在 CREATE TABLE 中所指定的数据类型不会限制在该列中插入任何数据。
+    任何列均可接受任意长度的字符串（只有一种情况除外：
+    标志为INTEGER PRIMARY KEY的列只能存储64位整数，
+    当向这种列中插数据除整数以外的数据时，将会产生错误。
+  </p>
+
+  <p>但SQLite确实使用声明的列类型来指示你所期望的格式。所以，
+  例如你向一个整型列中插入字符串时，SQLite会试图将该字符串转换成一个整数。
+  如果可以转换，它将插入该整数；否则，将插入字符串。
+  这种特性有时被称为 <a href="datatype3.html#affinity">类型或列亲和性(type or column affinity)</a>.
+  </p></BLOCKQUOTE></LI>
+
+<A NAME="q4"></A><HR />
+<P><B>(4)为什么SQLite不允许在同一个表不同的两行上使用0和0.0作主键？ </B></P>
+
+<BLOCKQUOTE><p>主键必须是数值类型，将主键改为TEXT型将不起作用。</p>
+
+  <p>每一行必须有一个唯一的主键。对于一个数值型列，
+  SQLite认为 <b>'0'</b> 和 <b>'0.0'</b> 是相同的，
+  因为他们在作为整数比较时是相等的(参见上一问题)。
+  所以，这样值就不唯一了。</p></BLOCKQUOTE></LI>
+
+<A NAME="q5"></A><HR />
+<P><B>(5)多个应用程序或一个应用程序的多个实例可以同时访问同一个数据库文件吗？ </B></P>
+
+<BLOCKQUOTE><p>多个进程可同时打开同一个数据库。多个进程可以同时进行SELECT
+    操作，但在任一时刻，只能有一个进程对数据库进行更改。
+  </p>
+
+  <p>SQLite使用读、写锁控制对数据库的访问。（在Win95/98/ME等不支持读、
+  写锁的系统下，使用一个概率性的模拟来代替。）但使用时要注意：
+  如果数据库文件存放于一个NFS文件系统上，这种锁机制可能不能正常工作。
+  这是因为 fcntl() 文件锁在很多NFS上没有正确的实现。
+  在可能有多个进程同时访问数据库的时候，应该避免将数据库文件放到NFS上。
+  在Windows上，Microsoft的文档中说：如果使用 FAT 文件系统而没有运行 share.exe
+  守护进程，那么锁可能是不能正常使用的。那些在Windows上有很多经验的人告诉我：
+  对于网络文件，文件锁的实现有好多Bug，是靠不住的。如果他们说的是对的，
+  那么在两台或多台Windows机器间共享数据库可能会引起不期望的问题。
+  </p>
+
+  <p>我们意识到，没有其它<i>嵌入式的</i> SQL 数据库引擎能象 SQLite
+  这样处理如此多的并发。SQLite允许多个进程同时打开一个数据库，
+  同时读一个数据库。当有任何进程想要写时，它必须在更新过程中锁住数据库文件。
+  但那通常只是几毫秒的时间。其它进程只需等待写进程干完活结束。
+  典型地，其它嵌入式的SQL数据库引擎同时只允许一个进程连接到数据库。
+  </p>
+
+  <p>但是，Client/Server数据库引擎（如 PostgreSQL, MySQL, 或 Oracle）
+  通常支持更高级别的并发，并且允许多个进程同时写同一个数据库。
+  这种机制在Client/Server结构的数据库上是可能的，
+  因为总是有一个单一的服务器进程很好地控制、协调对数据库的访问。
+  如果你的应用程序需要很多的并发，那么你应该考虑使用一个Client/Server
+  结构的数据库。但经验表明，很多应用程序需要的并发，往往比其设计者所想象的少得多。
+  </p>
+
+  <p>当SQLite试图访问一个被其它进程锁住的文件时，缺省的行为是返回 SQLITE_BUSY。
+  可以在C代码中使用
+  <a href="c3ref/busy_handler.html">sqlite3_busy_handler()</a> 或
+  <a href="c3ref/busy_timeout.html">sqlite3_busy_timeout()</a>
+  API 函数调整这一行为。</p></BLOCKQUOTE></LI>
+
+<A NAME="q6"></A><HR />
+<P><B>(6)SQLite线程安全吗？</B></P>
+
+<BLOCKQUOTE><p><a href="http://www.eecs.berkeley.edu/Pubs/TechRpts/2006/EECS-2006-1.pdf">
+  线程是魔鬼（Threads are evil）</a>。 避免使用它们。
+
+  <p>SQLite 是线程安全的。由于很多用户会忽略我们在上一段中给出的建议，
+  我们做出了这种让步。但是，为了达到线程安全，SQLite在编译时必须将
+  SQLITE_THREADSAFE 预处理宏置为1。在Windows和Linux上，
+  已编译的好的二进制发行版中都是这样设置的。
+  如果不确定你所使用的库是否是线程安全的，可以调用
+  <a href="c3ref/threadsafe.html">sqlite3_threadsafe()</a>
+  接口找出。
+  </p>
+
+  <p>在 3.3.1 版本之前，一个
+  <b>sqlite3</b> 结构只能被用于调用
+  <a href="c3ref/open.html">sqlite3_open</a>
+  创建的同一线程。你不能在一个线程中打开数据库，
+  然后将数据库句柄传递给另外一个进程使用。
+  这主要是由于在好多通用的线程实现（如RedHat9）中的限制引起的（是Bug吗？）。
+  特别的，在有问题的系统上，一个进程创建的 fcntl() 锁无法被其它线程清除或修改。
+  所以，由于 SQLite 大量使用 fcntl() 锁做并发控制，
+  如果你在不同的线程间移动数据库连接，就可能会出现严重的问题。
+  </p>
+
+  <p>在3.3.1版本上，关于在线程间移动数据库连接的限制变得宽松了。
+  在它及以后的版本中，只要连接没有持有 fcntl() 锁，在线程间移动句柄是安全的。
+  如果没有未决的事务，并且所有的语句都已执行完毕，
+  你就可以安全的假定不再持有任何锁。
+  </p>
+
+  <p>在UNIX中，在执行 fork() 系统调用时不应携带已打开的数据库进入子进程。
+  那样做将会有问题。
+  </p></BLOCKQUOTE></LI>
+
+<A NAME="q7"></A><HR />
+<P><B>(7)在SQLite数据库中如何列出所有的表和索引？ </B></P>
+
+<BLOCKQUOTE><p>如果你运行 <b>sqlite3</b> 命令行来访问你的数据库，可以键入
+  “<b>.tables</b>”来获得所有表的列表。或者，你可以输入
+  “<b>.schema</b>” 来看整个数据库模式，包括所有的表的索引。
+  输入这些命令，后面跟一个LIKE模式匹配可以限制显示的表。
+  </p>
+
+  <p>在一个 C/C++ 程序中（或者脚本语言使用 Tcl/Ruby/Perl/Python 等）
+  你可以在一个特殊的名叫 <b>SQLITE_MASTER</b> 上执行一个SELECT查询以获得所有
+  表的索引。每一个 SQLite 数据库都有一个叫 SQLITE_MASTER 的表，
+  它定义数据库的模式。 SQLITE_MASTER 表看起来如下：</p>
+<blockquote><pre>
+CREATE TABLE sqlite_master (
+  type TEXT,
+  name TEXT,
+  tbl_name TEXT,
+  rootpage INTEGER,
+  sql TEXT
+);
+</pre></blockquote>
+  <p>对于表来说，<b>type</b> 字段永远是 <b>'table'</b>，<b>name</b> 
+  字段永远是表的名字。所以，要获得数据库中所有表的列表，
+  使用下列SELECT语句：
+  </p>
+<blockquote><pre>
+SELECT name FROM sqlite_master
+WHERE type='table'
+ORDER BY name;
+</pre></blockquote>
+  <p>对于索引，<b>type</b> 等于 <b>'index'</b>, <b>name</b>
+  则是索引的名字，<b>tbl_name</b> 是该索引所属的表的名字。
+  不管是表还是索引，<b>sql</b> 字段是原先用 CREATE TABLE 或 CREATE INDEX
+  语句创建它们时的命令文本。对于自动创建的索引（用来实现
+  PRIMARY KEY 或 UNIQUE 约束），<b>sql</b>字段为NULL。
+  </p>
+
+  <p>SQLITE_MASTER 表是只读的。不能对它使用 UPDATE、INSERT 或 DELETE。
+  它会被 CREATE TABLE、CREATE INDEX、DROP TABLE 和 DROP INDEX 命令自动更新。
+  </p>
+
+  <p>临时表不会出现在 SQLITE_MASTER 表中。临时表及其索引和触发器存放在另外一个叫
+  SQLITE_TEMP_MASTER 的表中。SQLITE_TEMP_MASTER 跟 SQLITE_MASTER 差不多，
+  但它只是对于创建那些临时表的应用可见。如果要获得所有表的列表，
+  不管是永久的还是临时的，可以使用类似下面的命令：
+<blockquote><pre>
+SELECT name FROM 
+   (SELECT * FROM sqlite_master UNION ALL
+    SELECT * FROM sqlite_temp_master)
+WHERE type='table'
+ORDER BY name
+</pre></blockquote></BLOCKQUOTE></LI>
+
+<A NAME="q8"></A><HR />
+<P><B>(8) SQLite数据库有已知的大小限制吗？</B></P>
+
+<BLOCKQUOTE><p>对有关SQLite限制的详细讨论，见 <a href="limits.html">limits.html</a> 。</p></BLOCKQUOTE></LI>
+
+<A NAME="q9"></A><HR />
+<P><B>(9) 在SQLite中，VARCHAR字段最长是多少？</B></P>
+
+<BLOCKQUOTE><p>SQLite 不强制 VARCHAR 的长度。 你可以在 SQLITE
+   中声明一个 VARCHAR(10)，SQLite还是可以很高兴地允许你放入500个字符。
+   并且这500个字符是原封不动的，它永远不会被截断。
+  </p></BLOCKQUOTE></LI>
+
+<A NAME="q10"></A><HR />
+<P><B>(10) SQLite支持二进制大对象吗？</B></P>
+
+<BLOCKQUOTE><p>SQLite 3.0 及以后版本允许你在任何列中存储 BLOB 数据。 
+    即使该列被声明为其它类型也可以。
+  </p></BLOCKQUOTE></LI>
+
+<A NAME="q11"></A><HR />
+<P><B>(11) 在SQLite中，如何在一个表上添加或删除一列？</B></P>
+
+<BLOCKQUOTE><p>SQLite 有有限地 <a href="lang_altertable.html">ALTER TABLE</a> 
+    支持。你可以使用它来在表的末尾增加一列，可更改表的名称。
+    如果需要对表结构做更复杂的改变，则必须重新建表。
+    重建时可以先将已存在的数据放到一个临时表中，删除原表，
+    创建新表，然后将数据从临时表中复制回来。
+  </p>
+
+  <p>如，假设有一个 t1 表，其中有 "a", "b",  "c" 三列，
+  如果要删除列 c ，以下过程描述如何做:
+  </p>
+
+  <blockquote><pre>
+BEGIN TRANSACTION;
+CREATE TEMPORARY TABLE t1_backup(a,b);
+INSERT INTO t1_backup SELECT a,b FROM t1;
+DROP TABLE t1;
+CREATE TABLE t1(a,b);
+INSERT INTO t1 SELECT a,b FROM t1_backup;
+DROP TABLE t1_backup;
+COMMIT;
+</pre></blockquote></BLOCKQUOTE></LI>
+
+<A NAME="q12"></A><HR />
+<P><B>(12) 我在数据库中删除了很多数据，但数据库文件没有变小，是Bug吗？</B></P>
+
+<BLOCKQUOTE><p>不是。当你从SQLite数据库中删除数据时，
+    未用的磁盘空间将会加入一个内部的“自由列表”中。
+    当你下次插入数据时，这部分空间可以重用。磁盘空间不会丢失，
+    但也不会返还给操作系统。
+  </p>
+
+  <p>如果删除了大量数据，而又想缩小数据库文件占用的空间，执行
+  <a href="lang_vacuum.html">VACUUM</a> 命令。
+  VACUUM 将会从头重新组织数据库。这将会使用数据库有一个空的“自由链表”，
+  数据库文件也会最小。但要注意的是，VACUUM 的执行会需要一些时间
+  （在SQLite开发时，在Linux上，大约每M字节需要半秒种），并且，
+  执行过程中需要原数据库文件至多两倍的临时磁盘空间。
+  </p>
+
+  <p>对于 SQLite 3.1版本，一个 auto-vacumm 模式可以替代 VACUUM 命令。
+  可以使用 <a href="pragma.html#pragma_auto_vacuum">auto_vacuum pragma</a>
+  打开。</p></BLOCKQUOTE></LI>
+
+<A NAME="q13"></A><HR />
+<P><B>(13) 我可以在商业产品中使用SQLite而不需支付许可费用吗？</B></P>
+
+<BLOCKQUOTE><p>是的。SQLite 在 <a href="copyright.html">public domain</a>。
+    对代码的任何部分没有任何所有权声明。你可以使用它做任何事。
+  </p></BLOCKQUOTE></LI>
+
+<A NAME="q14"></A><HR />
+<P><B>(14) 如何在字符串中使用单引号(')？</B></P>
+
+<BLOCKQUOTE><p>SQL 标准规定，在字符串中，单引号需要使用逃逸字符，即在一行中使用两个单引号。在这方面 SQL 用起来类似 Pascal 语言。 SQLite 尊循标准。如： 
+  </p>
+
+  <blockquote><pre>
+    INSERT INTO xyz VALUES('5 O''clock');
+  </pre></blockquote></BLOCKQUOTE></LI>
+
+<A NAME="q15"></A><HR />
+<P><B>(15) SQLITE_SCHEMA error是什么错误？为什么会出现该错误？</B></P>
+
+<BLOCKQUOTE><p>当一个准备好的（prepared）SQL语句不再有效或者无法执行时，
+    将返回一个 SQLITE_SCHEMA 错误。发生该错误时，SQL语句必须使用
+  <a href="c3ref/prepare.html">sqlite3_prepare()</a> API来重新编译.
+  在 SQLite 3 中, 一个 SQLITE_SCHEMA 错误只会发生在用 
+  <a href="c3ref/prepare.html">sqlite3_prepare()</a>/<a
+  href="c3ref/step.html">sqlite3_step()</a>/<a
+  href="c3ref/finalize.html">sqlite3_finalize()</a>
+  API 执行 SQL 时。而不会发生在使用
+  <a href="c3ref/exec.html">sqlite3_exec()</a>时。
+  在版本2中不是这样。</p>
+
+  <p>准备好的语句失效的最通常原因是：在语句准备好后，
+  数据库的模式又被修改了。另外的原因会发生在：
+  </p> 
+  <ul>
+      <li>数据库离线：<a href="lang_detach.html">DETACH</a>ed.
+  <li>数据库被 <a href="lang_vacuum.html">VACUUM</a>ed
+  <li>一个用户存储过程定义被删除或改变。
+  <li>一个 collation 序列定义被删除或改变。
+  <li>认证函数被改变。
+  </ul>
+
+  <p>在所有情况下，解决方法是重新编译并执行该SQL语句。
+  因为一个已准备好的语句可以由于其它进程改变数据库模式而失效，
+  所有使用
+  <a href="c3ref/prepare.html">sqlite3_prepare()</a>/<a
+  href="c3ref/step.html">sqlite3_step()</a>/<a
+  href="c3ref/finalize.html">sqlite3_finalize()</a>
+  API 的代码都应准备处理 SQLITE_SCHEMA 错误。下面给出一个例子：
+  </p>
+
+  <blockquote><pre>
+
+    int rc;
+    sqlite3_stmt *pStmt;
+    char zSql[] = "SELECT .....";
+
+    do {
+      /* Compile the statement from SQL. Assume success. */
+      sqlite3_prepare(pDb, zSql, -1, &pStmt, 0);
+
+      while( SQLITE_ROW==sqlite3_step(pStmt) ){
+        /* Do something with the row of available data */
+      }
+
+      /* Finalize the statement. If an SQLITE_SCHEMA error has
+      ** occured, then the above call to sqlite3_step() will have
+      ** returned SQLITE_ERROR. sqlite3_finalize() will return
+      ** SQLITE_SCHEMA. In this case the loop will execute again.
+      */
+      rc = sqlite3_finalize(pStmt);
+    } while( rc==SQLITE_SCHEMA );
+    
+  </pre></blockquote></BLOCKQUOTE></LI>
+
+<A NAME="q16"></A><HR />
+<P><B>(16) 为什么 ROUND(9.95,1) 返回 9.9 而不是 10.0？ 9.95不应该圆整
+    (四舍五入）吗？</B></P>
+
+<BLOCKQUOTE><p>SQLite 使用二进制算术，在二进制中，
+    无法用有限的二进制位数表示 9.95 。使用 64-bit IEEE 浮点
+    （SQLite就是使用这个）最接近 9.95 的二进制表示是
+    9.949999999999999289457264239899814128875732421875。
+    所在，当你输入 9.95 时，SQLite实际上以为是上面的数字，
+    在四舍五入时会舍去。
+  </p>
+
+  <p>这种问题在使用二进制浮点数的任何时候都会出现。
+  通常的规则是记住很多有限的十进制小数都没有一个对应的二进制表示。
+  所以，它们只能使用最接近的二进制数。它们通常非常接近，
+  但也会有些微小的不同，有些时候也会导致你所期望的不同的结果。
+  </p></BLOCKQUOTE></LI>
+
+</OL>
+
+

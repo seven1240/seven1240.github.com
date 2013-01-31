@@ -1,0 +1,118 @@
+  
+<a href="lang.html"><h2>SQL As Understood By SQLite</h2></a>
+<h3>BEGIN TRANSACTION</h3>
+<table cellpadding="10" class=pdf_syntax>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">sql-statement</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0">BEGIN </font></b>[<b><font color="#2c2cf0"> DEFERRED </font></b><big>|</big><b><font color="#2c2cf0"> IMMEDIATE </font></b><big>|</big><b><font color="#2c2cf0"> EXCLUSIVE </font></b>]<b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0">TRANSACTION </font></b>[<b><font color="#2c2cf0"></font></b><i><font color="#ff3434">name</font></i><b><font color="#2c2cf0"></font></b>]<b><font color="#2c2cf0"></font></b>]<b><font color="#2c2cf0"></font></b></td></tr>
+</table>
+<table cellpadding="10" class=pdf_syntax>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">sql-statement</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0">END </font></b>[<b><font color="#2c2cf0">TRANSACTION </font></b>[<b><font color="#2c2cf0"></font></b><i><font color="#ff3434">name</font></i><b><font color="#2c2cf0"></font></b>]<b><font color="#2c2cf0"></font></b>]<b><font color="#2c2cf0"></font></b></td></tr>
+</table>
+<table cellpadding="10" class=pdf_syntax>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">sql-statement</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0">COMMIT </font></b>[<b><font color="#2c2cf0">TRANSACTION </font></b>[<b><font color="#2c2cf0"></font></b><i><font color="#ff3434">name</font></i><b><font color="#2c2cf0"></font></b>]<b><font color="#2c2cf0"></font></b>]<b><font color="#2c2cf0"></font></b></td></tr>
+</table>
+<table cellpadding="10" class=pdf_syntax>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">sql-statement</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0">ROLLBACK </font></b>[<b><font color="#2c2cf0">TRANSACTION </font></b>[<b><font color="#2c2cf0"></font></b><i><font color="#ff3434">name</font></i><b><font color="#2c2cf0"></font></b>]<b><font color="#2c2cf0"></font></b>]<b><font color="#2c2cf0"></font></b></td></tr>
+</table>
+
+
+<p>
+除非在一个事务中，否则是不能对数据库进行更改的。
+如果当前不在事务中，
+任何改变数据库的命令（基本上，任何除SELECT之外的 SQL 语句）都会自动开始一个事务。
+自动开始的事务在命令执行完成后会自动提交。
+</p>
+
+<p>
+可以通过使用 BEGIN 命令手工开始一个事务。这种事务将会持续到下一个
+COMMIT 或 ROLLBACK 命令为止。但如果数据库关闭，或者发生错误并且 ROLLBACK
+冲突解决算法已指定的情况下，事务也会回滚。
+有关冲突解决算法引起的回滚详见 <a href="lang_conflict.html">ON CONFLICT</a>
+</p>
+
+<p>
+END TRANSACTION 是 COMMIT 的一个别名。
+</p>
+
+<p>
+当前，可选的事务名(transaction name)是被忽略的。
+SQLite当前也不支持嵌套的事务。
+但是，未来的版本也可能增加对嵌套事务的支持，事务名也可能很重要。
+我们建议为防止引起未来的兼容问题，在你的应用程序中暂时不要使用事务名。
+</p>
+
+<p>
+事务可以延迟执行(deferred)，立即执行(immediate)或排它执行(exclusive)。
+缺省的事务行为是延迟地。延迟意味着直到数据库第一次被访问之前不需要加锁。
+如此，对于一个延迟的事务，BEGIN命令什么也不做。直到第一个读或写操作之前，
+不需要加锁。对数据库的第一个读操作会产生一个共享锁（SHARED)，
+第一个写操作会加一个保持锁（RESERVED)。由于对锁的需要是延迟的，
+直到确实需要为止，在当前进程执行BEGIN之后，
+有可能其它的进程或线程会启动一个另外的事务并写到数据库。
+如果事务是立即的，那么，执行BEGIN命令将立即在所有数据库上获得一个RESERVED锁，
+而不用等待数据库被访问到。在BEGIN IMMEDIATE之后，
+可以保证没有其它进程下写入数据库中执行BEGIN IMMEDIATE或BEGIN EXCLUSIVE。
+但其它进程仍可以从数据库中读数据。一个排它的事务将在所有数据库上获得
+EXCLUSIVE 锁，在该事务结束之前，没有任何其它线程或进程可以读、写数据库。
+</p>
+
+<p>
+对于 SHARED, RESERVED, 和 EXCLUSIVE 的描述
+<a href="lockingv3.html">单独在这里列出</a>。
+</p>
+
+<p>
+COMMIT 命令在所有未决的 SQL 命令完成之前实际上不会真正提交。
+也就是说，如果事务中有两个或多个 SELECT 语句，并且执行了一个 COMMIT，
+那么在 SELECT 语句完成之前不会发生提交。
+</p>
+
+<p>
+试图执行 COMMIT 可能会导致返回 SQLITE_BUSY 代码。
+它表示另外一个线程或进程在数据库上有一个读锁，从而阻止了数据库的更新。
+当 COMMIT 在这种情况下失败时，事务仍然是活动的，
+如果读者有机会清除，那么事务可以重新执行 COMMIT 。
+</p>
+
+<h3>在事务中对错误作出响应</h3>
+
+<p>在事务中，如果发生了特定的错误，事务可能会也可能不会自动回滚。
+引起这些行为的错误包括：
+</p>
+
+<ul>
+<li> SQLITE_FULL: 数据库或磁盘满
+<li> SQLITE_IOERR: 磁盘 I/O 出错
+<li> SQLITE_BUSY: 数据库被其它进程使用
+<li> SQLITE_NOMEM: 内存不够
+<li> SQLITE_INTERRUPT: 操作被用户中断
+</ul>
+
+<p>
+对于这所有的错误，SQLite 试图undo它正在执行的这条语句，
+并对当前事务中已经执行的那些语句保持原样（保持它们对数据库所做的改变）。
+但是，根据正在执行的这条语句和错误发生的点，可能需要SQLite 回滚并取消该事务。
+应用程序可以通过 <a href="c3ref/get_autocommit.html">sqlite3_get_autocommit()</a>
+C 语言接口获得是何种原因导致SQLite 执行何种动作。
+</p>
+
+<p>
+建议在程序中使用明确的 ROLLBACK 命令来响应上面列出的各种错误。
+如果事务被错误响应自动回滚了，执行 ROLLBACK 失败关引发一个错误，
+但没什么害处。
+</p>
+
+<p>
+未来版本的 SQLite 可能会扩展这一可能引起自动回滚的错误列表，
+也可能改变这些错误的响应。特别的，
+我们在SQLite未来的版本中可能会选择简化这一接口－
+对上面可能引发的错误直接强制无条件的回滚。
+</p>
+

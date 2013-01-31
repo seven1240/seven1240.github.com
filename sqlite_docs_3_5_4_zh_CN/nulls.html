@@ -1,0 +1,310 @@
+<a href="docs.html"><h2>Go Back to Sqlite Docs</a>
+  
+
+
+<h2>SQLite 中 NULL 值的处理及与其它数据库系统的比较</h2>
+
+<p>我们的目的是让SQLite以与标准兼容的方式来处理 NULL。
+但但起来，在 SQL 标准中，对于如何处理 NULL 是不明确的。
+从标准文档中，并不能在所有情况下都清楚地看出应该如何确切地处理 NULL。
+</p>
+
+<p>
+所以，除了遵循标准的文档，我们还测试了其它许多流行的 SQL 引擎，
+来看它们是如果处理 NULL 的。我们的思想是，让 SQLite 像其它数据库引擎那样工作。
+有志愿者编写了一个测试脚本，用于在各种各样的关系型数据库系统上测试 NULL
+值的处理方式。我们最初是在2005年5月测试的。在本文的最后，
+有该测试脚本的一个拷贝。
+</p>
+
+<p>
+最初，SQLite 遵循的编码标准是－对于下面的表格，每个问题的回答都应该是 YES 。
+但通过对其它 SQL 数据库引擎的测试，我们发现，没有任何一个是那样的。
+所以，SQLite 就改成了与Oracle、PostgreSQL 以及 DB2 相同的方式来处理 NULL。
+这就使得在 SELECT DISTINCT 语句及 SELECT 中的 UNION 
+操作符等为获得不重复值而设的操作，会认为 NULL 是彼此不同的。
+但在一个具有唯一约束的列上， NULL 值仍然是相同的。这看起来有些专制，
+但与我们与其它数据库引擎相比，这种专制就显得不那种重要了。
+</p>
+
+<p>
+当然，也可以让 SQLite 认为 SELECT DISTINCT 及 UNION 中的 NULL 是相同的。
+这可以通过改变
+<tt>sqliteInt.h</tt> 源文件中
+NULL_ALWAYS_DISTINCT 的 #define 预理宏并重新编译来实现。
+</p>
+
+<blockquote>
+<p>
+<i>更新于 2003-07-13:</i>
+由于本当初写文本的时候所测试的数据库引擎都已经更新了，
+所以用户很可能期待修正下表。最初的数据显示了非常不一致的行为，
+但随着时间的推移，这些不一致性大都趋从了 PostgreSQL/Oracle 模型。
+仅有的重要区别是 Informix 和 MS-SQL 都认为 UNIQUE 列中的 NULL 是彼此不同的。
+</p>
+
+<p>
+事实是，NULLs 在 UNIQUE 上应该是彼此相同的，而对于
+SELECT DISTINCT 及 UNION 仍然不好说。
+看起来，在任何地方，NULL都应该相同，或者任何地方都不同。
+并且 SQL 标准文档也建议 NULL 值应该在任何地方都是相同的。
+但是，直到本文写作时，也没有 SQL 引擎在 SELECT DISTINCT 或 UNION
+中把 NULL 看作是相同的。
+</p>
+</blockquote>
+
+
+<p>
+下表列出了对于 NULL 处理的试验结果。
+</p>
+
+<table border=1 cellpadding=3 width="100%">
+<tr><th>&nbsp&nbsp;</th>
+<th>SQLite</th>
+<th>PostgreSQL</th>
+<th>Oracle</th>
+<th>Informix</th>
+<th>DB2</th>
+<th>MS-SQL</th>
+<th>OCELOT</th>
+</tr>
+
+<tr><td>NULL 加上任何值都得 NULL</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+</tr>
+<tr><td>NULL 乘 0 得 NULL</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+</tr>
+<tr><td>NULL 值在 UNIQUE 列中是彼此相同的</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#c7a9a9">No</td>
+<td valign="center" align="center" bgcolor="#aaaad2">(Note 4)</td>
+<td valign="center" align="center" bgcolor="#c7a9a9">No</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+</tr>
+<tr><td>NULL 值在 SELECT DISTINCT 时是彼此相同的</td>
+<td valign="center" align="center" bgcolor="#c7a9a9">No</td>
+<td valign="center" align="center" bgcolor="#c7a9a9">No</td>
+<td valign="center" align="center" bgcolor="#c7a9a9">No</td>
+<td valign="center" align="center" bgcolor="#c7a9a9">No</td>
+<td valign="center" align="center" bgcolor="#c7a9a9">No</td>
+<td valign="center" align="center" bgcolor="#c7a9a9">No</td>
+<td valign="center" align="center" bgcolor="#c7a9a9">No</td>
+</tr>
+<tr><td>NULL 值在 UNION 中是彼此相同的</td>
+<td valign="center" align="center" bgcolor="#c7a9a9">No</td>
+<td valign="center" align="center" bgcolor="#c7a9a9">No</td>
+<td valign="center" align="center" bgcolor="#c7a9a9">No</td>
+<td valign="center" align="center" bgcolor="#c7a9a9">No</td>
+<td valign="center" align="center" bgcolor="#c7a9a9">No</td>
+<td valign="center" align="center" bgcolor="#c7a9a9">No</td>
+<td valign="center" align="center" bgcolor="#c7a9a9">No</td>
+</tr>
+<tr><td>"CASE WHEN null THEN 1 ELSE 0 END" 将会是 0?</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+</tr>
+<tr><td>"null OR true" 将会是 true</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+</tr>
+<tr><td>"not (null AND false)" 是 true</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+</tr>
+</table>
+
+<table border=1 cellpadding=3 width="100%">
+<tr><th>&nbsp&nbsp;</th>
+<th>MySQL<br>3.23.41</th>
+<th>MySQL<br>4.0.16</th>
+<th>Firebird</th>
+<th>SQL<br>Anywhere</th>
+<th>Borland<br>Interbase</th>
+</tr>
+
+<tr><td>NULL 加上任何值都得 NULL</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+</tr>
+<tr><td>NULL 乘 0 得 NULL</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+</tr>
+<tr><td>NULL 值在 UNIQUE 列中是彼此相同的</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#aaaad2">(Note 4)</td>
+<td valign="center" align="center" bgcolor="#aaaad2">(Note 4)</td>
+</tr>
+<tr><td>NULL 值在 SELECT DISTINCT 时是彼此相同的</td>
+<td valign="center" align="center" bgcolor="#c7a9a9">No</td>
+<td valign="center" align="center" bgcolor="#c7a9a9">No</td>
+<td valign="center" align="center" bgcolor="#c7a9a9">No (Note 1)</td>
+<td valign="center" align="center" bgcolor="#c7a9a9">No</td>
+<td valign="center" align="center" bgcolor="#c7a9a9">No</td>
+</tr>
+<tr><td>NULL 值在 UNION 中是彼此相同的</td>
+<td valign="center" align="center" bgcolor="#aaaad2">(Note 3)</td>
+<td valign="center" align="center" bgcolor="#c7a9a9">No</td>
+<td valign="center" align="center" bgcolor="#c7a9a9">No (Note 1)</td>
+<td valign="center" align="center" bgcolor="#c7a9a9">No</td>
+<td valign="center" align="center" bgcolor="#c7a9a9">No</td>
+</tr>
+<tr><td>"CASE WHEN null THEN 1 ELSE 0 END" 将会是 0?</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#aaaad2">(Note 5)</td>
+</tr>
+<tr><td>"null OR true" 将会是 true</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+</tr>
+<tr><td>"not (null AND false)" 是 true</td>
+<td valign="center" align="center" bgcolor="#c7a9a9">No</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+<td valign="center" align="center" bgcolor="#a9c7a9">Yes</td>
+</tr>
+</table>
+
+<table border=0 align="right" cellpadding=0 cellspacing=0>
+<tr>
+<td valign="top" rowspan=5>注意：&nbsp;&nbsp;</td>
+<td>1.&nbsp;</td>
+<td>老版本的 firebird 会在 SELECT DISTINCT 及 UNION 在忽略所有的NULL。</td>
+</tr>
+<tr><td>2.&nbsp;</td>
+<td>无测试数据。</td>
+</tr>
+<tr><td>3.&nbsp;</td>
+<td>MySQL version 3.23.41 不支持 UNION 。</td>
+</tr>
+<tr><td>4.&nbsp;</td>
+<td>DB2, SQL Anywhere, 以及 Borland Interbase 
+不能许 UNIQUE 列中有 NULL。</td>
+</tr>
+<tr><td>5.&nbsp;</td>
+<td>Borland Interbase 不支持 CASE 表达式。</td>
+</tr>
+</table>
+<br clear="both">
+
+<p>&nbsp;</p>
+<p>
+以下脚本用于收集上面表中的数据。
+</p>
+
+<pre>
+-- I have about decided that SQL's treatment of NULLs is capricious and cannot be
+-- deduced by logic.  It must be discovered by experiment.  To that end, I have 
+-- prepared the following script to test how various SQL databases deal with NULL.
+-- My aim is to use the information gather from this script to make SQLite as much
+-- like other databases as possible.
+--
+-- If you could please run this script in your database engine and mail the results
+-- to me at drh@hwaci.com, that will be a big help.  Please be sure to identify the
+-- database engine you use for this test.  Thanks.
+--
+-- If you have to change anything to get this script to run with your database
+-- engine, please send your revised script together with your results.
+--
+
+-- Create a test table with data
+create table t1(a int, b int, c int);
+insert into t1 values(1,0,0);
+insert into t1 values(2,0,1);
+insert into t1 values(3,1,0);
+insert into t1 values(4,1,1);
+insert into t1 values(5,null,0);
+insert into t1 values(6,null,1);
+insert into t1 values(7,null,null);
+
+-- Check to see what CASE does with NULLs in its test expressions
+select a, case when b<>0 then 1 else 0 end from t1;
+select a+10, case when not b<>0 then 1 else 0 end from t1;
+select a+20, case when b<>0 and c<>0 then 1 else 0 end from t1;
+select a+30, case when not (b<>0 and c<>0) then 1 else 0 end from t1;
+select a+40, case when b<>0 or c<>0 then 1 else 0 end from t1;
+select a+50, case when not (b<>0 or c<>0) then 1 else 0 end from t1;
+select a+60, case b when c then 1 else 0 end from t1;
+select a+70, case c when b then 1 else 0 end from t1;
+
+-- What happens when you multiple a NULL by zero?
+select a+80, b*0 from t1;
+select a+90, b*c from t1;
+
+-- What happens to NULL for other operators?
+select a+100, b+c from t1;
+
+-- Test the treatment of aggregate operators
+select count(*), count(b), sum(b), avg(b), min(b), max(b) from t1;
+
+-- Check the behavior of NULLs in WHERE clauses
+select a+110 from t1 where b<10;
+select a+120 from t1 where not b>10;
+select a+130 from t1 where b<10 OR c=1;
+select a+140 from t1 where b<10 AND c=1;
+select a+150 from t1 where not (b<10 AND c=1);
+select a+160 from t1 where not (c=1 AND b<10);
+
+-- Check the behavior of NULLs in a DISTINCT query
+select distinct b from t1;
+
+-- Check the behavior of NULLs in a UNION query
+select b from t1 union select b from t1;
+
+-- Create a new table with a unique column.  Check to see if NULLs are considered
+-- to be distinct.
+create table t2(a int, b int unique);
+insert into t2 values(1,1);
+insert into t2 values(2,null);
+insert into t2 values(3,null);
+select * from t2;
+
+drop table t1;
+drop table t2;
+</pre>
+

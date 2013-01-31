@@ -1,0 +1,30 @@
+  
+<a href="lang.html"><h2>SQL As Understood By SQLite</h2></a>
+<h3>comment</h3>
+<table cellpadding="10" class=pdf_syntax>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">comment</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0"></font></b><i><font color="#ff3434">SQL-comment</font></i><b><font color="#2c2cf0"> </font></b><big>|</big><b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">C-comment</font></i><b><font color="#2c2cf0"></font></b></td></tr>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">SQL-comment</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0">-- </font></b><i><font color="#ff3434">single-line</font></i><b><font color="#2c2cf0"></font></b></td></tr>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">C-comment</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0">/<big>*</big> </font></b><i><font color="#ff3434">multiple-lines</font></i><b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0"><big>*</big>/</font></b>]<b><font color="#2c2cf0"></font></b></td></tr>
+</table>
+
+
+<p> Comments 不是 SQL 命令，但可以出现在 SQL 查询中。
+查询分析器将它们作为空白对待。
+只要是可以有空白的地方，他们都可以开始存在，包括在可以跨跃多行的表达式中。
+</p>
+
+<p> SQL 风格的注释只会扩展到当前行的结束。</p>
+
+<p> C 风格的注释可以跨跃任意行，如果没找到结束的分界符，
+它将会扩展到整个输入的结束，而不被视为错误。
+一个新的 SQL 语句可以在一个多行注释后开始。
+C风格的注释也可以放到任意可以有空白的地方，包括在表示式中，
+在 SQL 语句的中间。C 风格的注释不能嵌套。在C 风格注释中的SQL注释将会被忽略。
+</p>
+

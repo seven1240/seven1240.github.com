@@ -1,0 +1,48 @@
+  
+<a href="lang.html"><h2>SQL As Understood By SQLite</h2></a>
+<h3>VACUUM</h3>
+<table cellpadding="10" class=pdf_syntax>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">sql-statement</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0">VACUUM</font></b></td></tr>
+</table>
+
+
+<p>VACUUM 命令是 SQLite的一个扩展，类似于 PostgreSQL。
+在一个表或索引上执行一个 VACUUM 命令，会清除表或索引中无用的信息。
+在SQLite 1.0版本中， VACUUM 命令会调用
+<b>gdbm_reorganize()</b> 来清洗整个数据库文件。</p>
+
+<p>
+在SQLite 2.0.0中，由于去掉了GDBM后端实现，VACUUM 实际上什么也不做。
+但在 2.8.1 中，VACUUM 又重新实现了。
+</p>
+
+<p>当从数据库中删除一个对象（表、索引或触发器）后，
+空出来的空间仍然存在数据库文件中，这使用数据库文件比它实际需要的要大，
+但这样可以增加插入的速度。由于插入和删除会在数据库文件结构中产生碎片，
+将会使用数据库的访问变慢。
+
+VACUUM 命令通过将主数据库的内容复制到一个新的临时数据库文件中，
+并重新从临时文件中装载。这减少数据库中的空闲页，将表中的数据连续排列，
+从某种程度上说清洁了数据库的结构。
+</p>
+
+<p>如果一个表没有明确的声明 INTEGER PRIMARY KEY，
+VACUUM 可能会改变表中行的<a href="lang_createtable.html#rowid">ROWID</a>。 
+
+</p>
+
+<p>VACUUM 只对主数据库有效。
+对所有其它连接上的数据库文件进行 VACUUM 是不可能的。</p>
+
+<p>如果有活动的事务，VACUUM 将会失败。对于内存数据库来说，
+VACUUM 将什么也不做。</p>
+
+<p>对于 SQLite version 3.1，另一个使用 VACUUM 命令的方法是通过
+<a href="pragma.html#pragma_auto_vacuum">auto_vacuum pragma</a>.
+来启用auto-vacuum 模式。
+若数据库的 auto-vacuum模式开启，大的删除操作可以使用数据库文件缩小。
+但是，auto-vacuum模式也会导致在数据库文件中产生更多的碎片。
+并且，auto-vacuum模式也不能像 VACUUM命令那样压缩部分满的磁盘页。
+</p>

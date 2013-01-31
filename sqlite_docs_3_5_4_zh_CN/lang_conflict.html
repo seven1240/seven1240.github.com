@@ -1,0 +1,75 @@
+  
+<a href="lang.html"><h2>SQL As Understood By SQLite</h2></a>
+<h3>ON CONFLICT clause</h3>
+<table cellpadding="10" class=pdf_syntax>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">conflict-clause</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0">ON CONFLICT </font></b><i><font color="#ff3434">conflict-algorithm</font></i><b><font color="#2c2cf0"></font></b></td></tr>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">conflict-algorithm</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0">ROLLBACK </font></b><big>|</big><b><font color="#2c2cf0"> ABORT </font></b><big>|</big><b><font color="#2c2cf0"> FAIL </font></b><big>|</big><b><font color="#2c2cf0"> IGNORE </font></b><big>|</big><b><font color="#2c2cf0"> REPLACE</font></b></td></tr>
+</table>
+
+
+<p>ON CONFLICT 子句不是一个单独的 SQL 命令。
+它可以出现在很多其它的 SQL 命令中，是一个非标准的子句。
+由于它不是标准的 SQL，所以你可能不熟悉，因此我们在这里单独讲解。
+</p>
+
+<p>ON CONFLICT 子句的语法已列在上面。对于 CREATE TABLE、INSERT 以及
+UPDATE 命令， "ON CONFLICT" 关键字使用 "OR" 替换，
+以使其语法看起来更自然一些。如，我们使用
+"INSERT OR IGNORE" 而非 "INSERT ON CONFLICT IGNORE"。
+虽然关键字变了，但意思还是一样的。
+</p>
+
+<p>ON CONFLICT 子句指定一个用于解决约束冲突的算法。
+有五种选择： ROLLBACK, ABORT, FAIL, IGNORE 和 REPLACE。
+默认的算法是 ABORT。意思是：</p>
+
+<dl>
+<dt><b>ROLLBACK</b></dt>
+<dd><p>当约束冲突发生时，立即回滚。这样事务将结束，
+命令也会返回一个 SQLITE_CONSTRAINT 错误代码。
+若没有活动事务（除了在每个命令中隐含创建的事务之外），
+该算法与 ABORT 一样。
+</p></dd>
+
+<dt><b>ABORT</b></dt>
+<dd><p>当发生约束冲突时，该命令会恢复它先前任何所做的可能的改变，
+返回 SQLITE_CONSTRAINT 并 ABORT。但它不会执行 ROLLBACK。
+所以，在它之前的命令所做的改变可以保留下来。
+这是默认的行为。
+</p></dd>
+
+<dt><b>FAIL</b></dt>
+<dd><p>发生约束冲突时，该命令带一个 SQLITE_CONSTRAINT 终止。
+但在冲突发生之前该命令所做的任何改变都保持原来而不会恢复。
+例如：如果一个 UPDATE 语句试图进行更新时，在第 100 行遇到了冲突，
+时它已经更新的 99 行仍然保持更新，但第 100行是永远不会被更新的。
+</p></dd>
+
+<dt><b>IGNORE</b></dt>
+<dd><p>发生冲突约束时，引起冲突的行将不会被插入或修改。但
+命令仍然正常执行。在该行之前及之后的行仍然可以正常的插入或修改到数据库中。
+不返回任何错误。
+</p></dd>
+
+<dt><b>REPLACE</b></dt>
+<dd><p>当发生一个 UNIQUE 约束冲突时，
+引发冲突时已存在的行会先被删除，然后再插入新行，或者更新已存在的行。
+这样，插入或更新永远会发生，命令会继续正常执行而不会返回错误。
+如果与非空约束冲突， NULL值会以该列上的缺省值代替。
+而如果当时该列是没有缺省值，将会使用 ABORT 算法。
+若发生 CHECK 冲突，则会使用 IGNORE 算法。
+</p>
+
+<p>当冲突解决策略为了避开约束而删除了一行时，它不会在该行上触发删除触发器。
+在未来发布的版本中这种行为可能会改变。
+</p>
+</dl>
+
+<p>在 INSERT 或 UPDATE 中使用 OR 子句指定的冲突解决算法会覆盖在
+CREATE TABLE 中指定的算法。如果在任何地方均未指定冲突解决算法，
+则会使用 ABORT 算法。
+

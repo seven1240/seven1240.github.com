@@ -1,0 +1,21 @@
+  
+<a href="lang.html"><h2>SQL As Understood By SQLite</h2></a>
+<h3>EXPLAIN</h3>
+<table cellpadding="10" class=pdf_syntax>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">sql-statement</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0">EXPLAIN </font></b><i><font color="#ff3434">sql-statement</font></i><b><font color="#2c2cf0"></font></b></td></tr>
+</table>
+
+
+<p>EXPLAIN 命令是一个非标准的扩展。
+主要是源于 PostgreSQL 中一个相似的命令。
+但其操作是完全不同的。
+</p>
+
+<p>如果在任何其它的 SQLite 的 SQL 命令前有EXPLAIN 关键字，
+SQLite 库将不会实际执行 SQL 语句，而是报告当 EXPLAIN 不存在时，
+剩余的 SQL 语句将要执行的虚拟机指令。关于虚拟机指令额外的信息请参见
+<a href="arch.html">architecture description</a> 或有关虚拟机指令的文档
+<a href="opcode.html">available opcodes</a></p>
+

@@ -1,0 +1,33 @@
+  
+<a href="lang.html"><h2>SQL As Understood By SQLite</h2></a>
+<h3>ANALYZE</h3>
+<table cellpadding="10" class=pdf_syntax>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">sql-statement</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0">ANALYZE</font></b></td></tr>
+</table>
+<table cellpadding="10" class=pdf_syntax>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">sql-statement</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0">ANALYZE </font></b><i><font color="#ff3434">database-name</font></i><b><font color="#2c2cf0"></font></b></td></tr>
+</table>
+<table cellpadding="10" class=pdf_syntax>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">sql-statement</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0">ANALYZE </font></b>[<b><font color="#2c2cf0"></font></b><i><font color="#ff3434">database-name</font></i><b><font color="#2c2cf0"> <big>.</big></font></b>]<b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">table-name</font></i><b><font color="#2c2cf0"></font></b></td></tr>
+</table>
+
+
+<p>ANALYZE命令收集有关索引的统计信息并把这些信息存于数据库中一个特殊的表中，
+这样，查询优化器就能使用这些信息来选择更好的索引。
+如果没有参数，所有相连的数据库中所有的索引都会被ANALYZE。
+如果以数据库名作为参数，该数据库中所有的索引都会被ANALYZE。
+如果参数是一个表名，那么，只有该表上的索引会被ANALYZE。
+</p>
+
+<p>最初的实现将这些统计信息存在名为<b>sqlite_stat1</b>的单个表中。
+未来的增强版本可能会使用其它的表，而那些表将仍沿用相的的命名规则，
+只是其中的“1”将会改成不同的数字。
+<b>sqlite_stat1</b>表不能被<a href="lang_droptable.html">DROP</a>命令删除。
+但表中的数据可以被<a href="lang_delete.html">DELETE</a>命令清空，以起到与删除表相同的作用。</p>
+

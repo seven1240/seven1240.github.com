@@ -1,0 +1,21 @@
+  
+<a href="lang.html"><h2>SQL As Understood By SQLite</h2></a>
+<h3>DROP INDEX</h3>
+<table cellpadding="10" class=pdf_syntax>
+<tr><td align="right" valign="top">
+<i><font color="#ff3434">sql-command</font></i>&nbsp;::=</td>
+<td><b><font color="#2c2cf0">DROP INDEX </font></b>[<b><font color="#2c2cf0">IF EXISTS</font></b>]<b><font color="#2c2cf0"> </font></b>[<b><font color="#2c2cf0"></font></b><i><font color="#ff3434">database-name</font></i><b><font color="#2c2cf0"> <big>.</big></font></b>]<b><font color="#2c2cf0"> </font></b><i><font color="#ff3434">index-name</font></i><b><font color="#2c2cf0"></font></b></td></tr>
+</table>
+
+
+<p>DROP INDEX 语句删除使用 <a href="lang_createindex.html">
+CREATE INDEX</a> 语句创建的索引。
+索引名会从磁盘上完全删除，恢复索引的唯一办法是重新运行正确的 CREATE INDEX 命令。
+</p>
+
+<p>DROP INDEX 语句在缺省模式下不会减少数据库文件的大小。
+数据库中空闲的空间将会被后续的 INSERT 操作使用。
+要移除数据库的自由空间，使用 <a href="lang_vacuum.html">VACUUM</a> 命令。
+如果一个数据库开启了 AUTOVACUUM 模式，那么 DROP INDEX 将自动释放空间。
+</p>
+
