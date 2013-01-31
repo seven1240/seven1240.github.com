@@ -7,6 +7,10 @@ title: {{ site.com }}
 
 我也有一个 [about.me](http://about.me/dujinfang) 页面。
 
-点击这里查看我的 [所有文章](/posts.html) 。
-<br>
-<br>
+<hr>
+
+<ul class="posts">
+  {% for post in site.posts %}
+    <li><span>{{ post.date | date: "%Y-%m-%d" }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+  {% endfor %}
+</ul>
