@@ -3,3 +3,6 @@ pygments: true
 auto: true
 markdown: rdiscount
 com: "Seven's Blog"
+name: "Seven's Blog"
+description: "Seven's Blog"
+url: "http://www.dujinfang.com"
