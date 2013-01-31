@@ -35,7 +35,7 @@ There is an [About Me](http://about.me/dujinfang) page in English. Read on if yo
 我的签名是：-7-
 
 更多关于我的信息，见：
-[在网上安个家，写写博客](/past/2009/11/7/zai-wang-shang-an-ge-jia-xie-xie-bo-ke/)
+[在网上安个家，写写博客](/2009/11/07/zai-wang-shang-an-ge-jia-xie-xie-bo-ke.html)
 
 
 联系我？请发邮件到 me .at. dujinfang.com
