@@ -11,7 +11,7 @@ There is an [About Me](http://about.me/dujinfang) page in English. Read on if yo
 
 我喜欢新技术，喜欢KISS - Keep It Simple, Stupid。简单就是美嘛。
 
-我喜欢自由软件。对自由软件社区也有丁点儿贡献，[翻译过一些文章](/past/2009/12/5/ceng-jing-zai-linuxfocusshang-fan-yi-de-yi-xie-wen-zhang/)和一些[SQLite文档](http://www.dujinfang.com/sqlite_docs_3_5_4_zh_CN/docs.html)
+我喜欢自由软件。对自由软件社区也有丁点儿贡献，[翻译过一些文章](/2009/12/05/ceng-jing-zai-linuxfocusshang-fan-yi-de-yi-xie-wen-zhang.html)和一些[SQLite文档](/sqlite_docs_3_5_4_zh_CN/docs.html)
 ，也做过几个项目：[Google code](http://code.google.com/u/dujinfang/)，[GitHub](http://github.com/seven1240)以及[FreeSWITCH-Air](http://www.freeswitch.org.cn/download)，创办了[FreeSWITCH中文社区](http://www.freeswitch.org.cn)。
 
 除写了博客外，有时也写点[技术文章](http://www.infoq.com/cn/articles/rails-voip-system-architecture-and-development)。现在正在写一本[关于FreeSWITCH的书](http://www.freeswitch.org.cn/document)。
@@ -30,7 +30,7 @@ There is an [About Me](http://about.me/dujinfang) page in English. Read on if yo
 
 至少（或曾经至少）会说一句话的语言有英语、法语、德语、俄语、韩语、日语、马来语、意大利语以及广东话。
 
-去过的国家有马来西亚和美国。[我的公司](http://x-y-t.com)在首都北京，有时工作和生活在美丽的海滨城市--烟台。
+[我的公司](http://x-y-t.com)在首都北京，有时工作和生活在美丽的海滨城市--烟台。
 
 我的签名是：-7-
 
