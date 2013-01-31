@@ -1,9 +1,18 @@
 ---
 layout: post
 title: "吾将去兮"
+tags:
+  - "故事"
+  - "心情"
+  - "诗词"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 两年前，我离开生活了十余年的魅力烟台，来到首都北京。
 

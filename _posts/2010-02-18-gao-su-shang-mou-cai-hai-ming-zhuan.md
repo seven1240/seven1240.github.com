@@ -1,9 +1,16 @@
 ---
 layout: post
 title: "高速上谋才害命(转)"
+tags:
+  - "news"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 转自：<http://www.tianya.cn/techforum/content/868/28.shtml>
 

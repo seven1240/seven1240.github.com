@@ -1,9 +1,16 @@
 ---
 layout: post
 title: "Mac 10.6.4上使用QT一点经验"
+tags:
+  - "QT"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 呵呵，没想到，又拾起了桌面开发。
 

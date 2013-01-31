@@ -1,9 +1,17 @@
 ---
 layout: post
 title: "手机厂商和移动运营商都在想什么？"
+tags:
+  - "故事"
+  - "企业管理"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 什么样的手机可以用于电脑上网？从理论上讲，内置Modem功能的手机都应该能支持电脑上网。不管是通过数据线，蓝牙，还是红外。但如果上网搜索，还是很难找到正确的答案。
 

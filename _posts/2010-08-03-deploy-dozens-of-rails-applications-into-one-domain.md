@@ -1,9 +1,17 @@
 ---
 layout: post
 title: "Deploy dozens of rails applications into one domain"
+tags:
+  - "rails"
+  - "nginx"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 We eventually have more than 30 rails applications running. Back to the days when we had only 3, we deploy each to a separate domains:
 

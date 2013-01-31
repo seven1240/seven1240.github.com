@@ -1,9 +1,18 @@
 ---
 layout: post
 title: "行香子·小灵通"
+tags:
+  - "故事"
+  - "心情"
+  - "诗词"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 甲申，很多年以前的事了吧？与其说是词，还不如说是打油诗。不过，也算是应情应景。与当年的另一幅对联一起，在书法比赛中还获了奖。
 

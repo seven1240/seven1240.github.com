@@ -1,9 +1,18 @@
 ---
 layout: post
 title: "辩证法 -- 年底随笔"
+tags:
+  - "故事"
+  - "心情"
+  - "企业管理"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 
 

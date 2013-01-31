@@ -1,9 +1,16 @@
 ---
 layout: post
 title: "用 Erlang 实现彩票算法"
+tags:
+  - "erlang"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 我们需要解决的问题是 -- 选择一个最好的客服代表为客户服务，又不失公平。
 

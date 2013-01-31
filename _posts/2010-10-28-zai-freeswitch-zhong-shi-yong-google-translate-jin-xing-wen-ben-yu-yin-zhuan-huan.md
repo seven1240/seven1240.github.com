@@ -1,9 +1,17 @@
 ---
 layout: post
 title: "在 FreeSWITCH 中使用 google translate 进行文本语音转换"
+tags:
+  - "freeswitch"
+  - "tips"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 今天，偶然发现 google translate 一个很酷的功能，TTS。
 

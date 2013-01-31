@@ -1,9 +1,16 @@
 ---
 layout: post
 title: "Ubuntu 安装Latex+UTF8字体问题"
+tags:
+  - "linux"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 本文写于2008年1月，从旧博客转过来的，显然已经过时了。但Latex是不会过时的，所以，没舍得丢。
 

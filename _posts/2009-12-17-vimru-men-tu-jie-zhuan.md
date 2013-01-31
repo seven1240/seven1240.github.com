@@ -1,9 +1,16 @@
 ---
 layout: post
 title: "vim入门图解(转)"
+tags:
+  - "vim"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 看到一个vim入门图解挺好的
 

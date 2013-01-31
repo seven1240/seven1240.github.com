@@ -1,9 +1,16 @@
 ---
 layout: post
 title: "FreeSWITCH与华为SoftX3000对接及压力测试"
+tags:
+  - "freeswitch"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 首先声明：FreeSWITCH 官方从来不对性能做任何承诺，也不进行压力测试。因为大多数的压力测试不能准确的模拟实际的应用场景，而且网上抄来的测试脚本有的都是错误的。
 

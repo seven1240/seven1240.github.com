@@ -1,9 +1,16 @@
 ---
 layout: post
 title: "在FreeSWITCH中执行长期运行的嵌入式脚本--Lua语言例子"
+tags:
+  - "freeswitch"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 众所周知，FreeSWITCH中可以使用嵌入式的脚本语言javascript、lua等来控制呼叫流程。而更复杂一点操作可能就需要使用[Event Socket](http://wiki.freeswitch.org/wiki/Event_Socket)了。其实不然，嵌入式的脚本也可以一直运行，并可以监听所有的Event，就像使用Event Socket起一个单独的Daemon一样。
 

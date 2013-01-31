@@ -1,9 +1,16 @@
 ---
 layout: post
 title: "折腾 Google Chrome 的开发者工具及插件"
+tags:
+  - "chrome"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 换了 Chrome 以后，用 Firefox 就很少了，但总是离不开。主要原因有二：
 

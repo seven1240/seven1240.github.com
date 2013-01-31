@@ -1,9 +1,17 @@
 ---
 layout: post
 title: "在heroku上使用 Sinatra+ActionMailer 发邮件"
+tags:
+  - "sinatra"
+  - "ruby"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 Heroku有一个sendgrid Addon，对于Rails应该是0配置的，但我使用Sinatra，所以想试试[Pony](http://github.com/adamwiggins/pony)，但无论如何都无法连接SMTP。后来，查看官方文档，除提到必须使用ActionMailer外，没有任何有用的信息：
 

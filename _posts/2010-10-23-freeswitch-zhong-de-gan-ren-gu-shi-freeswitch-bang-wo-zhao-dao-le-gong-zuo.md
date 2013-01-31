@@ -1,9 +1,18 @@
 ---
 layout: post
 title: "FreeSWITCH 中的感人故事 - FreeSWITCH 帮我找到了工作"
+tags:
+  - "故事"
+  - "心情"
+  - "freeswitch"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 今天，跟 FreeSWITCH 邮件列表中的一位网友聊天，忽然想到了它曾发到列表中的一则故事。感悟颇多。
 

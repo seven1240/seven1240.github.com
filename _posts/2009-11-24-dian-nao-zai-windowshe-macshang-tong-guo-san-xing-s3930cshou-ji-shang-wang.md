@@ -1,9 +1,17 @@
 ---
 layout: post
 title: "电脑在Windows和Mac上通过三星S3930C手机上网"
+tags:
+  - "手机"
+  - "故事"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 买了个新手机，3G版的，但没有3G的卡。用2G的卡能上网达到Edge的速度，还是挺不错的。买手机的时候，MM告诉我不能用于电脑上网。回到家不甘心，从网上搜了些帖子，试了试，居然成功了。小三星还是挺可爱的。
 

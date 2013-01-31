@@ -1,9 +1,16 @@
 ---
 layout: post
 title: "在 Ubuntu Hardy 上安装rubygems 1.3.7"
+tags:
+  - "ruby"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 今天，帮一个朋友解决gem问题，服务器是 Ubuntu 8.04 Hardy。所有 gem 操作都出 301 错误，gem env 显示如下：
 

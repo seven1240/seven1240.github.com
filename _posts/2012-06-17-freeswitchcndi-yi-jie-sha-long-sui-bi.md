@@ -1,9 +1,16 @@
 ---
 layout: post
 title: "FreeSWITCH-CN第一届沙龙随笔"
+tags:
+  - "故事"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 第一届沙龙结束了，来的人还真不少。不像我预料的那样，来的大多数不是年轻的开发者，而更多是资深的程序员和CTO。难道通信这一行业真算是古老的东西？还是，轻易入不了行？
 

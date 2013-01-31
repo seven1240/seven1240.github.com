@@ -1,9 +1,18 @@
 ---
 layout: post
 title: "芝加哥之旅(七)艺术的殿堂"
+tags:
+  - "旅游"
+  - "故事"
+  - "心情"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 赶在10点前起来吃早餐，再晚就没了。事实证明像我这样赶最后一班车的人还真不少，餐厅里满满当当，也非常热闹。
 

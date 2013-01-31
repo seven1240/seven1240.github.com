@@ -1,9 +1,18 @@
 ---
 layout: post
 title: "行香子·采风昆嵛山"
+tags:
+  - "故事"
+  - "心情"
+  - "诗词"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 丁亥秋日，天气晴爽。E网情深论坛及烟台网通书画摄影协会联合组织自驾车昆嵛山摄影采风。在九龙池景区，众坛友各显神通，拍下了大自然的鬼斧神工。同时，大家互相交流学习，欢声笑语时盈耳畔。感此情景，撰行香子词记之。
 

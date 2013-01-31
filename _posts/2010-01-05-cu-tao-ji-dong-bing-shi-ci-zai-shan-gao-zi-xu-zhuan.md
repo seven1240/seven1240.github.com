@@ -1,9 +1,17 @@
 ---
 layout: post
 title: "《粗陶集·冬冰诗词再删稿》自序(转)"
+tags:
+  - "故事"
+  - "诗词"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 近几日想写写老师，后来想想，还是让老师写写自己吧。 --Seven
 

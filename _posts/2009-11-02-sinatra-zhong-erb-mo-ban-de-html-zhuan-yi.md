@@ -1,9 +1,18 @@
 ---
 layout: post
 title: "Sinatra 中 ERB 模板的 HTML 转义"
+tags:
+  - "sinatra"
+  - "erb"
+  - "rails"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 在Rails的ERB模板中, 经常会用到HTML转义, 最近使用Sinatra, 发现用不了, 最后搜到了这篇文章:
 

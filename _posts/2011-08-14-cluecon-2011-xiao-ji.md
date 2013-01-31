@@ -1,9 +1,16 @@
 ---
 layout: post
 title: "Cluecon 2011 小记"
+tags:
+  - "freeswitch"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 搞 FreeSWITCH  好几年了，一直盼望能去 [ClueCon](http://www.cluecon.com) 见识见识。今年，终于有了一个机会。
 

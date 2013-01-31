@@ -1,9 +1,17 @@
 ---
 layout: post
 title: "彼得定律"
+tags:
+  - "故事"
+  - "企业管理"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 
 

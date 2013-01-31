@@ -1,9 +1,16 @@
 ---
 layout: post
 title: "测试 FreeSWITCH 视频会议"
+tags:
+  - "freeswitch"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 一直想测一直  FreeSWITCH 的视频会议功能，但以前只有两个支持  H263 的设备 (Huawei视频电话及一个 Xlite），未能好好体验。最近买了两个 XPT8886 视频电话及一个 Bria 软电话授权，总算是可以测试三方会议了。
 

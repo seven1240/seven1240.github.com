@@ -1,9 +1,16 @@
 ---
 layout: post
 title: "转播一条新闻"
+tags:
+  - "news"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 我向来讨厌杀毒软件。好几年不用Windows了，早已忘记了使用它们的那些不快。
 

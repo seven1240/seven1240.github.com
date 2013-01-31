@@ -1,9 +1,18 @@
 ---
 layout: post
 title: "我的EQ故事"
+tags:
+  - "故事"
+  - "心情"
+  - "EQ英语"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 本文写于 2009 年，原载于 EQ Blog 上，最近发生的事情又勾起了一些我对往事的回忆。
 

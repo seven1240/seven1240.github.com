@@ -1,9 +1,18 @@
 ---
 layout: post
 title: "芝加哥之旅(一) 准备，一波三折"
+tags:
+  - "旅游"
+  - "故事"
+  - "心情"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 一直希望有个机会能去米国转转。搞 FreeSWITCH 这么多年，去参加一个 ClueCon 大会自然是一个首选的机会。本来计划去年能去，但由于去年的工作[有点小小的变动](http://www.dujinfang.com/past/2010/5/26/wu-yue-sui-bi/)，等一切安定下来的时候再办签证已经来不及了。
 

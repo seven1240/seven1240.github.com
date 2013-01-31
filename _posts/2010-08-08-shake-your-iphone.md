@@ -1,9 +1,16 @@
 ---
 layout: post
 title: "Shake Your iPhone"
+tags:
+  - "photo"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 Last night I went to the sea side. My hands shaked  when I touch the shutter. The light in the photo was distorted. I think it would be possible to make amazing effects if I shake more heavily.
 

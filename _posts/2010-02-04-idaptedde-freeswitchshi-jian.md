@@ -1,9 +1,16 @@
 ---
 layout: post
 title: "Idapted的FreeSWITCH实践"
+tags:
+  - "freeswitch"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 注：与本文对应的英文版本发布在 <http://wiki.freeswitch.org/wiki/FreeSWITCH_Testimonial_on_Idapted.com>，但本文不是原英文版的翻译。
 

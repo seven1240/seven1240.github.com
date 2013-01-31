@@ -1,9 +1,16 @@
 ---
 layout: post
 title: "Welcome to my blog"
+tags:
+  - "welcome"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 Seven is my English name, I have nothing with [Seven of Nine](http://en.wikipedia.org/wiki/Seven_of_Nine), and I have never ever had a chance to see the film [Se7en](http://en.wikipedia.org/wiki/Seven_%28film%29).
 

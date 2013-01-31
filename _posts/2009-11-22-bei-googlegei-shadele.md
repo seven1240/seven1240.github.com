@@ -1,9 +1,16 @@
 ---
 layout: post
 title: "被Google给Shade了"
+tags:
+  - "google"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 今天在更新网站时突然出现全站变成灰色，所有链接都不能访问。起初还以为惹着了GFW呢，今天访问heroku时就很慢，且时断时续。下午还莫名其妙的收到北京市公安局的短信，虚惊一场。，原文如下：
 

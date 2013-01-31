@@ -1,9 +1,16 @@
 ---
 layout: post
 title: "曾经在LinuxFocus上翻译的一些文章"
+tags:
+  - "翻译"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 [LinuxFocus](http://www.linuxfocus.org/)曾是一个很有名的Linux在线杂志网站，支持十余种语言。我有幸在2004年加入LF邮件列表并翻译了几遍文章(EN to CN)。不幸的是，该网站在2005年8月宣布停止更新，邮件列表也停了。
 

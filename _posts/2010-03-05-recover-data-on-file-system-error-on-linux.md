@@ -1,9 +1,16 @@
 ---
 layout: post
 title: "Recover data on file system error on linux"
+tags:
+  - "linux"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 One of our Linux server run into problem and mounted all file systems readonly.  And, unfortunately, We lost lots of data when we did a "fsck -y". Run a "ls" command on /var and /usr/lib lists out nearly nothing.
 

@@ -1,9 +1,16 @@
 ---
 layout: post
 title: "在 Rails 中使用 fork 将耗时任务放到后台执行"
+tags:
+  - "rails"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 最天在检查问题时发现一个同事在执行后台任务的时候有问题，那是个很简单的rails应用，为了能让客户端能快速返回而使用  workling 将费时的工作放到后台执行。但后台的任务执行是单进程的，这就导致在大量并发的情况下有些任务得不到及时执行。当然理想状态是将后台做成多进程的，但由于任务太简单，没有必要为此做太多的工作。因此我给他写了个脚本：
 

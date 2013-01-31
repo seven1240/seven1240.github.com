@@ -1,9 +1,18 @@
 ---
 layout: post
 title: "仿江南春·雪夜偶成 五首"
+tags:
+  - "故事"
+  - "心情"
+  - "诗词"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 酉年，算起来到今天已有好几个年头了。时间过的真是快。说实话，这种情景的东西真是不好写，当时也很少读书，就更没有灵感，也就无法拘泥词格韵律了。不过，后来用这五首仿江南春写了一组五条屏，还获了个公司书画比赛书法组一等奖。
 

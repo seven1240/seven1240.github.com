@@ -1,9 +1,18 @@
 ---
 layout: post
 title: "芝加哥之旅(六)重回 HI Chicago"
+tags:
+  - "旅游"
+  - "故事"
+  - "心情"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 9 号下午会议早早就散场了。我也没去别的地方，就直接又回到旅舍，从6点钟就开始睡觉，实在太累了这几天。
 

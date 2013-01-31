@@ -1,9 +1,16 @@
 ---
 layout: post
 title: "在 Ubuntu 上使用 imagemagick 分割图片以及图片打印"
+tags:
+  - "linux"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 从我的旧博客上搬过来的，写于2008年2月。
 

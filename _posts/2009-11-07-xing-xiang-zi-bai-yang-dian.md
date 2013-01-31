@@ -1,9 +1,18 @@
 ---
 layout: post
 title: "行香子·白洋淀"
+tags:
+  - "故事"
+  - "心情"
+  - "诗词"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 两周前，公司组织去白洋淀游玩。我小时候在水边长大，见到水更是有一种特别的感情，只是小时候没怎么上过船。
 

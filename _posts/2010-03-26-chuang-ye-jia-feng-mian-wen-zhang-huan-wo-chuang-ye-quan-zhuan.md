@@ -1,9 +1,17 @@
 ---
 layout: post
 title: "创业家封面文章：还我创业权(转)"
+tags:
+  - "新闻"
+  - "转载"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 
 来源：《创业家》 2010年03月25日13:06

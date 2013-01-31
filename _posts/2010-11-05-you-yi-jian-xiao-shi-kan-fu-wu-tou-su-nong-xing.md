@@ -1,9 +1,18 @@
 ---
 layout: post
 title: "又一件小事看服务 - 投诉农行"
+tags:
+  - "思考"
+  - "故事"
+  - "企业管理"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 曾在2005年写过一篇[投诉火车站的故事](/past/2009/11/7/ta-shan-zhi-shi-ke-yi-gong-yu/)。今天又投诉了一下农行。
 

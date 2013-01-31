@@ -1,9 +1,15 @@
 ---
 layout: post
 title: "友情链接"
+tags:
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 * [Refactoring Thoughts](http://www.wangyaodi.com)
 * [曲径通幽处](http://blog.sina.com/ytgw)

@@ -1,9 +1,18 @@
 ---
 layout: post
 title: "他山之石 可以攻玉"
+tags:
+  - "企业管理"
+  - "故事"
+  - "思考"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 本文写于2005年以前。
 

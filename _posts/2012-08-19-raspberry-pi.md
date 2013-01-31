@@ -1,9 +1,18 @@
 ---
 layout: post
 title: "Raspberry Pi"
+tags:
+  - "freeswitch"
+  - "erlang"
+  - "RaspberryPi"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 在 Element14上订了一个[Raspberry Pi](http://www.raspberrypi.org/),不到两周的时间就到货了，只可惜到货时我刚刚踏上去米国的征程。回来后的几天也一时没时间弄，但心里还是痒痒的。适逢周末路过中关村，就买了一个HDMI转VGA的转接线，都赶上Pi的一半贵了。但是没办法，大部分显示器还是VGA的。
 

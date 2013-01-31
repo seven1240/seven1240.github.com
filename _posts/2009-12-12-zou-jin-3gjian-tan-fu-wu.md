@@ -1,9 +1,18 @@
 ---
 layout: post
 title: "走近3G--兼谈服务"
+tags:
+  - "企业管理"
+  - "故事"
+  - "思考"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 
 

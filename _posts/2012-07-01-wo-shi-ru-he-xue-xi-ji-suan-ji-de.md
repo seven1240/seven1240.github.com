@@ -1,9 +1,17 @@
 ---
 layout: post
 title: "我是如何学习计算机的"
+tags:
+  - "故事"
+  - "心情"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 又翻出来一篇以前的文章，应该是04年左右写的，当时发在单位内部的论坛上。
 

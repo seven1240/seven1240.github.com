@@ -1,9 +1,17 @@
 ---
 layout: post
 title: "在多台电脑上开发heroku程序"
+tags:
+  - "heroku"
+  - "@tech"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 由于需要在另外一台电脑上修改我的博客，而[heroku](http://heroku.com)的git是基于public key的，所以，如何上传public key就成了解决问题的关键。但是，heroku的文档中好像没有提到，不过，总是有办法的：
 

@@ -1,9 +1,17 @@
 ---
 layout: post
 title: "克尔蠢举"
+tags:
+  - "故事"
+  - "企业管理"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 
 　　 作为管理者经常产生这样的困惑：尽管采用了大量的激励政策，为什么员工总不能按我们所希望的、要求的方式行事呢？下面一则渔夫和蛇的寓言或许会给我们一些启示：

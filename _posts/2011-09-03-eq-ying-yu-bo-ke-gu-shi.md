@@ -1,9 +1,18 @@
 ---
 layout: post
 title: "EQ 英语博客故事"
+tags:
+  - "故事"
+  - "心情"
+  - "EQ英语"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 2011年9月1日，是一个特殊的日子。在这一天，公司辞退了所有与 EQ 有关的员工，并正式关闭了整个平台。而那里，是我曾经奋斗过的地方。
 

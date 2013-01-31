@@ -1,9 +1,16 @@
 ---
 layout: post
 title: "Rails 服务器迁移点滴"
+tags:
+  - "rails"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 我们有 [数十个 rails 应用](http://en.oreilly.com/rails2010/public/schedule/detail/14302)。以及基于 FreeSWITCH 的VoIP 系统。由于考虑以后的发展做了一个艰难的决定--搬家。以前采用运计算主机托管方案，虽然不用自己维护硬件但也少了好多灵活性，而且带宽和内存很贵，而 Rails 又是吃内存的东西。
 

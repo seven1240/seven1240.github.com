@@ -1,9 +1,18 @@
 ---
 layout: post
 title: "芝加哥之旅(九)去也匆匆"
+tags:
+  - "旅游"
+  - "故事"
+  - "心情"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 第二天感觉终于把时差倒正了，吃完早餐9点多，又跟人聊几句天。本来是想去 BestBuy 再买点东西的，可是感觉时间来不及了，就直接坐地铁到机场了。
 

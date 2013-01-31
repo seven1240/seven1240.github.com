@@ -1,9 +1,16 @@
 ---
 layout: post
 title: "Google DNS is welcome"
+tags:
+  - "google"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 [google发布了免费的DNS服务](http://www.linux-magazine.com/Online/News/Google-Starts-Own-DNS-Service-8.8.8.8-and-8.8.4.4)，今天试用了一下，挺不错。
 

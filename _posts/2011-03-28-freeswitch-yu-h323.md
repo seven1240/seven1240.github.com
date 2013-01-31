@@ -1,9 +1,16 @@
 ---
 layout: post
 title: "FreeSWITCH 与 h323"
+tags:
+  - "freeswitch"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 FreeSWITCH 中有两个 h323 的实现，[mod_opal](http://wiki.freeswitch.org/wiki/Mod_opal) 与 [mod_h323](http://wiki.freeswitch.org/wiki/Mod_h323)。两者都使用 ptlib，后者比较新一点。以前曾经测试过 mod_opal ，但没有成功，今天试了一下 h323，成功了。
 

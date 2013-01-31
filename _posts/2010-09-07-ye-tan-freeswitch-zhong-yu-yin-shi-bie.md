@@ -1,9 +1,17 @@
 ---
 layout: post
 title: "也谈 FreeSWITCH 中语音识别"
+tags:
+  - "ASR"
+  - "freeswitch"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 前段时间有一个语音识别的项目，便轻轻地研究了一下，虽没有达到预期的效果，但过程还是比较有趣。
 

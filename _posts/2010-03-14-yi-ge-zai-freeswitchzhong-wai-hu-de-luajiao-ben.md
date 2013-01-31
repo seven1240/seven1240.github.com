@@ -1,9 +1,16 @@
 ---
 layout: post
 title: "一个在FreeSWITCH中外呼的Lua脚本"
+tags:
+  - "freeswitch"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 一个在FreeSWITCH中外呼的脚本
 

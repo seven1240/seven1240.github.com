@@ -1,9 +1,17 @@
 ---
 layout: post
 title: "迟到的《迟到的间隔年》"
+tags:
+  - "故事"
+  - "心情"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 从Andy那里看到了这本书。使我产生兴趣的，不仅是因为[Andy的博文](http://blog.wangyaodi.com/2009/12/22/gap-year/)，而是，因为我喜欢这本书的名字--[《迟到的间隔年》](http://www.douban.com/subject/3905366/)。在此之前，我根本不知道“间隔年”这个词。那天，[哥几个聚会](http://blog.wangyaodi.com/2009/12/27/weekly-key-words-20091227/)，抢在开饭前大约看了四分之一的内容。
 

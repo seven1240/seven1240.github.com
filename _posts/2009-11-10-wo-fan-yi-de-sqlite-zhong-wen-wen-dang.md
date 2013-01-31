@@ -1,9 +1,16 @@
 ---
 layout: post
 title: "我翻译的 Sqlite 中文文档"
+tags:
+  - "sqlite"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 2007年我开始写博客时，曾有一段时间病了不能出门，翻译了一部分Sqlite文档。但遗憾的是，不久以后我的服务器出了问题。后来，在Google搜索时还经常能搜到那些地址，只是不能访问了。
 

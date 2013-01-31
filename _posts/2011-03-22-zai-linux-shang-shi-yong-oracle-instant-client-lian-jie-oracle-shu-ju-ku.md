@@ -1,9 +1,17 @@
 ---
 layout: post
 title: "在 Linux 上使用 oracle instant client 连接 oracle 数据库"
+tags:
+  - "linux"
+  - "oracle"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 多年没用过 oracle 了，今天一个朋友让我帮它解决 oracle 连接问题，就帮忙研究了一下，也算复习一下吧。要说 oracle 这个东西真复杂， 网上的文档也五花八门，试了好多种组合，才最后搞定。
 

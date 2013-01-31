@@ -1,9 +1,18 @@
 ---
 layout: post
 title: "浣溪沙·庆书画摄影协会成立"
+tags:
+  - "故事"
+  - "心情"
+  - "诗词"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 06年07年？大约那个时候吧。
 

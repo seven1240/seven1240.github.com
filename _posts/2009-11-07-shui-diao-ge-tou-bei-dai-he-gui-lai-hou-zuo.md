@@ -1,9 +1,15 @@
 ---
 layout: post
 title: "水调歌头·北戴河归来后作"
+tags:
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 今年夏天，技术部成员去北戴河游玩，开会。
 

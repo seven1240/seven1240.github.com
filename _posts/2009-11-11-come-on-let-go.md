@@ -1,9 +1,17 @@
 ---
 layout: post
 title: "Come on, Let's GO"
+tags:
+  - "go"
+  - "zimbu"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 接连看到出现了两个新语言[Zimbu](http://groups.google.com/group/zimbu-discuss)和[GO](http://golang.org)。出于对新事物的好奇和热爱，今晚把它们的文档都看了一下。
 

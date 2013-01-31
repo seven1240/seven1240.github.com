@@ -1,9 +1,18 @@
 ---
 layout: post
 title: "一剪梅·秋夜"
+tags:
+  - "故事"
+  - "心情"
+  - "诗词"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 又找到一篇，几年前写的。
 

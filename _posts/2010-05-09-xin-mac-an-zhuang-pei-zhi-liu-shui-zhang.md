@@ -1,9 +1,16 @@
 ---
 layout: post
 title: "新 Mac 安装配置流水账"
+tags:
+  - "Mac"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 今天周末，去看 MBP，对比了一下，13吋的确实有些小，小有小的好处，但那就不如买个 iPad了。因此冲动了一下，弄了个15吋，最低配。带Snow 10.6.3。很重的不过。
 

@@ -1,9 +1,17 @@
 ---
 layout: post
 title: "罗森塔尔效应"
+tags:
+  - "故事"
+  - "教育"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 “罗森塔尔效应”产生于美国著名心理学家罗森塔尔的一次有名的实验中：
 

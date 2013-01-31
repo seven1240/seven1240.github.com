@@ -1,9 +1,18 @@
 ---
 layout: post
 title: "芝加哥之旅(四)第二天，初游芝加哥"
+tags:
+  - "旅游"
+  - "故事"
+  - "心情"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 夜里睡不着，还起来上了2个小时网，又重新睡。早上大约9点起床，也不知道那帮人什么时候回来的，女朋友们就住在我们屋里。有的已经离开了，有的在收拾东西，有的去纽约有的去其它地方。
 

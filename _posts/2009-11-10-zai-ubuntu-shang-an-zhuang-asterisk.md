@@ -1,9 +1,17 @@
 ---
 layout: post
 title: "在 Ubuntu 上安装 Asterisk"
+tags:
+  - "asterisk"
+  - "linux"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 与许多VoIP爱好者一样，我也是从Asterisk开始的，只是没怎么深入。这篇文章是从我的旧博客上挪过来的，写于2008年1月。
 

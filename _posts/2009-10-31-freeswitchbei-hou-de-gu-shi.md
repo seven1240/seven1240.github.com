@@ -1,9 +1,16 @@
 ---
 layout: post
 title: "FreeSWITCH背后的故事(译)"
+tags:
+  - "freeswitch"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 本文由Anthony Minessale写于2007年5月。来自 [www.freeswitch.org](http://www.freeswitch.org/node/60)。翻译它是因为我觉得永远都不会过时... --Seven
 

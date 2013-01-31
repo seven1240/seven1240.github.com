@@ -1,9 +1,18 @@
 ---
 layout: post
 title: "春雪 — 周末加班出门值雪"
+tags:
+  - "故事"
+  - "心情"
+  - "诗词"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 大约是2007年吧？记不清了。
 

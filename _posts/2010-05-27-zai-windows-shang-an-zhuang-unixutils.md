@@ -1,9 +1,16 @@
 ---
 layout: post
 title: "在 Windows 上安装 UnxUtils"
+tags:
+  - "windows"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 虽然恨死 Windows 却有时候离不开。好在有好人把一些经典的Unix工具都 port 到了 Windows 上，称之为 UnxUtils。
 

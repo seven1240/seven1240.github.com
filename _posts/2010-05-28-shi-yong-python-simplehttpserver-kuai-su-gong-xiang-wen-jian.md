@@ -1,9 +1,16 @@
 ---
 layout: post
 title: "使用 Python SimpleHTTPServer 快速共享文件"
+tags:
+  - "python"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 今天，朋友要我给它传一些照片和几个视频文件。使用QQ传了几个照片，但视频实在是太慢了。便想用HTTP。
 

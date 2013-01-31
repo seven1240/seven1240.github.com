@@ -1,9 +1,16 @@
 ---
 layout: post
 title: "SEO 工具(转)"
+tags:
+  - "SEO"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 友情链接检测工具：<http://link.chinaz.com/>
 

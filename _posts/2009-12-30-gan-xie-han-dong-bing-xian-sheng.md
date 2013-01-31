@@ -1,9 +1,17 @@
 ---
 layout: post
 title: "感谢韩冬冰先生"
+tags:
+  - "故事"
+  - "心情"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 
 几天前，听说先生打听我的通信地址。以为先生又有什么新作，要给我寄书呢。后来，才知道，原来先生要给我寄贺卡。马上就是元旦了，我都没想着给先生寄贺卡，先生倒想着我，真让小辈汗顔。

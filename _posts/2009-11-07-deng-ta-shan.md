@@ -1,9 +1,18 @@
 ---
 layout: post
 title: "登塔山"
+tags:
+  - "故事"
+  - "心情"
+  - "诗词"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 小青，漂亮、爱笑，爱唱歌。跟她在一起，感到很快乐。只是，没能走太远。几年过去，打电话时她还能听出是我的声音，不过，近几年一直再没有联系。
 

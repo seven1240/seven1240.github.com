@@ -1,9 +1,18 @@
 ---
 layout: post
 title: "汉宫春·攀岩"
+tags:
+  - "故事"
+  - "心情"
+  - "诗词"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 好多年前的事了，还记得当年投稿之后，公司工会专门把我这篇出了一期《工会信息》。
 

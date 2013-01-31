@@ -1,9 +1,17 @@
 ---
 layout: post
 title: "QT 中加载 Flash"
+tags:
+  - "QT"
+  - "Flash"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 [为了在QT中加载Flash，这几天搞得头很大](/past/2010/9/2/mac-1064shi-shi-yong-qtyi-dian-jing-yan/)。其实说来也简单，人家Flash不支持64位，所以，你的代码也只能是32位的。
 

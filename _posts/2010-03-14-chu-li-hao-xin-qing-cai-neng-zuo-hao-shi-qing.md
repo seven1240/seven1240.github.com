@@ -1,9 +1,17 @@
 ---
 layout: post
 title: "处理好心情，才能做好事情"
+tags:
+  - "故事"
+  - "心情"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 最近，特别忙，也特别累。可能是看显示器太多太久了（我有两个显示器），两个眼皮一直跳。也说不上哪个跳财，哪个跳灾的，买了两期彩票，都一个数都不对，当然，是机选的。
 

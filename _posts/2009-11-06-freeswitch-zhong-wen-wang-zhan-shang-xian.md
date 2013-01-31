@@ -1,9 +1,17 @@
 ---
 layout: post
 title: "FreeSWITCH 中文网站上线"
+tags:
+  - "freeswitch"
+  - "中文"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 今天终于搞定了域名和服务器，[FreeSWITCH-CN](http://www.freeswitch.org.cn)正式上线了。现在的Google Group里还是只有我一个人，明天，或许会有许多武林同道加入吧？.........
 

@@ -1,9 +1,18 @@
 ---
 layout: post
 title: "芝加哥之旅(三)异乡，第一个晚上"
+tags:
+  - "旅游"
+  - "故事"
+  - "心情"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 当时乘坐的是 Blue Line, 在 LaSalle 站下（实际上可以在 Jackson 下，其实离的也不远），下来就转向了。一路打听，只觉得 iPhone 没有信号就成了废品了，却忘了指南针还是好用的。
 

@@ -1,9 +1,16 @@
 ---
 layout: post
 title: "Google Groups 死了吗?"
+tags:
+  - "google"
 ---
 
 # {{ page.title }}
+
+<div class="tags">
+{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+</div>
+
 
 今天，看到有人说[Google Groups死了](http://ejohn.org/blog/google-groups-is-dead/)，作者是[JQuery-en](http://groups.google.com/group/jquery-en)邮件列表的管理者。诚然，Google Group有他说的那些问题，但还是不失为一个好的邮件列表。JQuery-en是一个开放的Group，难怪有那么多的Spam。
 
