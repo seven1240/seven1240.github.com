@@ -13,9 +13,9 @@ tags:
 
 前两天需要统计一下代码的行数，找到一些有意思有脚本。人的智慧真是无穷无尽啊，有 shell 的, AWK 的， Perl 的，Python 的之类。
 
-* http://stackoverflow.com/questions/450799/shell-command-to-sum-integers-one-per-line
+* <http://stackoverflow.com/questions/450799/shell-command-to-sum-integers-one-per-line>
 
-* http://stackoverflow.com/questions/2702564/how-can-i-quickly-sum-all-numbers-in-a-file
+* <http://stackoverflow.com/questions/2702564/how-can-i-quickly-sum-all-numbers-in-a-file>
 
 看看这些，长了不少见识，我最终是用如下命令实现的：
 
