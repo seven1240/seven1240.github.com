@@ -181,3 +181,8 @@ apachectl restart
 </code>
 
 看 phpinfo()，成功。
+
+更新 20130216:
+
+好像有更好的工具出现了： http://boxen.github.com/
+
