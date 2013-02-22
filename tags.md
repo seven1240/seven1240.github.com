@@ -8,7 +8,11 @@ title: {{ site.com }}
 <a href="#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">{{ tag[0] }}</a>
 {% endfor %}
 </div>
- 
+
+<br>
+<hr>
+<br>
+
 <ul id='tag_list'>
 {% for tag in site.tags %}
   <li class='tag_item' id='{{ tag[0] }}'>
