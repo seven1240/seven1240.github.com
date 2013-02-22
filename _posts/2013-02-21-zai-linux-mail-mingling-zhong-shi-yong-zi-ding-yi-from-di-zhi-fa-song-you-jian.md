@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Welcome to my blog"
+title: "在linux mail命令中使用自定义From地址发送邮件"
 tags:
   - "shell"
   - "linux"
