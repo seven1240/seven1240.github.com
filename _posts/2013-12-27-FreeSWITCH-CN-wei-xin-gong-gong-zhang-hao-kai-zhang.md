@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "FreeSWITCH-CN微信公共账号开张"
+title: "FreeSWITCH-CN微信公众账号开张"
 tags:
   - "微信"
   - "新闻"
