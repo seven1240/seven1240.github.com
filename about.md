@@ -14,11 +14,11 @@ There is an [About Me](http://about.me/dujinfang) page in English. Read on if yo
 我喜欢自由软件。对自由软件社区也有丁点儿贡献，[翻译过一些文章](/2009/12/05/ceng-jing-zai-linuxfocusshang-fan-yi-de-yi-xie-wen-zhang.html)和一些[SQLite文档](/sqlite_docs_3_5_4_zh_CN/docs.html)
 ，也做过几个项目：[Google code](http://code.google.com/u/dujinfang/)，[GitHub](http://github.com/seven1240)以及[FreeSWITCH-Air](http://www.freeswitch.org.cn/download)，创办了[FreeSWITCH中文社区](http://www.freeswitch.org.cn)。
 
-除写了博客外，有时也写点[技术文章](http://www.infoq.com/cn/articles/rails-voip-system-architecture-and-development)。现在正在写一本[关于FreeSWITCH的书](http://www.freeswitch.org.cn/document)。
+除写了博客外，有时也写点[技术文章](http://www.infoq.com/cn/articles/rails-voip-system-architecture-and-development)。出版了一本关于FreeSWITCH的书[《FreeSWITCH权威指南》](http://book.dujinfang.com)。
 
 我喜欢诗词和书法，也喜欢打台球、篮球和羽毛球。
 
-我常用的编程语言有Ruby、Erlang、Lua、C（C++/Object-C）。
+我常用的编程语言有Ruby、Erlang、Lua、C（C++/Object-C），也正在学习使用Go。
 
 熟悉的数据库有PostgreSQL、Mysql、Oracle、Sybase、SQLite、SQLServer。
 
