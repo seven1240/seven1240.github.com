@@ -15,20 +15,18 @@ tags:
 
 今天测试FreeSWITCH录音，需要在MacOSX上模拟丢包的环境，就写了一个简单的脚本。需要说明，由于UDP会有自动重发的机制，因此只有丢包率超过一定比例才会真正发生丢包。
 
-<code>
-#!/bin/sh
+    #!/bin/sh
 
-trap "ipfw delete 02000" EXIT
-while :; do
-        echo deny
-        ipfw add 02000 deny udp from 192.168.1.21 to any in
+    trap "ipfw delete 02000" EXIT
+    while :; do
+            echo deny
+            ipfw add 02000 deny udp from 192.168.1.21 to any in
 
-        sleep 3
+            sleep 3
 
-        echo allow
-        ipfw delete 02000
-        sleep 2
-done
-</code>
+            echo allow
+            ipfw delete 02000
+            sleep 2
+    done
 
 参考：<http://www.ibiblio.org/macsupport/ipfw/>
