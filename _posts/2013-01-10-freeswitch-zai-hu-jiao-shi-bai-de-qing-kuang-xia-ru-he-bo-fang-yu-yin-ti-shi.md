@@ -46,6 +46,7 @@ OK, 我们只需要把最后一个bridge那行改成
 
 然后创建如下 dialplan extension:
 
+```
    <extension name="Local_Extension_play-cause">
       <condition field="destination_number" expression="^play-cause-USER_BUSY$">
       	<action application="playback" "/tmp/sounds/user-busy.wav"/>
@@ -65,7 +66,7 @@ OK, 我们只需要把最后一个bridge那行改成
       	<action application="playback" "/tmp/sounds/unknown-error.wav"/>
       </condition>
    </extension>
-
+```
 
 小结：
 
