@@ -73,46 +73,6 @@
 			<div class="post">
 			{{ content }}
 			</div>
-
-
-			<br>
-			<br>
-
-			<!--高速版，加载速度快，使用前需测试页面的兼容性-->
-			<div id="SOHUCS"></div>
-			<script>
-			  (function(){
-			    var appid = 'cyrby9T1T',
-			    conf = 'prod_6d4571df1723d8ead8cc64aa63d5d39a';
-			    var doc = document,
-			    s = doc.createElement('script'),
-			    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
-			    s.type = 'text/javascript';
-			    s.charset = 'utf-8';
-			    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
-			    h.insertBefore(s,h.firstChild);
-			    window.SCS_NO_IFRAME = true;
-			  })()
-			</script>
-
-			<br>
-			<br>
-
-			使用Disqus评论：
-			<div id="disqus_thread"></div>
-			<script type="text/javascript">
-			    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-			    var disqus_shortname = 'blog-7'; // required: replace example with your forum shortname
-
-			    /* * * DON'T EDIT BELOW THIS LINE * * */
-			    (function() {
-			        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-			        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-			        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-			    })();
-			</script>
-			<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-			<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
 		</div>
 
 		<div class="span3">
