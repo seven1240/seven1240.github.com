@@ -47,4 +47,4 @@ tags:
 最后，祝大家圣诞快乐！
 
 <img width="376" src="http://www.freeswitch.org.cn/images/fscn.png"/>
-<img src="http://www.freeswitch.org.cn/images/qrcode_for_FreeSWITCH-CN-wechat.jpg">
+<img src="/images/qrcode_for_FreeSWITCH-CN-wechat.jpg">
