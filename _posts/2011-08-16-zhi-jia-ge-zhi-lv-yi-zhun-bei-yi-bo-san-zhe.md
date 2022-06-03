@@ -7,13 +7,6 @@ tags:
   - "心情"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
-
 一直希望有个机会能去米国转转。搞 FreeSWITCH 这么多年，去参加一个 ClueCon 大会自然是一个首选的机会。本来计划去年能去，但由于去年的工作[有点小小的变动](http://www.dujinfang.com/past/2010/5/26/wu-yue-sui-bi/)，等一切安定下来的时候再办签证已经来不及了。
 
 去年冬由于公司合并，公司拟派我到美国工作一段时间，申请 L1 签证带夫人孩子一块去。但老婆不喜欢不安定的生活和米国人的生活方式，因此只好做罢了。

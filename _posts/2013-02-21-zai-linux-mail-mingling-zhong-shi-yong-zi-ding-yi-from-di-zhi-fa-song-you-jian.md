@@ -7,11 +7,6 @@ tags:
   - "CentOS"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
 
 测试使用不同的 Envelope 地址发送邮件，Google了一下发现有好多种方案，不过网上说的 -S 及 -a 开关在我的 CentOS 5 版上好像没有。最后找到了一种可用的方案 
 

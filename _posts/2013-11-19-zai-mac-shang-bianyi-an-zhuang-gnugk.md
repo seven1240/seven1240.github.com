@@ -7,11 +7,6 @@ tags:
   - "VoIP"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
 
 [GnuGK](http://www.gnugk.org)是一个GNU的开源项目，这帮GNU们没几个是用Mac的，虽然官网上说支持Mac，但没找到相关的编译安装资料。有已经编译好的二进制版本也是几年前的。
 
@@ -54,4 +49,3 @@ tags:
             echo ok
 
 然后`make install`，居然安装成功。
-

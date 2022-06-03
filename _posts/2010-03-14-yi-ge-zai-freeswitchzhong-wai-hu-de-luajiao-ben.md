@@ -5,13 +5,6 @@ tags:
   - "freeswitch"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
-
 一个在FreeSWITCH中外呼的脚本
 
 前几天，一个朋友问我能否实现在FS中外呼，然后放一段录音，我说当然能，写个简单的脚本就行。但后来他说还要知道呼叫是否成功，我说，那就需要复杂一点了。

@@ -6,12 +6,6 @@ tags:
   - "翻译"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
 
 看到一篇关于环境保护的文章--[Don't take my freedom away from me..](http://tuxgraphics.org/giniandkarlsworld/becauseourplanetmatters.shtml)，恰想起以前在某本杂志上也看到一篇《清洁能源不清洁》。是啊，我们平常所认为的绿色并不像我们想象中的那么绿。拿太阳能来说吧，当大家好像公认的太阳能是清洁能源、绝色环保时，有多少人能想到它在生产过程中以及报废后的污染？
 [绿色太阳能背后的污染问题](http://www.cyzone.cn/forum/44409.aspx)

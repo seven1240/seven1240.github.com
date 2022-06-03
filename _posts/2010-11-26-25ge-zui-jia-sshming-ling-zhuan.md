@@ -6,12 +6,6 @@ tags:
   - "ssh"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
 
 好文，看到原文使用CC授权，就转过来了。来自：<http://linux.cn/home/space-2-do-thread-id-5786.html>
 

@@ -7,12 +7,6 @@ tags:
   - "心情"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
 
 事实证明路程还是有点长的，匆忙赶到到酒店已经超过了预订的时间，不过还好他们还没有出发。我抓紧到前台寄存了东西，回来带头大哥正在训话，主要是讲一些注意事项什么的。
 

@@ -7,13 +7,6 @@ tags:
   - "freeswitch"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
-
 FreeSWITCH使用XML配置文件. 很灵活很强大. 不过编辑起来比较费劲. 使用这个插件后, 使用注释就轻松多了.
 
 插件位置在 [www.vim.org](http://www.vim.org/scripts/script.php?script_id=1528)

@@ -7,13 +7,6 @@ tags:
   - "freeswitch"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
-
 今天，跟 FreeSWITCH 邮件列表中的一位网友聊天，忽然想到了它曾发到列表中的一则故事。感悟颇多。
 
 该网友是一个盲人，靠屏幕阅读软件看电脑，用语音识别软件转换成文字跟我聊天（Google Talk）。我一直有个疑问，我用 FreeSWITCH 毛算也有三年了，在学习和使用中经常遇到一些问题，我手眼健全都需要很常时间解决，作为一个盲人，他是怎么做到的呢？

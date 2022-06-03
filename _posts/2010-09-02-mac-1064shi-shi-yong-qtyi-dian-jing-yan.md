@@ -5,13 +5,6 @@ tags:
   - "QT"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
-
 呵呵，没想到，又拾起了桌面开发。
 
 这次开发一个客户端，需集成SIP和WEB/Flash。选择了基于libfreeswitch的方案，从FSComm上得到启发，就顺便抄了些代码。由于 FSComm使用QT， 就开始使用QT。
@@ -72,4 +65,3 @@ install:
 在QT Creator里更改 projects 里的 QT version，指向VC 版的。编译成功。
 
 花了不少时间搞懂这些东西，也走了好多弯路，记在这里不容易忘记。
-

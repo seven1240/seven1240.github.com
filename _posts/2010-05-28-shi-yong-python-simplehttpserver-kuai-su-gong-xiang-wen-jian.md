@@ -5,13 +5,6 @@ tags:
   - "python"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
-
 今天，朋友要我给它传一些照片和几个视频文件。使用QQ传了几个照片，但视频实在是太慢了。便想用HTTP。
 
 我启动了 Mac 上的  Web sharing(它会启动 Apache)，将需要的文件放到 ~/Sites 目录下，在浏览器中打开 http://localhost/~seven/ 能正常看到内容。上 ip138.com 找到我的我网 IP，在路由器上打开端口转发，NAT到我的机器上，测试使用外网IP也正常。把链接发过去，结果对方打不开。SSH 登录到一个外网服务器，使用 curl http://我的外网IP/~seven/ 果然打不开。

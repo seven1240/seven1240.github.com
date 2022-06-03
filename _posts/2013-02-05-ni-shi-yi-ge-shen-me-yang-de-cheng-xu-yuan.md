@@ -5,12 +5,6 @@ tags:
   - "shell"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
 找到一个有意思的命令，可以看你是一个什么样的程序员。来自 <http://coolshell.cn/articles/8619.html>
 
     history | awk '{CMD[$2]++;count++;} END \

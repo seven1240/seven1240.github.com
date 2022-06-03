@@ -5,11 +5,6 @@ tags:
   - "shell"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
 
 前两天需要统计一下代码的行数，找到一些有意思有脚本。人的智慧真是无穷无尽啊，有 shell 的, AWK 的， Perl 的，Python 的之类。
 
@@ -41,4 +36,3 @@ tags:
     91917 total
 
 当然，也可以把 | tail -n1 省掉 :) 。
-

@@ -6,13 +6,6 @@ tags:
   - "asterisk"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
-
 FreeSWITCH vs Asterisk FreeSWITCH 与 Asterisk 比较
 
 Anthony Minssale/文 [Seven](http://www.dujinfang.com/)/译

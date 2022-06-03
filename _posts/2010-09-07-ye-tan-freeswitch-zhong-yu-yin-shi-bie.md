@@ -6,13 +6,6 @@ tags:
   - "freeswitch"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
-
 前段时间有一个语音识别的项目，便轻轻地研究了一下，虽没有达到预期的效果，但过程还是比较有趣。
 
 题目是这样的：给定一些潜在客户，用 FreeSWITCH 自动呼叫，如果用户应答，则转至 IVR，播放欢迎信息甚至转至人工座席；如果客户不应答，则获取不应答原因。

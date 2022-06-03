@@ -6,13 +6,6 @@ tags:
   - "tips"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
-
 今天，偶然发现 google translate 一个很酷的功能，TTS。
 
 在浏览器中输入 http://translate.google.com/translate_tts?q=hello+and+welcome+to+w+w+w+dot+dujinfang+dot+com&tl=en 然后立即就可以播放声音。
@@ -49,5 +42,3 @@ tags:
                        q=hello+and+welcome+to+www+dot+dujinfang+dot+com&tl=en"/>
 	     </condition>
 	</extension>
-
-

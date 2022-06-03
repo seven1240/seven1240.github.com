@@ -6,12 +6,6 @@ tags:
   - "心情"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
 
 终于还是在五月份离开了北京。真舍不得离开亲密的同事和让人又爱又恨的京城。临走前，大家还专门组织打篮球和聚餐为我送行，[Gary](http://zhangzhe.heroku.com/blogs/137-seven-ge-yao-zou-le)和[Andy](http://blog.wangyaodi.com/2010/05/15/五月/)还都专门写了博客纪念。中午酒喝得有点多了，我愣是穿着洒了一身酸奶的球服上了火车，还多亏有几个哥们一直把我送上火车。
 

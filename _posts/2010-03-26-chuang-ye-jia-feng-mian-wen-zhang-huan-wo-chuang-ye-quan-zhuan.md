@@ -6,18 +6,11 @@ tags:
   - "转载"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
-
-
 来源：《创业家》 2010年03月25日13:06
 <http://it.sohu.com/20100325/n271089863.shtml>
 
-　　还我创业权 --　一场关于“被死亡”的民间听证会
+
+还我创业权 --　一场关于“被死亡”的民间听证会
 
 
 　　组织策划｜《创业家》编辑部 创始人俱乐部

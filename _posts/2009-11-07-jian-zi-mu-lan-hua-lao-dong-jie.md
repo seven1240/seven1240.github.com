@@ -7,12 +7,6 @@ tags:
   - "诗词"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
 
 约写于2006-2007年。当时公司改革幅度挺大，大家都很忙。便写了该词，歌功颂德，同时也是为了完成公司的投稿任务。
 
@@ -28,13 +22,3 @@ tags:
     协力齐心谋发展。
     谈笑之间，
     捷报频从网络传。
-
-
-
-
-
-
-
-
-
-

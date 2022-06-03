@@ -6,12 +6,6 @@ tags:
   - "心情"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
 
 今晚是平安夜。日子过的太快，听见大街上到处都响着Jingle bells才知道平安夜到了。百无聊赖，遂决定跟Andy去打台球，同时也是奔着今晚台球厅有抽奖活动。
 

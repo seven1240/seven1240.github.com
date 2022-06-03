@@ -7,13 +7,6 @@ tags:
   - "诗词"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
-
 昨天，与朋友相约怀北雪场滑雪。认识了几个新面孔，得两首小词而归。
 
 
@@ -52,4 +45,3 @@ tags:
     道一回生，
     两回熟，
     三回专。
-

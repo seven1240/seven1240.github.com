@@ -5,12 +5,6 @@ tags:
   - "news"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
 
 From [Global Times](http://business.globaltimes.cn/comment/2009-12/493032.html) By Michele Scrimenti and Cong Mu
 

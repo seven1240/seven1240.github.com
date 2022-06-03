@@ -5,12 +5,6 @@ tags:
   - "mac"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
 
 一直使用macports在Mac上安装软件，但安装很慢，且它总是重复安装一些系统中已存在的库，很是讨厌。而且有时候某些依赖关系损坏，安装就失败，很多软件都不得不手动下载源代码编译，费时费力。
 

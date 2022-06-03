@@ -5,13 +5,6 @@ tags:
   - "freeswitch"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
-
 搞 FreeSWITCH  好几年了，一直盼望能去 [ClueCon](http://www.cluecon.com) 见识见识。今年，终于有了一个机会。
 
 准备材料，办签证，虽然罗嗦，但还是顺利地通过了。保险起见，提前两天出发。所以，7号下午从北京出发，到了芝加哥还是7号下午，到酒店已经是晚上了。8号随便走了走，玩了一天。由于时差的关系，第二个晚上还是睡地比较凌乱，因此9号早上起的有些晚。又因为被人指错了路，所以到 ClueCon 会场的时候已经是九点多了。

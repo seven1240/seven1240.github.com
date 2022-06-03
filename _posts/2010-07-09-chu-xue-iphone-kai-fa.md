@@ -5,13 +5,6 @@ tags:
   - "iPhone"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
-
 iPhone 真是个有创意的产品，刚开始玩，有很多新奇好玩的游戏是意料之中的，但像手电筒、罗盘、水平仪、游标卡尺等应用却是大大出乎意料之外的。
 
 iPhone 就一个 HOME 键，将简单发挥到了极致。手一痒，但也想写个 iPhone 的程序。正好公司也开始做移动方面的文章，也算是顺了东风了。

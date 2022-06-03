@@ -6,12 +6,6 @@ tags:
   - "诗词"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
 
 近几日想写写老师，但最后觉得还是让老师写写自己吧。 --Seven
 

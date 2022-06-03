@@ -8,12 +8,6 @@ tags:
   - "web"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
 
 sendfile不仅能有效提供发送文件的效率，而且也是保护受限访问文件的一种有效方法。另外，Nginx也可以实现缓存和镜象。
 

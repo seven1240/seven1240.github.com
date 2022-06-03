@@ -5,12 +5,6 @@ tags:
   - "jquery"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
 
 这篇文章太好了，忍不住就转载了。
 

@@ -5,12 +5,6 @@ tags:
   - "书画"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
 
 从小喜欢写字，但从没真正静下心来练过。每次兴之所至，都是信手涂鸦，制造一堆废纸而已。前些年，有幸跟几位好友同住，他们工书画诗词。耳濡目染中，竟也有所进益。只是近几年又很少动笔了。
 

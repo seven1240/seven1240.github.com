@@ -6,12 +6,6 @@ tags:
   - "mac"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
 
 今天测试FreeSWITCH录音，需要在MacOSX上模拟丢包的环境，就写了一个简单的脚本。需要说明，由于UDP会有自动重发的机制，因此只有丢包率超过一定比例才会真正发生丢包。
 

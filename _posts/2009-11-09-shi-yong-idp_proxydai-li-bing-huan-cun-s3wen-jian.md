@@ -7,12 +7,6 @@ tags:
   - "erlang"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
 
 [书接上文](/past/2009/11/9/shi-yong-nginxrailsjin-xing-wen-jian-xia-zai-kong-zhi-he-huan-cun-jing-xiang/). 由于我们不能用Nginx直接请求S3，所以需要通过一个中间代理。最初，我是用Ruby+Eventmachine实现的。完成后发现性能不好，当然也可能是我的代码有问题。不管怎么说，实现该功能最佳的语言还是Erlang。我也没编多少代码，只是Mochiweb框架的基础上加了些功能。当然并不是很完美，但是基本可以工作。另外，这也只是一个思路，真正用于生产系统肯定还要更多的优化。
 
@@ -91,4 +85,3 @@ X-Uri: /file-internal/abc.mp3
 <code>
 	rewrite (.*) $1 break;
 </code>
-

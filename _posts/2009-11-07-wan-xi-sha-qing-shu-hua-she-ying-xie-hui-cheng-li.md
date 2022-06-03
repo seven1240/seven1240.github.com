@@ -7,14 +7,8 @@ tags:
   - "诗词"
 ---
 
-# {{ page.title }}
 
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
-
-06年07年？大约那个时候吧。
+> 06年07年？大约那个时候吧。
 
 
     莫道书画本一家，

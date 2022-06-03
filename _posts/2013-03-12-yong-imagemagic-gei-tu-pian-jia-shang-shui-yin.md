@@ -5,11 +5,6 @@ tags:
   - "imagemagick"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
 
 转自：<http://www.netingcn.com/imagemagick-mark.html>
 
@@ -51,4 +46,3 @@ tags:
     mogrify -font msyh.ttf -pointsize 24 -fill black -weight bolder -gravity southeast -annotate +20+20 @"t.txt" src.jpg
 
 说明：上述第一、二种方法都有瑕疵，第二种背景不能变成透明，第一种虽然生成的图片可以透明，但是合成到原始图上效果不是很理想，第三种是完全透明的，所以推进用第三种方式来操作。
-

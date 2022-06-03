@@ -5,13 +5,6 @@ tags:
   - "chrome"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
-
 [我喜欢尝试新东西](/past/2009/11/25/just-because-you-can-do-something-doesnt-mean-you-should/)。虽然大家对Chrome OS褒贬不一，但还是觉得应该试一下，毕竟Google的东西还是值得学习的。虽然我知道[Richard Stallman](http://stallman.org/)是坚决反对云计算的。
 
 新的Chrome OS出来以后，我一直无法用BT下载，今天终于看到了一个[电驴下载的](http://linux.cn/home/space-2-do-thread-id-1471.html)。很快就下完了。

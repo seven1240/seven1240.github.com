@@ -5,12 +5,6 @@ tags:
   - "电影"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
 
 自从[换了网络](/past/2009/12/12/zou-jin-3gjian-tan-fu-wu/)以后，网速超慢，根本就没有3G信号。在家也不怎么上网了，闲的时候就看看书，倒也自在。有时也看看电影，只是不能像以前那样下载了。
 
@@ -73,4 +67,3 @@ E: November the 4th?
 V: Not any more. (这句!再酷不过了)
 
 V: Remember, remember, The 5th of November. The gunpowder treason and plot. I know of no reason why the gunpowder treason should ever be forgot....
-

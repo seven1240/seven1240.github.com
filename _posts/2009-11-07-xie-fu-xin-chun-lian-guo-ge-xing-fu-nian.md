@@ -7,13 +7,6 @@ tags:
   - "诗词"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
-
 大约是06年吧？我们是哪一年认识的？
  
 
@@ -50,4 +43,3 @@ tags:
 
 
 (注：种，家乡话读zhuor，正好与果guor谐音)
-

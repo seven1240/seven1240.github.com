@@ -7,11 +7,6 @@ tags:
   - "wap"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
 
 
 由于我的手机浏览器超烂，所以很少拿它上网。日前试了试访问我的网站，竟然把“节省”显示成“节剩”，真让人哭笑不得。昨天，给老婆买了个AnyCall，上网好用多了，但是在加载Google JS代码时老出错。索性，写了个Wap版的。

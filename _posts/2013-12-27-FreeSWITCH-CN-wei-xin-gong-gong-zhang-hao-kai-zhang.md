@@ -6,12 +6,6 @@ tags:
   - "新闻"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
 说起来，这其实算是一篇旧闻了。因为，FreeSWITCH-CN的微信公共账号几个月前就开张了。只是，一直没倒出时间来经营。有心的网友可能早就看到<http://www.freeswitch.org.cn>上右侧的二维码了。
 
 在2013年圣诞之际，我决定也学学别人把微信公共账号“经营”一下，因此，便有了“圣诞快乐”一帖。全文如下：

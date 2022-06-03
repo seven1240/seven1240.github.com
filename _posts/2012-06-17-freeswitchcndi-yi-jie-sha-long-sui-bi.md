@@ -5,13 +5,6 @@ tags:
   - "故事"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
-
 第一届沙龙结束了，来的人还真不少。不像我预料的那样，来的大多数不是年轻的开发者，而更多是资深的程序员和CTO。难道通信这一行业真算是古老的东西？还是，轻易入不了行？
 
 沙龙算是圆满结束。使我非常欣慰的是，我的演讲效果还不错。当然，这在很大程度上归功于 prezi.com 这的软件。虽然时间比较紧，我还是花了几小时熟悉它，并制作了一个 Presentation。最初，由于不得要领，几次都想放弃，但最终我还是坚持了下来，制作了有史以来我做过了最酷的幻灯片。
@@ -30,4 +23,3 @@ p.s.  现在发现写东西如果不中英文混杂简真是越来越难写了�
 <http://www.oktranslation.com/Cms/Article.aspx?ArticleID=453>
 
 类似 Keynote 里的 Slide Show，翻译成幻灯片似乎更准确些。当然，要更准确，就是不翻译。
-

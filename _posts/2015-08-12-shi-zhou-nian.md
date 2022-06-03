@@ -7,11 +7,6 @@ tags:
   - "诗词"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
 
 几年前的相聚。打油诗。
 

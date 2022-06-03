@@ -6,12 +6,6 @@ tags:
   - "故事"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
 
 今年5月份，在北大看了《南京，南京》，写了此文。
 

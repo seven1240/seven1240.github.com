@@ -5,13 +5,6 @@ tags:
   - "imagemagic"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
-
 今天有个朋友让我帮忙处理个照片，说是报名考试之类的，要将一个100多k的.jpg 处理20k以下。用photoshop改了半天，都没法达到要求。不是太大，就是质量太差。我甚至将照片改成黑白的，把照片上的花衣服改成单色的，都不怎么管用。
 
 后来得出结论，搞成20k以下又保持较好的质量是不可能的。不过上网 google 一下，确定有人用 windows

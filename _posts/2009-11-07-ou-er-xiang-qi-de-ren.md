@@ -7,13 +7,6 @@ tags:
   - "诗词"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
-
 本文写于几年前。没想到我还留着这篇文章。再读一遍，想想当年冒冒失失地跑到石家庄，觉得有些好玩。不过，我也没白去，至少知道石家庄有一个世纪公园。
 
 

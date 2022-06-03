@@ -5,12 +5,6 @@ tags:
   - "mac"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
 
 多年不用 M$ 的东东了，不过今天一个朋友问我在 Mac 上怎么连接 SQL Server，没法说服他换数据库，只得花时间帮忙研究了一下。反正是挺麻烦。
 

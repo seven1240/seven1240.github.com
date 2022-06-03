@@ -5,18 +5,11 @@ tags:
   - "linux"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
-
-本文写于2008年1月，从旧博客转过来的，显然已经过时了。但Latex是不会过时的，所以，没舍得丢。
+> 本文写于2008年1月，从旧博客转过来的，显然已经过时了。但Latex是不会过时的，所以，没舍得丢。
 
 首先参考了下面的文章，忘了从哪儿看到的了：
 
-<code>
+```
 1. 安装texlive
 可以先看看texlive有哪些东西：
 apt-cache search texlive
@@ -51,10 +44,10 @@ ftp://cle.linux.org.tw/pub2/tex/cjk/fonts/nkait1
 您
 \end{CJK}
 \end{document}
+```
+
 和网上很多代码不同的是：这里用的是UTF8编码（ubuntu默认的编码），字体为nsung
 当然，如果安装了前面说的楷体，也可以把nsung改成nkai试试～
-
-</code>
 
 安装好了自然没什么问题，但是，UTF8编码的中文字体不知如何安装。
 

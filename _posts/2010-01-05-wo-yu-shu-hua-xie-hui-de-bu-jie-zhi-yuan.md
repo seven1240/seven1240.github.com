@@ -6,13 +6,6 @@ tags:
   - "书画"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
-
 本文写于2004年，载于烟台大学学生书画协会十年志--《雪泥鸿爪》一书。 --Seven
 
 - - - -

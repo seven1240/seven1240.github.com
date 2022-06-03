@@ -6,12 +6,6 @@ tags:
   - "mac"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
 前天用安装rrdtool时遇到一个bug：
 
 

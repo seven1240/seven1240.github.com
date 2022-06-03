@@ -5,12 +5,6 @@ tags:
   - "rails"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
 
 长期运行的mongrel会有内存泄漏，且有时由于开发人员的不慎会引起mongrel占用大量的内存，严重时会引起服务器失去响应而崩溃。当然，使用monit能在一定程序上解决问题，但monit每隔一段时间检测一次内存占用，所以，对于内存占用迅速提高的情形，monit反应就太慢了。因此考虑使用ulimit。但ulimit是针对shell进行限定的。由于我们同时运行着数十个mongrel进程，所以不可能在同一个shell中限制，因此，我修改了mongrel_rails，对每一个mongrel进程进行限制。如果内存占用超标，杀无赦。
 

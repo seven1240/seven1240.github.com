@@ -29,6 +29,9 @@
       h1 {
       	margin-bottom: 20px !important;
       }
+	  li.post-list {
+		  line-height: 2em;
+	  }
     </style>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -71,7 +74,17 @@
     <div class="row-fluid">
 		<div class="span9">
 			<div class="post">
-			{{ content }}
+				<h1>{{ page.title }}</h1>
+
+				<div class="tags">
+					{{page.date | date: "%Y-%m-%d %H:%M"}}
+					{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
+				</div>
+
+				<br/>
+				<br/>
+
+				{{ content }}
 			</div>
 		</div>
 
@@ -87,7 +100,7 @@
     <footer>
 	<hr>
 		<div style="text-align:center">
-			Content and Copyright(&copy;) by Seven Du All Rights Reserved! 保留所有权利，转载请加入本站链接！</p>
+			Content and Copyright(&copy;) 2009-2022 by Seven Du All Rights Reserved! 保留所有权利，转载请加入本站链接！</p>
 		</div>
 	</footer>
 

@@ -6,13 +6,6 @@ tags:
   - "心情"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
-
 2012，8月初，借ClueCon会议出去转了一圈，小有所感。
 
 

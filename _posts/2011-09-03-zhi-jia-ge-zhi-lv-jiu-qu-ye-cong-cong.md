@@ -7,13 +7,6 @@ tags:
   - "心情"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
-
 第二天感觉终于把时差倒正了，吃完早餐9点多，又跟人聊几句天。本来是想去 BestBuy 再买点东西的，可是感觉时间来不及了，就直接坐地铁到机场了。
 
 机场太大了，又站错了队，差点急坏了。明明LED上显示 UA 的航班应该是 Terminal 2 ，可后来才知道要去 Terminal 1。还好找到个自助值机的设备换了登机牌，转到  Terminal 1, 再排队，过安检后离登机时间就剩5分钟了。

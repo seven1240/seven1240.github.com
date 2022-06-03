@@ -7,12 +7,6 @@ tags:
   - "诗词"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
 > 那年，[我离开烟台赴京](/2009/11/07/wu-jiang-qu-xi.html) 。后来在北京混不下去了，回归烟台。
 
     兮兮兮，

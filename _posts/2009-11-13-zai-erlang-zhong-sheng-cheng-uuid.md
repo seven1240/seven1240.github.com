@@ -5,12 +5,6 @@ tags:
   - "erlang"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
 
 在[github](http://github.com/travis/erlang-uuid)上有一个生成UUID的方法, 可是在最新的erlang R13B02-1中有问题, 原来Math:pow()会返回一个浮点数, 但random:uniform期望一个整数, 后来trunc了一下就行了:
 

@@ -5,11 +5,6 @@ tags:
   - "erlang"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
 
 epmd(Erlang Port Mapper Daemon)相关于Erlang集群系统的DNS，用于节点名称到IP地址是映射和查询，这一点，高手已经讲的很清楚了：<http://blog.yufeng.info/archives/539> .
 
@@ -22,4 +17,3 @@ FreeSWITCH中的mod\_erlang\_event模块相当于一个隐藏的Erlang节点（H
     erl -noshell -sname test@localhost -s init stop
 
 以上方法可以正常启动 epmd，加到启动脚本中保证它在FreeSWITCH之前启动即可。
-

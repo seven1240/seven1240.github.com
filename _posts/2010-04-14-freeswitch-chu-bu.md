@@ -5,13 +5,6 @@ tags:
   - "freeswitch"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
-
 我准备写一本关于FreeSWITCH的书，由于最近很忙，只写了个第二章，初学FreeSWITCH的朋友可以做个参考，也顺便提提意见。
 
 # 第二章 FreeSWITCH 初步

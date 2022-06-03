@@ -6,13 +6,6 @@ tags:
   - "erlang"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
-
 [FreeSWITCH](http://www.freeswitch.org) is powerful, which has cool and awesome applications built in that allows you do almost anything you want. We had built our call center using a combination of dialplan and event\_socket. As the logic goes more complex, we decided to re-implement in Erlang.
 
 What is Erlang?

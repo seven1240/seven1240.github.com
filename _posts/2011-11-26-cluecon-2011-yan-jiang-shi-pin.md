@@ -5,12 +5,6 @@ tags:
   - "cluecon"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
 
 视频终剪辑出来了。效果不是很好，而且只有幻灯片，一个我的镜头都没有，呵呵。
 

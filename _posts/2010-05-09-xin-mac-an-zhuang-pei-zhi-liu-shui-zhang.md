@@ -5,13 +5,6 @@ tags:
   - "Mac"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
-
 今天周末，去看 MBP，对比了一下，13吋的确实有些小，小有小的好处，但那就不如买个 iPad了。因此冲动了一下，弄了个15吋，最低配。带Snow 10.6.3。很重的不过。
 
 开机后，先用 BootCamp 安装了D版的 Win7。然后插入随机带的光盘，装好驱动。测试无线网连接正常后重启进入 Mac。装 Windows 只是为了网银。
@@ -185,4 +178,3 @@ apachectl restart
 更新 20130216:
 
 好像有更好的工具出现了： http://boxen.github.com/
-

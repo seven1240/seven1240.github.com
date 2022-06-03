@@ -7,11 +7,6 @@ tags:
   - "诗词"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
 
 
 不知是从哪一年起，我开始脱发。可能跟长时间上夜班、钦食不规律有关吧。后来，索性把头发全剪了。
@@ -37,4 +32,3 @@ tags:
     到如今，
     心底事，
     乱如丝。
-

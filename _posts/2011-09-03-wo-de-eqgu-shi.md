@@ -7,13 +7,6 @@ tags:
   - "EQ英语"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
-
 本文写于 2009 年，原载于 EQ Blog 上，最近发生的事情又勾起了一些我对往事的回忆。
 
 我是seven, 在EQ英语主要负责技术后台架构及维护。

@@ -5,13 +5,6 @@ tags:
   - "freeswitch"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
-
 本文由Anthony Minessale写于2007年5月。来自 [www.freeswitch.org](http://www.freeswitch.org/node/60)。翻译它是因为我觉得永远都不会过时... --Seven
 
 我开发FreeSWITCH已经近两年的时间了。在我们第一个发行版即将发布的黎明之际，我想花一点时间来与大家分享一下软件背后的故事，并透露一点即将到来的消息。本故事也将会登在 [OST Magazine](http://www.ostelephony.com/)第一期上。呵，去下载一份吧，免费的！

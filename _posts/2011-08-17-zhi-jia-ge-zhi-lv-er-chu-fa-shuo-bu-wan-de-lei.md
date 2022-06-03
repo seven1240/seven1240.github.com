@@ -7,12 +7,6 @@ tags:
   - "心情"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
 
 一个人走这么远的路，老婆还真不放心，一直嘱咐我这个那个的。我确实平常比较粗心的说。
 

@@ -5,12 +5,6 @@ tags:
   - "erlang"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
 
 看到这个比较有趣的Fibonacci数列对比： <http://fengmk2.github.com/blog/2011/fibonacci/nodejs-python-php-ruby-lua.html> 。
 

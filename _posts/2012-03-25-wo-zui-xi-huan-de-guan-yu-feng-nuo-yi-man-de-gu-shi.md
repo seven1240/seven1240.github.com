@@ -5,12 +5,6 @@ tags:
   - "故事"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
 
 以前的同事帮我找到一些我以前写的一些资料，这里是一则我最喜欢的故事：
 

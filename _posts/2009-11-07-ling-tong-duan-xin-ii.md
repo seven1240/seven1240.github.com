@@ -7,12 +7,6 @@ tags:
   - "诗词"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
 
 本文大约写于2002-2004年，当时小灵通刚开通短信功能不久。本故事纯属虚构，当时只是为了完成公司的投稿任务。另外，当时也有小灵通短信的任务，每人每月须完成数百条（记不清了现在）。
 

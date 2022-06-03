@@ -5,13 +5,6 @@ tags:
   - "chrome"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
-
 换了 Chrome 以后，用 Firefox 就很少了，但总是离不开。主要原因有二：
 
 * Firebug，虽然Chrome中也有个类似的插件，但不怎么好用

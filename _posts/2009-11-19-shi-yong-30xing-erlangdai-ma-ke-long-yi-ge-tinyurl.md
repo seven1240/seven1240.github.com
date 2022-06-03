@@ -5,13 +5,6 @@ tags:
   - "erlang"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
-
 [TinyURL](http://tinyurl.com)是一种短域名服务，就是把很长的URL转换成比较短的。也许你觉得没什么用，起初我也这么认为，而且看到别人用时也很不理解，但后来才了现它真的很有用--它真的可以把很长的URL转换成很短的。当然，最重要的不在于它的压缩率多么有效，关键是缩短后很方便在手机上发送了。
 
 我在TinyURL上试了一下，96个字符的地址最后转成了26。当然，越长的地址就越明显。

@@ -5,12 +5,6 @@ tags:
   - "Free_Software"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
 
 看到一篇文章：[FSF works with PayPal to the benefit of the free software community](http://www.fsf.org/news/paypal)。原来Paypal最近在用户许可协议里加入了一款专有软件许可，FSF发现后立即与他们联系，他们不仅认真听取了自由社区的意见，而且还同意修改许可协议。FSF的执行董Peter Brown说：“我们非常感谢PayPal能花时间听取我们的意见并且愿意改变他们的决定。该公司本可以很容易地坚持他们的做法。但是，他们没有那样做，而是认识到了自由软件社区的重要性，听取并采纳了我们的意见。我们非常感谢他们的真诚帮助。
 

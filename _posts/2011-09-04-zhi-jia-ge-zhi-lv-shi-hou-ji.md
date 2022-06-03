@@ -7,12 +7,6 @@ tags:
   - "心情"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
 
 当天晚上本来原先团队一起做技术的哥们们约好了活动活动，可天气预报说北京有暴雨，就取消了。但最终雨也好像没有暴的意思，就找个哥们请我吃了顿清真羊肉，还是中国菜好吃啊！
 

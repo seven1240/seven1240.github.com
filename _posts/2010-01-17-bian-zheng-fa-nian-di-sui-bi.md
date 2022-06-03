@@ -7,14 +7,6 @@ tags:
   - "企业管理"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
-
-
 
 2009年，注定是不平静的一年。金融危机、通货膨涨、房价的异常，已让我们身心俱疲，不说也罢了。可我还是想说说互联网。像“Green Dam”、“GFW”之类的词我们都已经听腻了。封Twitter、封Facebook，Google“涉黄门”之类的事件，随着2009年的远去，我们也已经接受了，也准备忘记了。可是毕竟我们农历的新年还没有过去啊。“百度网络中断”，“谷歌放言退出中国”又接踵而至了。
 

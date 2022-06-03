@@ -6,13 +6,6 @@ tags:
   - "oracle"
 ---
 
-# {{ page.title }}
-
-<div class="tags">
-{% for tag in page.tags %}[<a class="tag" href="/tags.html#{{ tag }}">{{ tag }}</a>] {% endfor %}
-</div>
-
-
 多年没用过 oracle 了，今天一个朋友让我帮它解决 oracle 连接问题，就帮忙研究了一下，也算复习一下吧。要说 oracle 这个东西真复杂， 网上的文档也五花八门，试了好多种组合，才最后搞定。
 
 我最初用 oracle 的时候是 oracle 8，是安装在一台 TRU 64 UNIX上，Compaq 的小型机。后来，还用过 oracle 9 之类的。9i 和 10g 基本没怎么用。现在的版本都到11g了，发现有了好多变化。
@@ -233,4 +226,3 @@ unixodbc.org 上只说明有个 easysoft 的 oracle odbc 驱动，咨询了一�
 	{error,connection_closed}
 
 从网上找到几个相关的贴子，如<http://erlang.2086793.n4.nabble.com/PATCH-ODBC-application-discarding-sqlstate-in-get-diagnos-function-td2119719.html>，但这个 patch 应该在 R13B 就打入了，而我是用的 R14B，查看源代码也没有问题。没有深究。但回头在我机器(MAC/R13B02)与 mysql ODBC 连接却没发现问题。究竟也不知道是 Erlang 版本问题还是 oracle/mysql 问题。总之，到此为止了，这种商业的数据库可查找的资料比较少，用起来费劲。
-
