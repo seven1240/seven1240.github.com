@@ -20,7 +20,7 @@ title: {{ site.com }}
     <span>
       <ul>
       {% for post in tag[1] %}
-        <li class='tag_post'><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
+        <li class='tag_post post-list'><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
       {% endfor %}
       </ul>
     </span>
