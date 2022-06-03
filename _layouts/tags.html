@@ -136,6 +136,16 @@
 		document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fa6821d77e804bc1adab071d55103913d' type='text/javascript'%3E%3C/script%3E"));
 	</script>
 
+	<script language="javascript">
+	  $.fn.tagcloud.defaults = {
+		  size: {start: 0.9, end: 2, unit: 'em'},
+			color: {start: '#e77471', end: '#f62817'}
+	  };
+	  
+	  $(function () {
+		  $('#tag_cloud a').tagcloud();
+	  });
+	</script>
 
   </body>
 </html>

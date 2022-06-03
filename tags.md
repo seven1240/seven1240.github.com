@@ -27,16 +27,3 @@ title: {{ site.com }}
   </li>
 {% endfor %}
 </ul>
- 
-<script language="javascript">
-$(window).load(function() {
-  $.fn.tagcloud.defaults = {
-      size: {start: 0.9, end: 2, unit: 'em'},
-        color: {start: '#e77471', end: '#f62817'}
-  };
-  
-  $(function () {
-      $('#tag_cloud a').tagcloud();
-  });
-});
-</script>
