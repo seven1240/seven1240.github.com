@@ -18,21 +18,22 @@ tags:
 
 在我的Mac上，创建一个虚拟机，加载硬盘，不能启动。自从用了VitualBOX 3.0.2就一直有这个问题，主要是不支持VT-x和AMD-V，但又没法Disable。我只好关掉VitualBOX，手工修改配置文件：
 
-<code>
+```sh
 vi ~/Library/VirtualBox/Machines/Chrome/Chrome.xml 
-</code>
+```
 
 把以下参数设成False。
-<code>
+
+```xml
         <HardwareVirtEx enabled="false"/>
-</code>
+```
 
 再启动VitualBOX，好了，启动果然很快。登录页面显示的是Chromium OS，看来Chrome只是浏览器的名字。登录有点慢，Gmail的原因吧？抑或是虚拟机。操作起来也不顺畅，但打开某些页面倒挺快，如新浪和<http://www.eqenglish.com>，加载Flash也没问题，只是没在虚拟机里搞定声卡。
 
 就一个浏览器，怎么关机啊？强关，VirtualBOX提示"send to shutdown signal"，好像是正常关了，再重启，正常。要是有个Shell该多好啊！本来就是Linux嘛。上网查了一下，果然有，还得到一组快捷键（在虚拟机下并不是所有的都好用）：
 
-<code>
- 快捷键（组合）  	何时使用  	功能
+```
+快捷键（组合）  	何时使用  	功能
 F12 	Running 	Toggle Window Overview
 F8 	Running 	Toggle keyboard overlay showing all the shortcut keys
 ESC 	Window Overview 	Exit Window Overview
@@ -49,12 +50,11 @@ Alt + Tab 	Running 	Next Window
 Alt + Shift + Tab 	Running 	Prior Window
 Close Lid 	Running 	Sleep mode
 Power-Key 	Running 	Shutdown
-</code>
+```
 
 内核还是挺新的：
 
-<code>
+```
 chronos@localhost:~$ uname -a
 Linux localhost 2.6.30-chromeos-intel-menlow #1 SMP Thu Nov 19 20:37:56 UTC 2009 i686 GNU/Linux
-</code>
-
+```
