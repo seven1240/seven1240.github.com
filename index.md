@@ -11,7 +11,7 @@ title: {{ site.com }}
   {% for post in site.posts limit:30 %}
     <li class="post-list"><span>{{ post.date | date: "%Y-%m-%d" }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
   {% endfor %}
-    <li class="post-list"><span><a href="/posts.html">更多文章...</a></li>
+    <li class="post-list"><span><a href="/posts.html">更多文章...</a></span></li>
 
 </ul>
 

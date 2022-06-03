@@ -15,7 +15,7 @@ title: {{ site.com }}
 
 <ul id='tag_list'>
 {% for tag in site.tags %}
-  <li class='tag_item' id='{{ tag[0] }}'>
+  <li class='tag_item post-list' id='{{ tag[0] }}'>
     <span class='tag_name'>{{ tag[0] }}</span>
     <span>
       <ul>
