@@ -31,6 +31,7 @@ title: {{ site.com }}
 <script src="/js/jquery-1.8.0.min.js" type="text/javascript" charset="utf-8"></script> 
 <script src="/js/jquery.tagcloud.js" type="text/javascript" charset="utf-8"></script> 
 <script language="javascript">
+document.onload = function() {
 $.fn.tagcloud.defaults = {
     size: {start: 0.9, end: 2, unit: 'em'},
       color: {start: '#e77471', end: '#f62817'}
@@ -39,4 +40,6 @@ $.fn.tagcloud.defaults = {
 $(function () {
     $('#tag_cloud a').tagcloud();
 });
+
+}
 </script>
