@@ -10,7 +10,7 @@ tags:
 
 ulimit是shell内建命令，不能直接在Ruby中调用，因此换为shell脚本，同时将原文件改名。这样，对init/monit及capistrano脚本都没有影响。只是注意以后升级mongrel时小心别覆盖了这个文件（mongrel还会升级吗？）。
 
-<code>
+```
 cd /usr/bin
 mv mongrel_rails mongrel_rails_ruby
 cat > mongrel_rails << EOF
@@ -27,7 +27,7 @@ ulimit -v $MEM_LIMIT
 mongrel_rails_ruby $@
 EOF
 
-</code>
+```
 
 
 Ref: <http://www.ibm.com/developerworks/cn/linux/l-cn-ulimit/index.html>

@@ -17,14 +17,14 @@ tags:
 算法的实现，我们把上面的例子说得再通用一点，假设A1、A2、A3分别持有彩票a1、a2、a3，那么彩票的总数就是 a1 + a2 + a3 = N，他们分别持有的彩票号码如下图：
 
 
-<code>
+```
     |    A1        |         A2                |        A3              |  
     |  1, 2 .. a1  | a1+1, a1 + 2 .... a1 + a2 | a1+a2+1..... a1+a2+a3=N|
-</code>
+```
 
 那么我们如何决定谁中奖呢？首先，我们需要确定一个中奖号码，从 1 到 N 中取一个随机数，把该数作为中奖号码。具体代码如下：
 
-<code>
+```
 
 who_win_the_lottery([], TotalLotterys, _LotteryNumber) ->
 	no_winner;
@@ -39,11 +39,11 @@ who_win_the_lottery([{Agent, Lotteries} | Agents], TotalLotteries, LotteryNumber
 			who_win_the_lottery(Agents, RestLotteries, LotteryNumber)
 	end.
 
-</code>
+```
 
 思路是，给定一个列表，从最后一个客服代表开始算，如果中奖号码不在最后一个人手中，则往前查找一个，直至找到中奖号码。算法中，根据“等概率”的特性，列表中客服代表的排列顺序是无关的，但为了与上面图中给出的顺序统一，可以先将列表翻转 (lists:reverse)，下面代码先生成一张中奖彩票 LotteryNumber，然后判断谁中奖。
 
-<code>
+```
 
 decide_winner() ->
 	
@@ -62,6 +62,6 @@ decide_winner() ->
 	Winner = who_win_the_lottery(AgentList, TotalLotteries, LotteryNumber),
 	io:format("Winner: ~p~n", [Winner]),
 	Winner.
-</code>
+```
 
 需要指出，这种基本概率的算法是不可靠的，也就是说根据上面的数据，在10次实验中我们期望获得 6、3、1，但实际可能是5、3、2。如果数据量比较大，结果就比较相近了。

@@ -9,12 +9,12 @@ tags:
 
 无论如何，下面是几个在Vista下查看和列改MTU的方法：
 
-<code>
+```
 ping www.dujinfang.com -f -l 1500
 ping www.dujinfang.com -f -l 1472
 ...
 ping www.dujinfang.com -f -l 1400
-</code>
+```
 
 如果MTU过长则会返回"Packet needs to be fragmented but DF set"，否则为正常"Reply from xxxx...."。参考：<http://help.expedient.com/broadband/mtu_ping_test.shtml>
 

@@ -54,7 +54,7 @@ ftp://cle.linux.org.tw/pub2/tex/cjk/fonts/nkait1
 后来，我使用如下安装方式：
 搜索需要安装的包：
 
-<code>
+```
 $ sudo apt-cache search latex-cjk-
 
 cjk-latex - installs all LaTeX CJK packages
@@ -70,28 +70,28 @@ latex-cjk-japanese-wadalab - type1 and tfm DNP Japanese fonts for latex-cjk
 latex-cjk-korean - Korean module of LaTeX CJK
 latex-cjk-thai - Thai module of LaTeX CJK
 
-</code>
+```
 
 将所有与中文相关的包装上就行了：
 
-<code>
+```
 apt-get install latex-cjk-chinese*
-</code>
+```
 
 装好后再安装中文字体：（参考了好多文章，但五花八门，我使用下面的方法）
 
 下载： http://www.ish.ci.i.u-tokyo.ac.jp/~jin/data/mkfont.tar.gz
 
-<code>
+```
 tar xvzf mkfont.tar.gz
 cd mkfont
 cp /windows/Fonts/sim*.ttf .  #(把windows下的字体copy过来，注意simsum.ttc不行，要copy .ttf的)
 ./mkfont.sh simhei.ttf simhei hei    #转换黑体
-</code>
+```
 
 然后就可以试一试了：
 
-<code>
+```
 \usepackage{CJK}
 \usepackage{default}
 
@@ -103,7 +103,7 @@ dffsdfdsf
 \end{CJK*}
 \end{document}
 
-</code>
+```
 如何转换simsun.ttc我还不知道，不过，可以使用gbsn字体。
 
 另外，生成pdf文件后发现中文无法拷贝，找了很多解决办法，最后发现将 \usepackage{CJK} 改为 \usepackage{CJKutf8}就OK了。

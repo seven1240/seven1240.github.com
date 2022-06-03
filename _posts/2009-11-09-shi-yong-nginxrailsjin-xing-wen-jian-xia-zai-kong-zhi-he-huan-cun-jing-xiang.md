@@ -13,7 +13,7 @@ sendfile不仅能有效提供发送文件的效率，而且也是保护受限访
 
 假设我们在A国有服务器 a.com， 前端使用Nginx，而后端使用rails。所有发给Nginx的请求都会到Rails，由Rails决定某用户是否有访问某文件的权限，如果有，则返回一个X-Accel-Redirect HTTP头，让Nginx把文件发给用户。
 
-<code>
+```
         location /rails {
 		proxy_pass http://rails_app;
 	}
@@ -21,32 +21,32 @@ sendfile不仅能有效提供发送文件的效率，而且也是保护受限访
                 internal;
                 alias                /home/some_dir/file-internal;
         }
-</code>
+```
 
 其中 internal指明Nginx只能内部使用，用户不可能通过 http://a.com/file-internal/xx.jpg 等直接访问文件。而且，alias所指的路径必须是nginx能访问的路径：本地磁盘，NFS，NAS，NBD等。
 
 后端的代码可以这样写：
 
-<code>
+```
 php:
 header("X-Accel-Redirect: /file-internal/filename.jpg");
                                                      
 Ruby/Rails:
 head(:x_accel_redirect => "/file-internal/filename.jpg",
       :content_disposition => "attachment; filename=\"real_filename.jpg\"")  
-</code>
+```
 
 随着业务扩大，我们的业务发展到了B国，同时我们在B国建立了服务器以加速访问，原A国用户仍访问a.com。用户访问b.com时，将所有请求都转发到a.com上，配置如下。
 
-<code>
+```
         location /rails {
 		proxy_pass http://a.com; # nginx on a.com
 	}
-</code>
+```
 
 如果用户下要下载文件，为了加速访问，我们需要将文件缓存到b.com上。如果是不受保护的文件，我们只需要简单用的squid之类的反向代理就够了，但要实现下载控制，我们仍需将用户请求转发到a.com服务器上进行验证，但可以通过sendfile使用本地镜象。b.com的配置变为：
 
-<code>
+```
         location /rails {
 		proxy_pass http://rails_app_on_a.com;
 	}
@@ -54,11 +54,11 @@ head(:x_accel_redirect => "/file-internal/filename.jpg",
                 internal;
                 alias                /home/some_dir/file-internal;
         }
-</code>
+```
 
 这样，就需要用rsync之类的工具来同步文件，使b.com和a.com上的静态文件保持一致。不过，Nginx也支持动态镜象。思路是，如果b.com上找不到静态文件，则再向a.com发起一次请求，于是b.com上的配置改为：
 
-<code>
+```
         location /rails {
 		proxy_pass http://rails_app_on_a.com;
 	}
@@ -74,7 +74,7 @@ head(:x_accel_redirect => "/file-internal/filename.jpg",
                         proxy_pass http://a.com;
                 }
         }
-</code>
+```
  
 注意，上述配置中，/file-internal下如果找不到文件时，则向a.com上的nginx再发起一次请求（注意，这时不能是rails_app_on_a.com了，否则就死循环了），取得对应的文件，并保存到本地。这样，如果再有下一次请求，b.com就不用再去a.com上找了。这种机制在Nginx中不叫cache而称为镜象。当然你需要再写个脚本定期清理一下本地的镜象，否则磁盘空间100%了可就不好了。
 

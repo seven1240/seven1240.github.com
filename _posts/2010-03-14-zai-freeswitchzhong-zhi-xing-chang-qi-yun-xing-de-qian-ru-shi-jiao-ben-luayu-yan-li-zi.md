@@ -13,21 +13,21 @@ tags:
 
 另外，你也可以写到lua.conf配置文件中，这样它就能随FreeSWITCH一起启动。
 
-<code>
+```
 	<param name="startup-script" value="gateway_report.lua"/>
-</code>
+```
 
 脚本后面可以加参数，如 luarun test.lua arg1 arg2，在脚本中，就可以通过argv[1], argv[2]来获得参数的值。而argv[0]是脚本的名字。
 
 如果要让脚本一直运行，脚本中必须有一个无限循环。你可以这样做：
 
-<code>
+```
 while true do
   -- Sleep for 500 milliseconds
   freeswitch.msleep(500);
   freeswitch.consoleLog("info", "blah...");
 end
-</code>
+```
 
 但这样的脚本是无法终止的，由于FreeSWITCH使用swig支持这些嵌入式语言，而有些语言没有退出机制，所以，所有语言的退出机制都没有在FreeSWITCH中实现，即使unload相关的语言模块也不行，也是因为如此，为了避免产生问题，所有语言模块也都不能unload。
 
@@ -39,12 +39,12 @@ end
 
 我们可以使用事件机制构造另一个循环：
 
-<code>
+```
 con = freeswitch.EventConsumer("all");                                                                         
 for e in (function() return con:pop(1) end) do
   freeswitch.consoleLog("info", "event\n" .. e:serialize("xml"));
 end
-</code>
+```
 
 上面的代码中，con被初始化成一个事件消费者。它会一直阻塞并等待FreeSWITCH发出一个事件，并打印该事件的XML表示。当然，事件总会有的。如每个电话初始化、挂机等都会有相应的事件。除此之外，FreeSWITCH内部也会毎20秒发出一个heartbeat事件，这样你就可以定时执行一些任务。
 

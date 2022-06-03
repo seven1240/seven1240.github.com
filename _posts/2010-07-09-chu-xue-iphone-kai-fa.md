@@ -14,13 +14,13 @@ iPhone 就一个 HOME 键，将简单发挥到了极致。手一痒，但也想�
 
 我第一个动手的就是改造我的博客。网页版的，改起来最简单。需要说明，我的博客是基于 Sinatra 的，由于它[已经支持WAP](/past/2009/11/22/zai-sinatrazhong-zhi-chi-shou-ji-wapfang-wen/)了，再加上iPhone 支持也不难。简单起见，我只是判断了 user_agent:
 
-<code>
+```
   if request.user_agent.nil? || request.env['HTTP_VIA'] =~ /WAP/
     @is_wap = true
   elsif request.user_agent =~ /iPhone/
     @is_iphone = true
   end
-</code>
+```
 
 接下来，无非就是在代码中看到 @is_iphone = true 的时候使用不同的 layout。界面部分我用了 [IUI](http://code.google.com/p/iui/)，当时还不知道[Sencha](http://www.sencha.com/)。
 

@@ -13,15 +13,15 @@ tags:
 [Sinatra ERB Escaping](http://adam.blog.heroku.com/past/2009/8/4/sinatra_erb_escaping/)
 
 Rails:
-<code>
+```
 <%=h article.author %>
-</code>
+```
 
 Sinatra:
 
-<code>
+```
 helpers do
   alias_method :h, :escape_html
 end
 
-</code>
+```

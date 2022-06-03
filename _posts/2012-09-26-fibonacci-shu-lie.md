@@ -63,7 +63,7 @@ tags:
 
 比作者的机器快3倍，因此 Erlang 的结果 0.115 * 3 = 0.345，大致比 node.js 略差，比其它脚本语言都好。当然，上面是用 escript 做的，编译成 beam 应该更好一点。完整的脚本如下：
 
-<code>
+```
 #!/usr/bin/env escript
 
 %% http://en.literateprograms.org/Fibonacci_numbers_(Erlang)
@@ -123,11 +123,11 @@ main([N, "2"]) ->	fibo2(list_to_integer(N));
 main([N, "3"]) ->	fibo3(list_to_integer(N));
 main([N, "4"]) ->	fibo4(list_to_integer(N)).
 
-</code>
+```
 
 最后，来个金字塔：
 
-<code>
+```
 1
 1
 2
@@ -169,4 +169,4 @@ main([N, "4"]) ->	fibo4(list_to_integer(N)).
 63245986
 102334155
 
-</code>
+```

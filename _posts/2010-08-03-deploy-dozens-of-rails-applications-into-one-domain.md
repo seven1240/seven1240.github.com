@@ -45,7 +45,7 @@ We use Unicorn(<http://github.com/blog/517-unicorn>) for rails and Nginx as a re
 
 Nginx conf:
 
-<code>
+```
 upstream app1{
   server localhost:10010;
 }
@@ -85,6 +85,6 @@ server {
         .....
 }
 
-</code>
+```
 
 That’s it. Take a look at <http://github.com/idapted/eco_apps> to see how we make dozens of rails apps working together.

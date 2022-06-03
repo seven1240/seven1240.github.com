@@ -22,14 +22,14 @@ Go的设计目标就是快。它试图结合动态语言（如Python）的开发
 两者的Hello World:
 
 hello.zu
-<code>
+```
 MAIN()
   IO.write("Hello, World!\n")
 }
-</code>
+```
 
 hello.go
-<code>
+```
 package main
 
 import fmt "fmt" // Package implementing formatted I/O.
@@ -37,7 +37,7 @@ import fmt "fmt" // Package implementing formatted I/O.
 func main() {
 	fmt.Printf("Hello, world; or 世界你好\n");
 } 
-</code>
+```
 
 Zimbu的主页放到google sites上，Go不知道，只知道golang.org的后台某些部分是用Go语言写的。两者在国内访问起来都有些困难。
 
@@ -48,7 +48,7 @@ Zimbu的主页放到google sites上，Go不知道，只知道golang.org的后台
 下载源代码，编译到最后测试不通过，但好在它是先安装后测试的，不影响使用：
 
 错误信息如下:
-<code>
+```
 seven@localhost:~/go/src/pkg/http$ make test
 gotest
 rm -f _test/http.a _gotest_.8
@@ -61,13 +61,13 @@ gopack grc _test/http.a _gotest_.8
         Get http://codesearch.google.com/: read tcp:192.168.1.4:50304->64.233.189.102:80: connection reset by peer
 FAIL
 make: *** [test] Error 1
-</code>
+```
 
 照着网上的例子编译了一个http server, 输入7777得到了一个QR code:
 <img src="http://chart.apis.google.com/chart?chs=300x300&cht=qr&choe=UTF-8&chl=7777" />
 
 Server端没用并发的情况下ab了一下：
-<code>
+```
 seven@localhost:~$ ab -n 1000 -c 1 http://127.0.0.1:1718/
 
 Server Software:        
@@ -106,4 +106,4 @@ Percentage of the requests served within a certain time (ms)
   98%      1
   99%      1
  100%     22 (longest request)
-</code>
+```

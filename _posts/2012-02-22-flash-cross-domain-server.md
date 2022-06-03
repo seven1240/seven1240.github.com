@@ -11,7 +11,7 @@ tags:
 自已写了一个 ruby 版的，一般的测试也够用了，哈：
 
 
-<code>
+```
 #!/usr/bin/env ruby
 
 require 'socket'
@@ -24,4 +24,4 @@ while true do
                 s.close
         }
 end
-</code>
+```

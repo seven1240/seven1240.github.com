@@ -15,8 +15,8 @@ tags:
 
 听别人说也是只影响FF，Hmm.......
 
-<code>
+```
 <div style=”position: absolute; left: 0px; top: 0px; width: 100%; 
 height: 1000px; background-color: rgb(238, 238, 238); 
 opacity: 0.5; z-index: 100000; display: block;” id=”ga_shade”></div>
-</code>
+```

@@ -13,27 +13,27 @@ Heroku有一个sendgrid Addon，对于Rails应该是0配置的，但我使用Sin
 > If you are using Sinatra/Merb/etc or have disabled ActionMailer, please make sure to enable/install it before installing this add-on(Sendgrid)。
 
 无奈，换成ActionMailer，希望它能自动配置。但还是搞不定。Google了下，发现都是配置Gmail的。后来，无意间在push的时候看到以下信息：
-<code>
+```
 -----> Heroku receiving push
 -----> Sinatra app detected
 -----> Not a Rails app, can't install the plugin quick_sendgrid
        Compiled slug size is 576K
 -----> Launching...... done
-</code>
+```
 
 看来只能手工配了，可是参数如何设呢？当然[Sendgrid](http://sendgrid.com/)是免费的，你完全可以自己注册一个账号。不过既然heroku已经帮你注册了账号，就应该不用重复注册。最后想起了一个好东西：
 
-<code>
+```
 $ heroku console
 ruby console for example.heroku.com
 >> ENV
 => {"SELINUX_INIT"=>"YES", "CONSOLE"=>"/dev/console", "INLINEDIR"=>"/home/slugs/6495......, "SENDGRID_USERNAME"=>.....}
 >>
-</code>
+```
 
 呵呵，找到就好办了，配置ActionMailer(是的，在非Rails环境下也可以使用，google "actionmailer without rails"):
 
-<code>
+```
 require 'action_mailer'
 class NotificationMailer < ActionMailer::Base
   def newpost_notification(post)
@@ -55,7 +55,7 @@ NotificationMailer.smtp_settings = {
   :authentication => :login
 }
 
-</code>
+```
 
 再放个erb模板到views/对应的目录下就行了。注意:domain是必须有的。呵呵，虽然发信成功了，但ActionMailer还是挺复杂的，想简单还是再试下Pony吧，有了以上参数应该很容易配置的。
 

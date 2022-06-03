@@ -14,9 +14,9 @@ tags:
 
 其实在ubuntu上安装Asterisk很简单，apt-get 就搞定了
 
-<code>
+```
 apt-get install asterisk
-</code>
+```
 
 参考了下面一篇文章，但没搞那么复杂
 
@@ -36,7 +36,7 @@ sudo su asterisk asterisk -rvvv
 
 先将sip.conf备份一下子, Ubuntu自己带的有些复杂了，呵呵，对于新手来说，太长了。
 
-<code>
+```
 mv sip.conf sip.conf.old
 
 touch sip.conf
@@ -55,13 +55,13 @@ type=friend
 context=phones
 host=dynamic
 
-</code>
+```
 
 以上只是简单配置，不安全。设了两个号码 1000和1000，呵呵，主要是照asterisk的书上说的。注意，我把系统默认的端口从5060改成了5061，因为ekiga也要监听5060端口，会有冲突。
 
 再配extensions.conf：记着先备份一下原来的啊
 
-<code>
+```
 # cat extensions.conf
 [globals]
 
@@ -85,15 +85,15 @@ exten => 500,n,Hangup()
 [phones]
 include => internal
 
-</code>
+```
 
 好了，切换到asterisk控制台，运行
 
-<code>
+```
 CLI> sip reload
 
 CLI> dialplan reload
-</code>
+```
 
 就可以了。打开ekiga，新建一个账户:
 
@@ -109,7 +109,7 @@ CLI> dialplan reload
 
 接下来再配置一个分机：extensions.conf 1001。 注意，里面的1002在下一步才用到，先配置上吧。
 
-<code>
+```
 exten => 1000,1,NoOp()
 exten => 1000,2,Monitor(wav,myfilename) 
 exten => 1000,n,Dial(SIP/1000,30)
@@ -126,13 +126,13 @@ exten => 1002,n,Dial(IAX2/idefisk,30)
 exten => 1002,n,Playback(the-party-you-are-calling&is-curntly-unavail)
 exten => 1002,n,Hangup()
 
-</code>
+```
 
 配置好后，到控制台，打上
 
-<code>
+```
 CLI> dialplan reload
-</code>
+```
 
 就可以了。
 
@@ -148,15 +148,15 @@ sip:1001@你的IP:5061了。同时，在控制台上可以看到详细呼叫信�
 
 设置iax。iax是另一种协议，可以使用kiax软件电话连.
 
-<code>
+```
 apt-get install kiax
-</code>
+```
 
 或者 apt-get install iaxcomm也可以，但未测试
 
 配置iax.conf
 
-<code>
+```
 # cat iax.conf
 [general]
 autokill=yes
@@ -165,13 +165,13 @@ autokill=yes
 type=friend
 host=dynamic
 context=phones
-</code>
+```
 
 完成后到控制台下：
 
-<code>
+```
 CLI>module reload chan_iax2.so
-</code>
+```
 
 就可以了。（因为dialplan上面已经配了，就是1002那个分机号码）
 

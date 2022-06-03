@@ -13,18 +13,18 @@ tags:
 
 以下代码让 webView 支持 plugin。
 
-<code>
+```
     QWebSettings *settings = ui->webView->settings();
     settings->setAttribute(QWebSettings::PluginsEnabled, true);
-</code>
+```
 
 或者直接设成全局的也行：
 
-<code>
+```
     QWebSettings *websetting= QWebSettings::globalSettings();
     websetting->setAttribute(QWebSettings::JavascriptEnabled,true);
     websetting->setAttribute(QWebSettings::PluginsEnabled,true);
-</code>
+```
 
 加载 Flash 就简单了，其实就一行，可怜我在64位的环境下折腾了半天：
 
@@ -36,7 +36,7 @@ tags:
 
 优雅起见，还可以使用 FlashVars，因此写了一个JS：
 
-<code>
+```
 
 var t = '<embed src="' + url + '" ';
 t += 'quality="high" bgcolor="" wmode="opaque" ';
@@ -47,10 +47,10 @@ t += 'flashvars="' + vars + '"></embed>';
 
 document.write(t);
 
-</code>
+```
 
 在QT中就这样用(通过JS设置FlashVars)：
-<code>
+```
 
     QFile file;
     file.setFileName(":/resources/loadflash.js");
@@ -60,18 +60,18 @@ document.write(t);
 
     QString js1 = "var url='http://blah.swf'; var vars='a=b&c=d';" + js
     ui->webView->page()->mainFrame()->evaluateJavaScript(js1);
-</code>
+```
 
 这种方法不是万能的。我就用同样的代码加载两个不同的Flash，一个成功一个不成功。调起来那个累啊。最后猜想可能是那个有问题的Flash中不认识这样的参数，抑或是跨域？还好，还有其它的办法：
 
 先在 webView 中加载一个空的 Flash ，或一个只包含空的Flash的HTML，然后，也是使用JS控制加载：
 
-<code>
+```
 QWebFrame *frame = ui->webView->page()->mainFrame();
 QWebElement e = frame->findFirstElement("embed");
 e.evaluateJavaScript("this.FlashVars='a=b&c=d';"
     "this.LoadMovie(0, 'http://blah.swf');");
-</code>
+```
 
 笔记备忘。
 

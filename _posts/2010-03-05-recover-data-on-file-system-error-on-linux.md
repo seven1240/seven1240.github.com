@@ -12,7 +12,7 @@ Worst of that, it was a database server and one of our databases didn't have any
 Anyway, we need to re-build the server. It's not hard since it was a Xen DomU and we just create a new one. But we still want to see how much data can be recovered.
 
 cd into the famous lost+found, ls can list some dirs prefixed with #, then I run a find to get a list of all files: 
-<code>
+```
 cd /lost+found
 find .
 ./#975072/addons
@@ -32,6 +32,6 @@ find .
 ./#1130956/log.0000000008
 ./#1130956/log.0000000005
 .
-</code>
+```
 
 Even we can get some data back, we didn't recover our database. Fortunately we have db dumps for other databases... Backup is always important!

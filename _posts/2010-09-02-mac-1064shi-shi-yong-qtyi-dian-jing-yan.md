@@ -43,13 +43,13 @@ QT对于跨平台来说还是很好用的。尤其喜欢其emit机制。但由�
 
 不幸的是，它在编译过程中还是尝试链接到我64位的MySQL及PostgreSQL库上，我没选 -plugin-sql-xxx 啊。懒得再找帮助，直接在 src/plugins/sqldrivers 下写了个假的 Makefile
 
-<code>
+```
 all:
         echo skip
 
 install:
         echo skip
-</code>
+```
 
 
 我将自己编译的安装到 /opt/qt，不使用framework，这样代码发布的时候省心些（估计），当然，我只编译了32位的。默认是debug版的，想要 release版估计还得重新编译，太费时间了，编译一遍用了好几个小时。

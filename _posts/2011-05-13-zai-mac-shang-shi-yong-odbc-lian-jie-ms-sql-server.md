@@ -26,7 +26,7 @@ tags:
   ./tsql -H 192.168.7.6 -p 1433 -U sa -P blah -D test_db
 
 连接不成功，揭示
-<code>
+```
  locale is "en_US.UTF-8"
 locale charset is "UTF-8"
 Msg 20017, Level 9, State -1, Server OpenClient, Line -1
@@ -34,17 +34,17 @@ Unexpected EOF from the server
 Msg 20002, Level 9, State -1, Server OpenClient, Line -1
 Adaptive Server connection failed
 There was a problem connecting to the server
-</code>
+```
 
 在服务器端事件查看器中提示
 
-<code>
+```
 The login packet used to open the connection is structurally invalid; the connection has been closed. Please contact the vendor of the client library. [CLIENT: 192.168.7.5]
-</code>
+```
 
 改 /usr/local/freetds/etc/freetds.conf
 
-<code>
+```
 [ms]
 	host = 192.168.7.6
 	port = 1433
@@ -52,7 +52,7 @@ The login packet used to open the connection is structurally invalid; the connec
 	uid = sa
 	pwd = blah
 	client charset = UTF-8
-</code>
+```
 
 然后用 -S 连接成功，看来命令行不知少什么参数
 
@@ -64,7 +64,7 @@ The login packet used to open the connection is structurally invalid; the connec
 
 odbcinst.ini:
 
-<code>
+```
 [ODBC Drivers]
 MSSQL = Installed
 
@@ -76,14 +76,14 @@ Retry Wait =
 Driver = /usr/local/freetds/lib/libtdsodbc.0.so
 Setup  = 
 SERVER = ms
-</code>
+```
 
 其中 SERVER = ms 对应 freetds.conf 中的 ms
 
 
 odbc.ini:
 
-<code>
+```
 [ODBC]
 Trace         = 1
 TraceAutoStop = 0
@@ -102,7 +102,7 @@ TDS_Version = 8.0
 Database    = test
 Charset     = UTF-8
 Description = mssql
-</code>
+```
 
 上面的 ServerName = ms 对应 freetds.conf 中的 ms， Server 一行注释掉了，因为不好用。
 

@@ -152,7 +152,7 @@ Mac 自带了Ruby 1.8.7，安装 ruby gems
 
 安装 PHP postgresql extension: Mac默认安装的是 PHP Version 5.3.1，只有mysql扩展，没有postgres。网上有人说需要重新编辑PHP，其实不需要，只安装postgres extension即可。
 
-<code>
+```
 # 下载源代码，注意我下的是5.3.2，安装没问题，如果有问题，你可以装 5.3.1
 $ wget http://cn.php.net/distributions/php-5.3.2.tar.bz2
 # 解压
@@ -165,13 +165,13 @@ $ sudo make install
 Installing shared extensions:     /usr/lib/php/extensions/no-debug-non-zts-20090626/
 $ cd /etc
 $ sudo cp php.ini-default php.ini
-</code>
+```
 
 然后在php.ini中加入 extension = pgsql.o
 
-<code>
+```
 apachectl restart
-</code>
+```
 
 看 phpinfo()，成功。
 

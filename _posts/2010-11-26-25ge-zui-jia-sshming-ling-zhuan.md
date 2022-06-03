@@ -87,7 +87,7 @@ SSH是一个非常伟大的工具，如果你要在互联网上远程连接到�
 
 在一个端口上敲一下打开某个服务的端口（如SSH），再敲一下关闭该端口，需要先安装knockd，下面是一个配置文件示例。
 
-<code>
+```
 [options]
 logfile = /var/log/knockd.log
 [openSSH]
@@ -100,7 +100,7 @@ sequence = 5000,4000,3000
 seq_timeout = 5
 command = /sbin/iptables -D INPUT -i eth0 -s %IP% -p tcp –dport 22 -j ACCEPT
 tcpflags = syn
-</code>
+```
 
 12、删除文本文件中的一行内容，有用的修复
 

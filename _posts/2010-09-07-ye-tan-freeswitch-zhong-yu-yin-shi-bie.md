@@ -41,7 +41,7 @@ Sphinx 应该是开源的语音识别公认的比较好的软件。幸运的是 
 
 我将几个关键字写进了 grammer中，如:
 
-<code>
+```
 
 grammar hpcause;
 
@@ -52,7 +52,7 @@ grammar hpcause;
 <exist> = [ exist ];
 public <hpcause> = [ <service> | <rejected> | <busy> | <konghao> | <exist> ];
 
-</code>
+```
 
 实际测试中，我甚至将“空号”（konghao）作为关键词加上去，的确有时候能识别出来。由于中英文混杂，识别率太低。纯英文的环境比较理想。
 

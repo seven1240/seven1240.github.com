@@ -1,11 +1,11 @@
 ---
 layout: post
-title: ""
+title: "你是一个什么样的程序员"
 tags:
-  - ""
+  - "shell"
 ---
 
-又看了一遍[你是一个什么样的程序员](/2013/02/05/ni-shi-yi-ge-shen-me-yang-de-cheng-xu-yuan.html)，重新运行了一下当年的命令，最大的变化是`code`和`docker`。
+又看了一遍9年前的文章[你是一个什么样的程序员](/2013/02/05/ni-shi-yi-ge-shen-me-yang-de-cheng-xu-yuan.html)，重新运行了一下当年的命令，最大的变化是`code`和`docker`。
 
 
 ```

@@ -8,13 +8,13 @@ tags:
 
 在[github](http://github.com/travis/erlang-uuid)上有一个生成UUID的方法, 可是在最新的erlang R13B02-1中有问题, 原来Math:pow()会返回一个浮点数, 但random:uniform期望一个整数, 后来trunc了一下就行了:
 
-<code>
+```
 v4() ->
     v4(random:uniform(erlang:trunc(math:pow(2, 48))) - 1,
     random:uniform(erlang:trunc(math:pow(2, 12))) - 1,
     random:uniform(erlang:trunc(math:pow(2, 32))) - 1, 
     random:uniform(erlang:trunc(math:pow(2, 30))) - 1).
-</code>
+```
 
 [另外看到有人用了round](http://crackcell.javaeye.com/blog/493028).
 
