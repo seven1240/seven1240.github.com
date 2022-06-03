@@ -25,7 +25,7 @@ vi ~/Library/VirtualBox/Machines/Chrome/Chrome.xml
 把以下参数设成False。
 
 ```xml
-        <HardwareVirtEx enabled="false"/>
+<HardwareVirtEx enabled="false"/>
 ```
 
 再启动VitualBOX，好了，启动果然很快。登录页面显示的是Chromium OS，看来Chrome只是浏览器的名字。登录有点慢，Gmail的原因吧？抑或是虚拟机。操作起来也不顺畅，但打开某些页面倒挺快，如新浪和<http://www.eqenglish.com>，加载Flash也没问题，只是没在虚拟机里搞定声卡。
@@ -54,7 +54,7 @@ Power-Key 	Running 	Shutdown
 
 内核还是挺新的：
 
-```
+```sh
 chronos@localhost:~$ uname -a
 Linux localhost 2.6.30-chromeos-intel-menlow #1 SMP Thu Nov 19 20:37:56 UTC 2009 i686 GNU/Linux
 ```

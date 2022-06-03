@@ -28,8 +28,6 @@ title: {{ site.com }}
 {% endfor %}
 </ul>
  
-<!-- <script src="/js/jquery-1.8.0.min.js" type="text/javascript" charset="utf-8"></script>  -->
-<script src="/js/jquery.tagcloud.js" type="text/javascript" charset="utf-8"></script> 
 <script language="javascript">
 $(window).load(function() {
   $.fn.tagcloud.defaults = {
