@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: tags
 title: {{ site.com }}
 ---
 
