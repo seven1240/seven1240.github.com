@@ -42,8 +42,14 @@ There is an [About Me](http://about.me/dujinfang) page in English. Read on if yo
 
 联系我？请发邮件到 `dujinfang@gmail.com`
 
-或微信扫一扫关注我的公众号『七歌』
+或微信扫一扫关注我的公众号『七歌』：
 
 <div>
     <img src="/seven.jpg"/><br>
+</div>
+
+以及我的微信视频号『七歌杜金房』：
+
+<div>
+    <img src="/images/seven-video-channel.jpg"/>
 </div>
