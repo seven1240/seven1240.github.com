@@ -4,6 +4,7 @@ title: "我成了教育自媒体"
 tags:
   - "故事"
   - "心情"
+  - "学习"
 ---
 
 > 写于2022年10月，发在[FreeSWITCH-CN微信公众号上](https://mp.weixin.qq.com/s/R70heVX7a8swpb8fsb7qEg)。
