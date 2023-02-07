@@ -48,7 +48,7 @@ make && make install
 
 If you have problem, look:
 
-- https://github.com/freeswitch/spandsp/pull/46
-- https://github.com/signalwire/freeswitch/pull/1956
+- <https://github.com/freeswitch/spandsp/pull/46>
+- <https://github.com/signalwire/freeswitch/pull/1956>
 
 Have fun!
