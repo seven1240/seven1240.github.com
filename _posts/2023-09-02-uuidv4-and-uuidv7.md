@@ -452,11 +452,44 @@ xui=> explain ANALYZE VERBOSE select * from v7 where id = '018a5618-52e7-7003-90
 (6 rows)
 ```
 
+Remove primary key but add an index:
+
+```sql
+drop table v4;
+drop table v7;
+drop table v;
+
+create table v4 (
+    id UUID DEFAULT uuid_generate_v4()
+);
+create index idx_v4 on v4 (id);
+
+create table v7 (
+    id UUID
+);
+create index idx_v7 on v7 (id);
+```
+
+test:
+
+```sh
+(base) ➜  test time cat v4.sql | psql -h localhost -U xui  xui
+COPY 10000000
+cat v4.sql  0.01s user 0.19s system 0% cpu 3:43.83 total
+psql -h localhost -U xui xui  0.86s user 0.19s system 0% cpu 4:11.44 total
+
+(base) ➜  test time cat v7.sql | psql -h localhost -U xui  xui
+COPY 10000000
+cat v7.sql  0.01s user 0.14s system 0% cpu 31.078 total
+psql -h localhost -U xui xui  0.83s user 0.19s system 3% cpu 33.167 total
+```
+
 Conclusion:
 
 - v7 is a little better in SELECT with INDEX
-- v7 is much better in INSERT with UNIQUE constraint (e.g. primary key)
+- v7 is much better in INSERT with UNIQUE constraint (e.g. primary key) or non unique INDEX
 - Since UUID is *UNIQUE*, column in database **SHOULD NOT** need to add UNIQUE constraint
 - Index UUID fields for SELECT
+- v7 is much more better on INSERT to indexed fields
 
 Seems both v4 and v7 are fine as long as you don't use it with UNIQUE constraint. But v7 is still interesting to use in primary keys and you need to insert a lot of rows very fast.
