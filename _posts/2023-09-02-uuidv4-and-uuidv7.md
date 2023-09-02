@@ -455,8 +455,8 @@ xui=> explain ANALYZE VERBOSE select * from v7 where id = '018a5618-52e7-7003-90
 Conclusion:
 
 - v7 is a little better in SELECT with INDEX
-- v7 is much better in INSERT with UNIQUE constrains (e.g. primary key)
-- Since UUID is *UNIQUE*, column in database **SHOULD NOT** need to add UNIQUE constrains
+- v7 is much better in INSERT with UNIQUE constraint (e.g. primary key)
+- Since UUID is *UNIQUE*, column in database **SHOULD NOT** need to add UNIQUE constraint
 - Index UUID fields for SELECT
 
-Seems both v4 and v7 are fine as long as you don't use it with UNIQUE constrains. But v7 is still interesting to use in primary keys and you need to insert a lot of rows very fast.
+Seems both v4 and v7 are fine as long as you don't use it with UNIQUE constraint. But v7 is still interesting to use in primary keys and you need to insert a lot of rows very fast.
