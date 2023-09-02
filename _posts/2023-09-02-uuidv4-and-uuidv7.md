@@ -46,7 +46,7 @@ Import v7 UUIDs:
 
 ```sh
 node v7.js > v7.sql
-cat v7 | psql -h localhost -U xui xui
+cat v7.sql | psql -h localhost -U xui xui
 ```
 
 Compare with 1 million rows:
@@ -359,14 +359,14 @@ node index.js > v7  35.59s user 16.07s system 100% cpu 51.520 total
 Import 10m rows:
 
 ```sh
-(base) ➜  test time cat v4 | psql -h localhost -U xui xui
+(base) ➜  test time cat v4.sql | psql -h localhost -U xui xui
 COPY 10000000
-cat v4  0.01s user 0.20s system 0% cpu 3:36.86 total
+cat v4.sql  0.01s user 0.20s system 0% cpu 3:36.86 total
 psql -h localhost -U xui xui  0.86s user 0.20s system 0% cpu 4:04.88 total
 
-(base) ➜  test time cat v7 | psql -h localhost -U xui xui
+(base) ➜  test time cat v7.sql | psql -h localhost -U xui xui
 COPY 10000000
-cat v7  0.01s user 0.14s system 0% cpu 33.888 total
+cat v7.sql  0.01s user 0.14s system 0% cpu 33.888 total
 
 psql -h localhost -U xui xui  0.84s user 0.17s system 2% cpu 36.137 total
 ```
@@ -376,10 +376,9 @@ Since we use UUID as primary key, each insert would check if the UUID is unique.
 As a comparision, I created a table without UNIQUE index, it's much more faster:
 
 ```sql
-(base) ➜  test time cat v4 | psql -h localhost -U xui xui
-Password for user xui:
+(base) ➜  test time cat v4.sql | psql -h localhost -U xui xui
 COPY 10000000
-cat v4  0.01s user 0.13s system 0% cpu 16.220 total
+cat v4.sql  0.01s user 0.13s system 0% cpu 16.220 total
 psql -h localhost -U xui xui  0.81s user 0.19s system 5% cpu 17.174 total
 ```
 
@@ -451,6 +450,7 @@ xui=> explain ANALYZE VERBOSE select * from v7 where id = '018a5618-52e7-7003-90
  Planning Time: 0.225 ms
  Execution Time: 0.381 ms
 (6 rows)
+```
 
 Conclusion:
 
