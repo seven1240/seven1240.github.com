@@ -58,7 +58,7 @@
             <ul id="nav" class="nav">
 			<li><a href="/posts.html">所有文章</a></li>
 			<li><a href="/tags">所有标签</a></li>
-			<li><a href="/feed.xml">订阅Feed</a></li>
+			<li><a href="/feed.xml">订阅 Feed</a></li>
 			<li><a href="/about.html">关于我</a></li>
 			</div>
 
@@ -76,6 +76,12 @@
 		</div>
 
 		<div class="span3">
+			<div>
+				<a href="https://note.mowen.cn/note-intro/?noteUuid=Fj65tBfKpyvQrZEuFCmmT" taget="_blank">
+					<img src="/images/simple.png"/>
+					<div style="text-align:center">《大道至简》</div>
+				</a>
+			</div>
 			<div>
 				<img src="seven.jpg"/>
 				<div style="text-align:center">七歌<br>微信公众号</div>
@@ -125,8 +131,10 @@
 	<script src="/assets/javascripts/libs/backbone.js" type="text/javascript" charset="utf-8"></script>
 	<script src="/assets/javascripts/libs/rails.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
-		var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-		document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fa6821d77e804bc1adab071d55103913d' type='text/javascript'%3E%3C/script%3E"));
+		if (window.location.host.indexOf("localhost") < 0) {
+			var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+			document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fa6821d77e804bc1adab071d55103913d' type='text/javascript'%3E%3C/script%3E"));
+		}
 	</script>
 
 	<script language="javascript">
