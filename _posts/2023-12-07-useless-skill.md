@@ -15,7 +15,7 @@ tags:
 
 但我喜欢电路图。
 
-我 [《大道至简》](https://note.mowen.cn/note-intro/?noteUuid=Fj65tBfKpyvQrZEuFCmmT) 编程课有一节电路的内容。找一个专门画电路图的软件貌似有点小题大做。而使用平常的画图软件又不够专业。我比较熟悉 Latex，也经常用它写作，转 PDF 等，因此，学习了使用 Latex 的 circuitikz 宏包画电路图。
+我 [《大道至简》](https://book.dujinfang.com/2023/12/07/dead-simple.html?from=dujinfang) 编程课有一节电路的内容。找一个专门画电路图的软件貌似有点小题大做。而使用平常的画图软件又不够专业。我比较熟悉 Latex，也经常用它写作，转 PDF 等，因此，学习了使用 Latex 的 circuitikz 宏包画电路图。
 
 效果还不错，从二极管到加法器，都学会了。上图。
 
@@ -39,4 +39,4 @@ tags:
 
 ![](/images/circuit-9.png)
 
-欢迎购买我的编程课[《大道至简，给所有人看的编程课》](https://note.mowen.cn/note-intro/?noteUuid=Fj65tBfKpyvQrZEuFCmmT) 。
+欢迎购买我的编程课[《大道至简，给所有人看的编程课》](https://book.dujinfang.com/2023/12/07/dead-simple.html?from=dujinfang) 。
