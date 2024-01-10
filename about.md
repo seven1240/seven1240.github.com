@@ -39,7 +39,7 @@ There is an [About Me](http://about.me/dujinfang) page in English. Read on if yo
 更多关于我的信息，见：
 [在网上安个家，写写博客](/2009/11/07/zai-wang-shang-an-ge-jia-xie-xie-bo-ke.html)
 
-欢迎购买我的编程课[《大道至简，给所有人看的编程课》](https://book.dujinfang.com/2023/12/07/dead-simple.html?from=dujinfang) 。
+欢迎购买我的编程书——[《大道至简，给所有人看的编程书》](https://book.dujinfang.com/2023/12/07/dead-simple.html?from=dujinfang) 。
 
 联系我？请发邮件到 `dujinfang@gmail.com`
 
