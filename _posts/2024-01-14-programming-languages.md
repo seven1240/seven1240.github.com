@@ -192,3 +192,5 @@ MoonBit 是由前 OCaml 核心团队开发成员、ReScript 作者张宏波带�
 > 本文收录在[《大道至简，给所有人看的编程书》](https://book.dujinfang.com/2023/12/07/dead-simple.html?f=langs)第 3 章，讲述了编程语言的发展历史，以及各种编程语言的特点。
 
 本文永久链接：<https://www.dujinfang.com/2024/01/14/programming-languages.html> 。
+
+你都使用或喜欢哪些编程语言呢？欢迎留言告诉我。
