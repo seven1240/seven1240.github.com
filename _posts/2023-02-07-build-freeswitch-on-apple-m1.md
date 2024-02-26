@@ -33,7 +33,7 @@ SpanDSP doesn't support PKG_CONFIG_PATH, so you have to find out the real includ
 ```
 git clone https://github.com/freeswitch/spandsp
 ./bootstrap.sh
-CFLAGS="-I/opt/homebrew/Cellar/libtiff/4.4.0_1/include -I/opt/homebrew/Cellar/jpeg/9e/include" LDFLAGS="-L/opt/homebrew/Cellar/libtiff/4.4.0_1/lib -L/opt/homebrew/Cellar/jpeg/9e/lib" ./configure
+CFLAGS="-I/opt/homebrew/Cellar/libtiff/4.6.0/include -I/opt/homebrew/Cellar/jpeg/9e/include" LDFLAGS="-L/opt/homebrew/Cellar/libtiff/4.6.0/lib -L/opt/homebrew/Cellar/jpeg/9e/lib" ./configure
 make && make install
 ```
 
