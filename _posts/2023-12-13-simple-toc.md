@@ -24,7 +24,7 @@ tags:
 - 到[我的微博](https://weibo.com/1443400525)上留言互动。
 
 
--   1 神奇的数
+-   第一章 神奇的数
     -   1.1 认识数
     -   1.2 数的起源
     -   1.3 阿拉伯数字与数的表示
@@ -53,7 +53,7 @@ tags:
     -   1.18 高维空间
     -   1.19 坐标系
     -   1.20 小结
--   2 计算机是怎样工作的
+-   第二章 计算机是怎样工作的
     -   2.1 环境准备
     -   2.2 晶体管和门电路
         -   2.2.1 二极管和三极管
@@ -90,7 +90,7 @@ tags:
         -   2.9.5 视频图像的像素点数据格式
         -   2.9.6 扫描线与电视制式
     -   2.10 小结
--   3 操作系统
+-   第三章 操作系统
     -   3.1 Linux 入门
         -   3.1.1 认识命令行
         -   3.1.2 文件权限
@@ -144,7 +144,7 @@ tags:
         -   3.7.7 设备管理
         -   3.7.8 用户界面
     -   3.8 小结
--   4 开发工具
+-   第四章 开发工具
     -   4.1 Windows 上的效率工具和开发环境
         -   4.1.1 winget
         -   4.1.2 Windows Terminal
@@ -188,7 +188,7 @@ tags:
     -   4.6 Eclips
     -   4.7 Android Studio
     -   4.8 XCode
--   5 编程语言
+-   第五章 编程语言
     -   5.1 编程语言串讲
     -   5.2 汇编语言
         -   5.2.1 汇编语言的 hello world
@@ -204,46 +204,44 @@ tags:
         -   5.2.11 制作安装光盘
         -   5.2.12 调试与排错
         -   5.2.13 小结
+		* C 语言
+		* Python
+		* Ruby
+		* Erlang
+		* PHP
+		* Java
+		* JavaScript
+		* Go
+		* C#
+		* Lua
+		* Perl
+		* Bash
+		* Basic
+		* Objective-C
+		* Swift
+		* Scala
+		* Haskell
+		* Clojure
+		* Rust
+		* Kotlin
+		* Dart
+		* Groovy
+		* F#
+		* TypeScript
+		* V
+		* Nim
+		* Zig
+		* Julia
+		* R
+		* Elixir
+		* Crystal
+		* OCaml
+		* D
+		* Ada
+		* Makefile autotools cmake
+		* JNI
+		* SWIG
 
-以下内容尚未整理：
-
-	* C 语言
-	* Python
-	* Ruby
-	* Erlang
-	* PHP
-	* Java
-	* JavaScript
-	* Go
-	* C#
-	* Lua
-	* Perl
-	* Bash
-	* Basic
-	* Objective-C
-	* Swift
-	* Scala
-	* Haskell
-	* Clojure
-	* Rust
-	* Kotlin
-	* Dart
-	* Groovy
-	* F#
-	* TypeScript
-	* V
-	* Nim
-	* Zig
-	* Julia
-	* R
-	* Elixir
-	* Crystal
-	* OCaml
-	* D
-	* Ada
-	* Makefile autotools cmake
-	* JNI
-	* SWIG
 * 第六章 数据结构
 	* 基本数据类型和数据结构
 	* 整数 浮点数 字符 字符串
