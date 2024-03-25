@@ -4,7 +4,7 @@ title: "ARM 和 龙芯上 Arch Linux 安装手记"
 tags:
   - "操作系统"
 category: "操作系统"
-description: "之前从没安装过Arch Linux，今天在 ARM 和 龙芯上折腾了好几遍，为避免以后忘记，写写笔记。"
+description: "之前从来没有使用过Arch Linux，更没有安装过。今天在 ARM 和 龙芯上折腾了好几遍，为避免以后忘记，写写笔记。"
 ---
 
 ## 背景
