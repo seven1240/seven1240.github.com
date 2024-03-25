@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "安装Arch Linux手记"
+title: "Arch Linux 安装手记"
 tags:
   - "操作系统"
 category: "操作系统"
-description: "之前从没安装过Arch Linux，今天折腾一遍，为避免忘掉，写写笔记。"
+description: "之前从没安装过Arch Linux，今天折腾好几遍，为避免忘记，写写笔记。"
 ---
 
 ## 背景
