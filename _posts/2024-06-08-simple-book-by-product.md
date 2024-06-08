@@ -25,6 +25,7 @@ description: "在写作《大道至简，给所有人看的编程书》期间，
 - 键盘扫描码：<https://www.lookuptables.com/coding/keyboard-scan-codes>
 - 中断服务例程：<https://wiki.osdev.org/Interrupt_Service_Routines>
 - Ninja得与失： <https://neugierig.org/software/blog/2020/05/ninja.html>
+- Ninja性能：<https://aosabook.org/en/posa/ninja.html>
 - newLib libc：<https://sourceware.org/newlib/libc.html>
 - main函数之前是什么：<https://embeddedartistry.com/blog/2019/04/08/a-general-overview-of-what-happens-before-main/>
 - 从零开始打造一台简易计算机 <https://xiaogd.net/book/spcp/>
