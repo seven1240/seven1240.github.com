@@ -43,4 +43,4 @@ tags:
     歌声长。
 
 
-更多的，[还是看宋姐的写的吧](http://www.eqenglish.com/blog/eq_baiyangdian/) 
+更多的，还是看宋姐的写的吧：`http://www.eqenglish.com/blog/eq_baiyangdian/` （链接已失效）。

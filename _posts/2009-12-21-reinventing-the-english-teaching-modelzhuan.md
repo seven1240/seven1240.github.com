@@ -17,7 +17,7 @@ Millions of Chinese around the country cram into large classrooms and pay high f
 Supply and demand
 --------
 
-[EQEnglish](http://www.eqenglish.com), founded in Zhongguancun, China's Silicon Valley, in 2005 by Jonathan Palley and Adrian Li, solves a basic supply and demand problem.
+EQEnglish: `http://www.eqenglish.com`（Link Broken）, founded in Zhongguancun, China's Silicon Valley, in 2005 by Jonathan Palley and Adrian Li, solves a basic supply and demand problem.
 
 According to Reuters, the number of Chinese students enrolled at English teaching industry-leader New Oriental exceeded 1.5 million as of May 31. And that's just one company. The People's Daily reported in 2006 that as many 300 million Chinese people are learning English. While that might be an inflated figure that included cab drivers and street vendors who were learning basic phrases in the build-up to the Olympics, the number of people taking the IELTS, which EQEnglish is currently focused on, is expected to exceed 300,000 in 2009, up 15 percent from 260,000 in 2008.
 

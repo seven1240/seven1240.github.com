@@ -12,7 +12,7 @@ tags:
 
 今天，偶尔看到我以前在EQ Blog上写的[博客文章](/past/2011/9/3/wo-de-eqgu-shi/)，勾起了一些小小的回忆。想着以后整个博客可能也不存在了，因此便把一些有意思的文章转过来，做点纪念。
 
-以下文章均转自 EQ故事 <http://www.eqenglish.com/blog/category/eq_story/>
+以下文章均转自 EQ故事 `http://www.eqenglish.com/blog/category/eq_story/`，链接已失效。
 
 
 ## EQ 伊始
