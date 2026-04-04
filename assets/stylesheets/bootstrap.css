@@ -158,6 +158,7 @@ body {
   line-height: 22px;
   color: #333333;
   background-color: #ffffff;
+  text-autospace: normal;
 }
 
 a {
