@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F3F0E8">
+<meta name="description" content="《计算机网络》课程课件">
+<title>《计算机网络》课件</title>
+<!-- 字体：Archivo Black（拉丁大字）+ Noto Sans SC（中文） -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   主题变量：暖纸底色 + 墨黑 + 朱红，高对比、适合投影
+   ============================================================ */
+:root {
+  --paper: #F3F0E8;
+  --card:  #FFFFFF;
+  --ink:   #17150F;
+  --accent: #D8321E;      /* 朱红 */
+  --accent-deep: #A32613; /* 深红（小字用，保证对比度） */
+  --muted: #57513F;
+  --line: rgba(23, 21, 15, .14);
+  --shadow: #17150F;
+
+  /* 字要大：全部 clamp() 随视口缩放 */
+  --title:      clamp(2.4rem, 7vw, 5.8rem);
+  --title-hero: clamp(2.8rem, 10.5vw, 8rem);
+  --title-en:   clamp(2.4rem, 8vw, 6.2rem);
+  --h2:         clamp(1.9rem, 6vw, 4.4rem);
+  --lead:       clamp(1.2rem, 2.6vw, 2rem);
+  --body:       clamp(1.1rem, 2.2vw, 1.7rem);
+  --small:      clamp(.95rem, 1.7vw, 1.35rem);
+  --cap:        clamp(.72rem, 1vw, .95rem);
+  --num:        clamp(1.2rem, 3vw, 2.4rem);
+  --card-word:  clamp(1.5rem, 3.8vw, 3rem);
+
+  --pad:       clamp(1rem, 4vw, 4rem);
+  --gap:       clamp(.6rem, 1.8vw, 1.6rem);
+  --card-pad:  clamp(.9rem, 2vw, 2rem);
+}
+
+/* ============ 基础 & 视口安全（每页恰好一屏，禁止滚动） ============ */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; overflow: hidden; overscroll-behavior: none; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  font-family: 'Noto Sans SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--accent); color: #fff; }
+
+.deck {
+  position: fixed; inset: 0; overflow: hidden;
+  background-color: var(--paper);
+  /* 极淡的点状网格，纸张印刷感 */
+  background-image: radial-gradient(rgba(23, 21, 15, .055) 1px, transparent 1.3px);
+  background-size: 26px 26px;
+}
+.deck-track {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  transition: transform .55s cubic-bezier(.22, .68, .32, 1);
+  will-change: transform;
+}
+.slide {
+  position: relative;
+  flex: 0 0 auto;
+  width: 100vw; height: 100vh; height: 100dvh;
+  overflow: hidden; outline: none;
+}
+.slide-content {
+  position: relative; z-index: 1;
+  flex: 1; display: flex; flex-direction: column; justify-content: center;
+  max-height: 100%; overflow: hidden;
+  padding: calc(var(--pad) * 1.1) var(--pad) calc(var(--pad) * 1.8);
+}
+.slide-content.center { align-items: center; text-align: center; }
+
+/* 装饰：左上朱红角标 + 右上超大页号水印 */
+.slide::before {
+  content: ""; position: absolute; z-index: 2;
+  top: clamp(.8rem, 2vw, 1.6rem); left: clamp(.8rem, 2vw, 1.6rem);
+  width: clamp(14px, 2.2vw, 26px); height: clamp(14px, 2.2vw, 26px);
+  border-top: 3px solid var(--accent); border-left: 3px solid var(--accent);
+}
+.slide::after {
+  content: counter(slide, decimal-leading-zero); counter-increment: slide;
+  position: absolute; z-index: 0; pointer-events: none;
+  top: clamp(1.5rem, 4vw, 3rem); right: clamp(1rem, 3vw, 2.4rem);
+  font-family: 'Archivo Black', 'Noto Sans SC', sans-serif;
+  font-size: clamp(3.2rem, 11vw, 8.5rem); line-height: 1;
+  color: transparent; -webkit-text-stroke: 1px rgba(23, 21, 15, .16);
+}
+
+/* ============ 字体工具 ============ */
+.en { font-family: 'Archivo Black', 'Noto Sans SC', sans-serif; font-weight: 400; letter-spacing: .01em; }
+h1, h2, p { margin: 0; }
+h2 { font-size: var(--h2); font-weight: 900; line-height: 1.15; letter-spacing: .01em; margin-top: .28em; }
+.title { font-size: var(--title); font-weight: 900; line-height: 1.12; letter-spacing: .02em; }
+.hero .title { font-size: var(--title-hero); }
+.title em { font-style: normal; color: var(--accent-deep); }
+.title-en { font-family: 'Archivo Black', 'Noto Sans SC', sans-serif; font-weight: 400; font-size: var(--title-en); line-height: 1.08; letter-spacing: .01em; }
+.title-rule { width: clamp(2.6rem, 9vw, 6rem); height: 6px; background: var(--accent); margin: clamp(.9rem, 2.6vh, 1.8rem) auto; }
+.subtitle { font-size: var(--lead); font-weight: 500; color: var(--muted); letter-spacing: .42em; text-transform: uppercase; }
+.lead { font-size: var(--lead); font-weight: 700; line-height: 1.5; margin: 0 0 clamp(1rem, 3vh, 2rem); }
+.lead b { color: var(--accent-deep); }
+
+.kicker {
+  display: flex; align-items: center; gap: .9em;
+  font-size: var(--cap); font-weight: 700; letter-spacing: .32em;
+  text-transform: uppercase; color: var(--accent-deep);
+}
+.kicker::after { content: ""; height: 2px; width: clamp(1.8rem, 5vw, 4rem); background: var(--accent); }
+.slide-head { margin-bottom: clamp(1rem, 3vh, 2.2rem); }
+
+/* ============ 卡片 / 行 / 方块 ============ */
+.card {
+  position: relative;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  text-align: center; gap: .55em;
+  background: var(--card);
+  border: 2px solid var(--ink);
+  box-shadow: clamp(3px, .7vw, 10px) clamp(3px, .7vw, 10px) 0 var(--shadow);
+  padding: var(--card-pad);
+  min-height: 0;
+}
+.card-num { position: absolute; top: .5em; left: .65em; font-family: 'Archivo Black', sans-serif; font-size: var(--num); color: var(--accent); line-height: 1; }
+.card-word { font-size: var(--card-word); font-weight: 900; line-height: 1.15; letter-spacing: .02em; }
+.card-cap { font-size: var(--cap); color: var(--muted); letter-spacing: .22em; text-transform: uppercase; }
+
+.row3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); }
+
+.rows { display: flex; flex-direction: column; gap: var(--gap); }
+.row {
+  display: flex; align-items: center; gap: clamp(.6rem, 1.6vw, 1.2rem);
+  background: var(--card);
+  border: 2px solid var(--ink);
+  box-shadow: clamp(3px, .6vw, 8px) clamp(3px, .6vw, 8px) 0 var(--shadow);
+  padding: clamp(.7rem, 1.8vw, 1.5rem) clamp(1rem, 2.4vw, 2rem);
+}
+.row p { font-size: var(--body); font-weight: 700; line-height: 1.35; }
+.row .tag { flex: 0 0 auto; background: var(--accent); color: #fff; font-size: var(--num); font-weight: 900; line-height: 1; padding: .28em .5em; box-shadow: 3px 3px 0 var(--ink); }
+.row .num-tag { flex: 0 0 auto; font-family: 'Archivo Black', sans-serif; font-size: var(--num); color: var(--accent); line-height: 1; }
+.row .cap { margin-left: auto; flex: 0 0 auto; font-size: var(--cap); color: var(--muted); letter-spacing: .18em; text-transform: uppercase; white-space: nowrap; }
+
+.tiles4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap); }
+.tile {
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  background: var(--card);
+  border: 2px solid var(--ink);
+  box-shadow: clamp(3px, .6vw, 8px) clamp(3px, .6vw, 8px) 0 var(--shadow);
+  padding: clamp(1rem, 2.4vw, 2.2rem);
+  font-size: var(--card-word); font-weight: 900;
+}
+
+.duo   { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); }
+.split { display: grid; grid-template-columns: 1.35fr 1fr; gap: var(--gap); align-items: stretch; }
+.split2{ display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); align-items: stretch; }
+
+.vs { display: flex; align-items: center; justify-content: center; gap: var(--gap); }
+.vs .card { flex: 0 1 22rem; width: 100%; min-height: clamp(8rem, 26vh, 13rem); padding: clamp(1.2rem, 3vw, 2.4rem); }
+.vs-badge {
+  flex: 0 0 auto;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: clamp(1.1rem, 2.6vw, 1.9rem);
+  color: #fff; background: var(--accent);
+  border: 2px solid var(--ink); box-shadow: 4px 4px 0 var(--ink);
+  padding: .35em .5em; transform: rotate(-5deg);
+}
+
+/* ============ 学时分配（第 5 页专用） ============ */
+.stat { display: flex; align-items: baseline; justify-content: center; gap: .5em; flex-wrap: wrap; }
+.stat .num { font-family: 'Archivo Black', sans-serif; font-size: clamp(2.6rem, 7.5vw, 5.6rem); line-height: 1; }
+.stat .unit { font-size: var(--body); font-weight: 700; }
+.chapters {
+  list-style: none; margin: clamp(.9rem, 2vh, 1.4rem) 0 0; padding: 0;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0 clamp(1rem, 2.5vw, 2rem);
+  width: 100%;
+}
+.chapters li {
+  display: flex; justify-content: space-between; align-items: baseline; gap: .5em;
+  border-top: 1px solid var(--line);
+  padding: clamp(.28rem, .8vh, .5rem) 0;
+  font-size: var(--small); font-weight: 700;
+}
+.chapters b { font-family: 'Archivo Black', sans-serif; font-weight: 400; color: var(--accent-deep); font-size: 1.15em; }
+.exp { margin-top: clamp(.8rem, 2vh, 1.2rem); font-size: var(--body); font-weight: 700; }
+.exp .en { color: var(--accent-deep); font-size: 1.25em; }
+
+/* ============ 示意图（C/S 与 P2P） ============ */
+.diagram { width: clamp(6rem, 20vw, 10rem); height: auto; margin-top: .5em; }
+.diagram .ln { stroke: var(--ink); stroke-width: 2.5; }
+.diagram .node { fill: var(--ink); }
+.diagram .node-srv { fill: var(--accent); }
+
+/* ============ 进场与逐条动画 ============ */
+.anim-in {
+  opacity: 0; transform: translateY(1.1rem);
+  transition: opacity .5s ease, transform .5s cubic-bezier(.22, .68, .32, 1);
+}
+.slide.active .anim-in { opacity: 1; transform: none; }
+.slide.active .title-rule { transition-delay: .12s; }
+.slide.active .subtitle { transition-delay: .22s; }
+
+/* 列表项：播放时一个一个出现 */
+.step {
+  opacity: 0; transform: translateY(1.3rem);
+  transition: opacity .42s ease, transform .42s cubic-bezier(.22, .68, .32, 1);
+}
+.slide.active .step.visible { opacity: 1; transform: none; }
+
+@keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.hud, .hint { animation: rise .5s ease .15s both; }
+
+/* ============ 进度条 / 底部控制 / 提示 ============ */
+.progress { position: fixed; top: 0; left: 0; right: 0; height: 4px; background: rgba(23, 21, 15, .12); z-index: 70; }
+.progress-bar { height: 100%; background: var(--accent); transform-origin: 0 50%; transform: scaleX(0); transition: transform .45s cubic-bezier(.22, .68, .32, 1); }
+
+.hud {
+  position: fixed; right: var(--pad); bottom: calc(var(--pad) * .55);
+  display: flex; align-items: center; gap: clamp(.4rem, 1vw, .7rem); z-index: 60;
+}
+.hud-btn {
+  width: clamp(2rem, 4vw, 2.9rem); height: clamp(2rem, 4vw, 2.9rem);
+  display: grid; place-items: center;
+  font-size: clamp(1.2rem, 2.2vw, 1.7rem); line-height: 1;
+  background: var(--card); color: var(--ink);
+  border: 2px solid var(--ink); box-shadow: 3px 3px 0 var(--ink);
+  cursor: pointer; padding: 0;
+  touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+  transition: background .2s, color .2s, transform .1s;
+}
+.hud-btn:hover { background: var(--accent); color: #fff; }
+.hud-btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+.hud-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.hud-counter {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: clamp(.85rem, 1.5vw, 1.1rem); letter-spacing: .1em;
+  background: var(--card); border: 2px solid var(--ink); box-shadow: 3px 3px 0 var(--ink);
+  padding: .32em .55em .28em;
+}
+.hud-slash { opacity: .45; margin: 0 .1em; }
+.hint { position: fixed; left: var(--pad); bottom: calc(var(--pad) * .65); font-size: var(--cap); letter-spacing: .12em; color: var(--muted); z-index: 60; }
+
+/* ============ 响应式 ============ */
+@media (max-width: 720px) {
+  .row3, .tiles4 { grid-template-columns: 1fr; }
+  .duo, .split, .split2 { grid-template-columns: 1fr; }
+  .vs { flex-direction: column; }
+  .row .cap { display: none; }
+}
+@media (max-width: 480px) {
+  .tiles4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* 矮屏（横屏手机 / 小投影）整体收缩 */
+@media (max-height: 700px) {
+  :root {
+    --pad: clamp(.7rem, 3vw, 2rem);
+    --gap: clamp(.45rem, 1.4vw, 1rem);
+    --title: clamp(1.9rem, 5.5vw, 3.8rem);
+    --title-hero: clamp(2.1rem, 8vw, 4.8rem);
+    --title-en: clamp(1.9rem, 6.5vw, 4.2rem);
+    --h2: clamp(1.45rem, 4.5vw, 2.5rem);
+    --lead: clamp(1rem, 2.1vw, 1.5rem);
+    --body: clamp(.92rem, 1.85vw, 1.2rem);
+    --small: clamp(.82rem, 1.5vw, 1.02rem);
+    --cap: clamp(.62rem, .9vw, .78rem);
+    --num: clamp(1rem, 2.4vw, 1.6rem);
+    --card-word: clamp(1.15rem, 2.8vw, 2.1rem);
+    --card-pad: clamp(.55rem, 1.4vw, 1rem);
+  }
+}
+@media (max-height: 600px) {
+  :root {
+    --pad: clamp(.5rem, 2.4vw, 1.4rem);
+    --gap: clamp(.35rem, 1.2vw, .7rem);
+    --title: clamp(1.5rem, 5vw, 2.8rem);
+    --title-hero: clamp(1.7rem, 6.5vw, 3.6rem);
+    --title-en: clamp(1.5rem, 5.5vw, 3.2rem);
+    --h2: clamp(1.15rem, 4vw, 1.9rem);
+    --lead: clamp(.88rem, 1.9vw, 1.2rem);
+    --body: clamp(.8rem, 1.6vw, 1rem);
+    --small: clamp(.74rem, 1.4vw, .9rem);
+    --cap: clamp(.56rem, .85vw, .72rem);
+    --num: clamp(.9rem, 2.2vw, 1.4rem);
+    --card-word: clamp(1rem, 2.5vw, 1.7rem);
+    --card-pad: clamp(.4rem, 1.2vw, .8rem);
+  }
+  .hint { display: none; }
+  .card, .row, .tile { box-shadow: 3px 3px 0 var(--shadow); border-width: 1.5px; }
+  .slide::before { border-width: 2px; }
+}
+@media (max-height: 500px) {
+  :root { --h2: clamp(1rem, 3.5vw, 1.6rem); --body: clamp(.72rem, 1.5vw, .9rem); --card-word: clamp(.9rem, 2.2vw, 1.5rem); --lead: clamp(.8rem, 1.7vw, 1rem); }
+  .slide-head { margin-bottom: .5rem; }
+  .chapters li { font-size: .85rem; }
+}
+
+/* 减少动态效果 */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  .deck-track { transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<main class="deck" id="deck">
+  <div class="deck-track">
+
+    <!-- 1 封面 -->
+    <section class="slide" tabindex="-1" aria-label="封面：《计算机网络》">
+      <div class="slide-content center hero">
+        <h1 class="title anim-in">《计算机<em>网络</em>》</h1>
+        <div class="title-rule anim-in"></div>
+        <p class="subtitle anim-in">Computer Network</p>
+      </div>
+    </section>
+
+    <!-- 2 英文标题 -->
+    <section class="slide" tabindex="-1" aria-label="Computer Network">
+      <div class="slide-content center">
+        <h1 class="title-en anim-in">Computer Network</h1>
+        <div class="title-rule anim-in"></div>
+        <p class="subtitle anim-in">《计算机网络》</p>
+      </div>
+    </section>
+
+    <!-- 3 怎么学？ -->
+    <section class="slide" tabindex="-1" aria-label="怎么学？">
+      <div class="slide-content">
+        <header class="slide-head anim-in">
+          <p class="kicker">How to Study</p>
+          <h2>怎么学？</h2>
+        </header>
+        <div class="row3">
+          <div class="card step"><span class="card-num">01</span><p class="card-word">读书</p><span class="card-cap">Reading</span></div>
+          <div class="card step"><span class="card-num">02</span><p class="card-word">听讲</p><span class="card-cap">Lecture</span></div>
+          <div class="card step"><span class="card-num">03</span><p class="card-word">实践</p><span class="card-cap">Practice</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 昨天今天明天 -->
+    <section class="slide" tabindex="-1" aria-label="昨天今天明天">
+      <div class="slide-content">
+        <header class="slide-head anim-in">
+          <p class="kicker">Yesterday · Today · Tomorrow</p>
+          <h2>昨天今天明天</h2>
+        </header>
+        <div class="rows">
+          <div class="row step"><span class="tag">昨天</span><p>以史为镜，可以知兴衰</p></div>
+          <div class="row step"><span class="tag">今天</span><p>学好知识，活在当下</p></div>
+          <div class="row step"><span class="tag">明天</span><p>为了更好的明天</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 学时分配 -->
+    <section class="slide" tabindex="-1" aria-label="学时分配">
+      <div class="slide-content">
+        <header class="slide-head anim-in">
+          <p class="kicker">Course Hours</p>
+          <h2>学时分配</h2>
+        </header>
+        <div class="split">
+          <div class="card step">
+            <div class="stat"><span class="num">40</span><span class="unit">学时 · 理论</span></div>
+            <ul class="chapters">
+              <li><span>第一章</span><b>6</b></li>
+              <li><span>第二章</span><b>2</b></li>
+              <li><span>第三章</span><b>8</b></li>
+              <li><span>第四章</span><b>12</b></li>
+              <li><span>第五章</span><b>10</b></li>
+              <li><span>第六章</span><b>2</b></li>
+            </ul>
+          </div>
+          <div class="card step">
+            <div class="stat"><span class="num">32</span><span class="unit">学时 · 实验 / 实训</span></div>
+            <p class="exp">八个实验 × <span class="en">4</span> 学时</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 计算机网络在信息时代中的作用 -->
+    <section class="slide" tabindex="-1" aria-label="计算机网络在信息时代中的作用">
+      <div class="slide-content">
+        <header class="slide-head anim-in">
+          <p class="kicker">Networks in the Information Age</p>
+          <h2>计算机网络<wbr>在信息时代中<wbr>的作用</h2>
+        </header>
+        <p class="lead anim-in">21 世纪，<b>以网络为核心</b>的信息时代。</p>
+        <div class="tiles4">
+          <div class="tile step">数字化</div>
+          <div class="tile step">网络化</div>
+          <div class="tile step">信息化</div>
+          <div class="tile step">智能化</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7 三大网络 -->
+    <section class="slide" tabindex="-1" aria-label="三大网络">
+      <div class="slide-content">
+        <header class="slide-head anim-in">
+          <p class="kicker">Three Networks</p>
+          <h2>三大网络</h2>
+        </header>
+        <div class="row3">
+          <div class="card step"><span class="card-num">01</span><p class="card-word">电信网络</p><span class="card-cap">Telecom Network</span></div>
+          <div class="card step"><span class="card-num">02</span><p class="card-word">有线电视网络</p><span class="card-cap">Cable TV Network</span></div>
+          <div class="card step"><span class="card-num">03</span><p class="card-word">计算机网络</p><span class="card-cap">Computer Network</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8 Internet -->
+    <section class="slide" tabindex="-1" aria-label="Internet">
+      <div class="slide-content">
+        <header class="slide-head anim-in">
+          <p class="kicker">Two Chinese Names</p>
+          <h2 class="en">Internet</h2>
+        </header>
+        <div class="duo">
+          <div class="card step"><p class="card-word">因特网</p><span class="card-cap">Transliteration</span></div>
+          <div class="card step"><p class="card-word">互联网</p><span class="card-cap">Translation</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9 Internet v.s. internet -->
+    <section class="slide" tabindex="-1" aria-label="Internet v.s. internet">
+      <div class="slide-content">
+        <header class="slide-head anim-in">
+          <p class="kicker">Capital I · Lowercase i</p>
+          <h2><span class="en">Internet</span> v.s. <span class="en">internet</span></h2>
+        </header>
+        <div class="vs">
+          <div class="card step"><p class="card-word">互联网</p><span class="card-cap">Internet</span></div>
+          <div class="vs-badge anim-in">VS</div>
+          <div class="card step"><p class="card-word">互连网</p><span class="card-cap">internet</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 互联网 -->
+    <section class="slide" tabindex="-1" aria-label="互联网">
+      <div class="slide-content">
+        <header class="slide-head anim-in">
+          <p class="kicker">The Internet</p>
+          <h2>互联网</h2>
+        </header>
+        <div class="rows">
+          <div class="row step"><span class="num-tag">01</span><p>网络的网络</p><span class="cap">Network of Networks</span></div>
+          <div class="row step"><span class="num-tag">02</span><p>互联网基础结构发展的三个阶段</p><span class="cap">Three Stages of Evolution</span></div>
+          <div class="row step"><span class="num-tag">03</span><p>互联网的标准化工作</p><span class="cap">Standardization</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11 互联网的组成 -->
+    <section class="slide" tabindex="-1" aria-label="互联网的组成">
+      <div class="slide-content">
+        <header class="slide-head anim-in">
+          <p class="kicker">Structure of the Internet</p>
+          <h2>互联网的组成</h2>
+        </header>
+        <div class="split2">
+          <div class="card step"><p class="card-word">边缘部分</p><span class="card-cap">The Edge</span></div>
+          <div class="card step"><p class="card-word">核心部分</p><span class="card-cap">The Core</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12 边缘部分 -->
+    <section class="slide" tabindex="-1" aria-label="边缘部分">
+      <div class="slide-content">
+        <header class="slide-head anim-in">
+          <p class="kicker">The Edge</p>
+          <h2>边缘部分</h2>
+        </header>
+        <div class="split2">
+          <div class="card step">
+            <p class="card-word">客户机-服务器方式</p>
+            <span class="card-cap">Client / Server</span>
+            <svg class="diagram" viewBox="0 0 200 120" aria-hidden="true">
+              <line class="ln" x1="100" y1="60" x2="25" y2="20"/>
+              <line class="ln" x1="100" y1="60" x2="175" y2="25"/>
+              <line class="ln" x1="100" y1="60" x2="160" y2="100"/>
+              <circle class="node" cx="25" cy="20" r="9"/>
+              <circle class="node" cx="175" cy="25" r="9"/>
+              <circle class="node" cx="160" cy="100" r="9"/>
+              <circle class="node-srv" cx="100" cy="60" r="14"/>
+            </svg>
+          </div>
+          <div class="card step">
+            <p class="card-word">对等连接方式</p>
+            <span class="card-cap">Peer-to-Peer</span>
+            <svg class="diagram" viewBox="0 0 200 120" aria-hidden="true">
+              <line class="ln" x1="30" y1="30" x2="170" y2="25"/>
+              <line class="ln" x1="30" y1="30" x2="175" y2="95"/>
+              <line class="ln" x1="30" y1="30" x2="35" y2="95"/>
+              <line class="ln" x1="170" y1="25" x2="175" y2="95"/>
+              <line class="ln" x1="170" y1="25" x2="35" y2="95"/>
+              <line class="ln" x1="175" y1="95" x2="35" y2="95"/>
+              <circle class="node" cx="30" cy="30" r="9"/>
+              <circle class="node-srv" cx="170" cy="25" r="9"/>
+              <circle class="node" cx="175" cy="95" r="9"/>
+              <circle class="node" cx="35" cy="95" r="9"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13 核心部分 -->
+    <section class="slide" tabindex="-1" aria-label="核心部分">
+      <div class="slide-content">
+        <header class="slide-head anim-in">
+          <p class="kicker">The Core</p>
+          <h2>核心部分</h2>
+        </header>
+        <div class="row3">
+          <div class="card step"><span class="card-num">01</span><p class="card-word">电路交换</p><span class="card-cap">Circuit Switching</span></div>
+          <div class="card step"><span class="card-num">02</span><p class="card-word">分组交换</p><span class="card-cap">Packet Switching</span></div>
+          <div class="card step"><span class="card-num">03</span><p class="card-word">报文交换</p><span class="card-cap">Message Switching</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 14 计算机网络在我国的发展 -->
+    <section class="slide" tabindex="-1" aria-label="计算机网络在我国的发展">
+      <div class="slide-content center">
+        <h1 class="title anim-in">计算机网络<br>在我国的发展</h1>
+        <div class="title-rule anim-in"></div>
+        <p class="subtitle anim-in">The Internet in China</p>
+      </div>
+    </section>
+
+    <!-- 15 计算机网络的类别 -->
+    <section class="slide" tabindex="-1" aria-label="计算机网络的类别">
+      <div class="slide-content center">
+        <h1 class="title anim-in">计算机网络的类别</h1>
+        <div class="title-rule anim-in"></div>
+        <p class="subtitle anim-in">Classification of Networks</p>
+      </div>
+    </section>
+
+    <!-- 16 计算机网络的性能 -->
+    <section class="slide" tabindex="-1" aria-label="计算机网络的性能">
+      <div class="slide-content center">
+        <h1 class="title anim-in">计算机网络的性能</h1>
+        <div class="title-rule anim-in"></div>
+        <p class="subtitle anim-in">Performance</p>
+      </div>
+    </section>
+
+    <!-- 17 计算机网络的体系结构 -->
+    <section class="slide" tabindex="-1" aria-label="计算机网络的体系结构">
+      <div class="slide-content center">
+        <h1 class="title anim-in">计算机网络的体系结构</h1>
+        <div class="title-rule anim-in"></div>
+        <p class="subtitle anim-in">Network Architecture</p>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<!-- 顶部进度条 -->
+<div class="progress" aria-hidden="true"><div class="progress-bar" id="bar"></div></div>
+
+<!-- 底部控制：上/下一页 + 页码 -->
+<div class="hud">
+  <button class="hud-btn hud-btn-prev" aria-label="上一页 / 上一步">&#8249;</button>
+  <div class="hud-counter" aria-hidden="true">
+    <span class="hud-cur" id="cur">01</span><span class="hud-slash">/</span><span class="hud-tot" id="tot">17</span>
+  </div>
+  <button class="hud-btn hud-btn-next" aria-label="下一页 / 下一步">&#8250;</button>
+</div>
+
+<p class="hint" aria-hidden="true">← → 翻页 · 空格 下一步 · 滚轮 / 滑动</p>
+
+<noscript>
+  <style>
+    html, body { overflow: auto; }
+    .deck { position: static; }
+    .deck-track { transform: none !important; }
+    .slide { position: static; }
+    .anim-in, .step { opacity: 1; transform: none; }
+    .hud, .hint, .progress { display: none; }
+  </style>
+</noscript>
+
+<script>
+(function () {
+  'use strict';
+
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var track = document.querySelector('.deck-track');
+  var total = slides.length;
+  var counts = slides.map(function (s) { return s.querySelectorAll('.step').length; });
+  var shown = new Array(total).fill(0);   // 每页已揭示的步骤数
+  var current = 0;
+  var locked = false, lockTimer = null;
+  var wheelAcc = 0;
+
+  var bar = document.getElementById('bar');
+  var curEl = document.getElementById('cur');
+  var totEl = document.getElementById('tot');
+
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  totEl.textContent = pad(total);
+
+  // 跳转：翻页时该页步骤从头开始
+  function goTo(i) {
+    current = Math.max(0, Math.min(total - 1, i));
+    shown[current] = 0;
+    render();
+    var s = slides[current];
+    if (s && s.focus) s.focus({ preventScroll: true });
+  }
+
+  function render() {
+    track.style.transform = 'translate3d(0,' + (-current * window.innerHeight) + 'px,0)';
+    slides.forEach(function (s, i) { s.classList.toggle('active', i === current); });
+    // 根据已揭示数量，给当前页的列表项加上/去掉 .visible
+    var steps = slides[current].querySelectorAll('.step');
+    Array.prototype.forEach.call(steps, function (el, j) {
+      el.classList.toggle('visible', j < shown[current]);
+    });
+    var t = counts[current];
+    var frac = t ? shown[current] / t : 0;
+    bar.style.transform = 'scaleX(' + ((current + frac) / total) + ')';
+    curEl.textContent = pad(current + 1);
+    if (history.replaceState) history.replaceState(null, '', '#' + (current + 1));
+  }
+
+  // 下一页：先逐条揭示列表项，全部揭示后再翻页
+  function next() {
+    if (shown[current] < counts[current]) { shown[current]++; render(); }
+    else if (current < total - 1) goTo(current + 1);
+  }
+  function prev() {
+    if (shown[current] > 0) { shown[current]--; render(); }
+    else if (current > 0) goTo(current - 1);
+  }
+
+  // 操作锁：防止连按跳页、滚轮/滑动连发
+  function step(fn) {
+    if (locked) return;
+    locked = true;
+    fn();
+    clearTimeout(lockTimer);
+    lockTimer = setTimeout(function () { locked = false; }, 380);
+  }
+
+  // 键盘导航
+  document.addEventListener('keydown', function (e) {
+    var k = e.key;
+    if (k === 'ArrowRight' || k === 'ArrowDown' || k === 'PageDown' || e.code === 'Space') {
+      e.preventDefault(); step(next);
+    } else if (k === 'ArrowLeft' || k === 'ArrowUp' || k === 'PageUp') {
+      e.preventDefault(); step(prev);
+    } else if (k === 'Home') {
+      e.preventDefault(); step(function () { goTo(0); });
+    } else if (k === 'End') {
+      e.preventDefault(); step(function () { goTo(total - 1); });
+    }
+  });
+
+  // 滚轮导航（Ctrl+滚轮留给浏览器缩放）
+  window.addEventListener('wheel', function (e) {
+    if (e.ctrlKey) return;
+    e.preventDefault();
+    if (locked) return;
+    wheelAcc += e.deltaY;
+    if (Math.abs(wheelAcc) >= 40) {
+      var f = wheelAcc > 0 ? next : prev;
+      wheelAcc = 0;
+      step(f);
+    }
+  }, { passive: false });
+
+  // 触屏滑动：左右 / 上下滑动翻页
+  var tx = 0, ty = 0;
+  window.addEventListener('touchstart', function (e) {
+    tx = e.changedTouches[0].clientX;
+    ty = e.changedTouches[0].clientY;
+  }, { passive: true });
+  window.addEventListener('touchend', function (e) {
+    var dx = e.changedTouches[0].clientX - tx;
+    var dy = e.changedTouches[0].clientY - ty;
+    if (Math.abs(dx) < 40 && Math.abs(dy) < 40) return;
+    if (Math.abs(dx) > Math.abs(dy)) step(dx < 0 ? next : prev);
+    else step(dy > 0 ? next : prev);
+  }, { passive: true });
+
+  // 底部按钮
+  document.querySelector('.hud-btn-prev').addEventListener('click', function () { step(prev); });
+  document.querySelector('.hud-btn-next').addEventListener('click', function () { step(next); });
+
+  // URL 锚点（#3 直达第 3 页，支持浏览器前进/后退）
+  function fromHash() {
+    var m = location.hash.match(/#(\d+)/);
+    if (m) goTo(parseInt(m[1], 10) - 1);
+  }
+  window.addEventListener('hashchange', fromHash);
+
+  // 窗口尺寸变化（手机地址栏伸缩等）
+  var rt;
+  window.addEventListener('resize', function () {
+    clearTimeout(rt);
+    rt = setTimeout(render, 120);
+  });
+
+  // Intersection Observer：与视口实际位置同步激活状态（含降级场景）
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          var i = slides.indexOf(en.target);
+          if (i !== current) { current = i; shown[i] = 0; render(); }
+        }
+      });
+    }, { threshold: 0.6 });
+    slides.forEach(function (s) { io.observe(s); });
+  }
+
+  // 初始化：先禁用过渡动画定位，再恢复，避免载入时扫过所有页
+  track.style.transition = 'none';
+  fromHash();
+  render();
+  requestAnimationFrame(function () {
+    requestAnimationFrame(function () { track.style.transition = ''; });
+  });
+})();
+</script>
+</body>
+</html>
